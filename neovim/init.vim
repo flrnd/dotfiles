@@ -28,13 +28,11 @@ call plug#begin(expand('~/.vim/plugged'))
 "*****************************************************************************
 "" Plug install packages
 "*****************************************************************************
-Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
+
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'airblade/vim-gitgutter'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
@@ -43,6 +41,8 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+Plug 'mhinz/vim-signify'
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -53,11 +53,17 @@ let g:make = 'gmake'
 if exists('make')
         let g:make = 'make'
 endif
+
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Vim-Session
-Plug 'xolox/vim-misc'
-Plug 'xolox/vim-session'
+" Defx is a dark powered plugin for Neovim/Vim to browse files.
+if has('nvim')
+  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/defx.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
 
 if v:version >= 703
   Plug 'Shougo/vimshell.vim'
@@ -84,7 +90,6 @@ Plug 'carlosgaldino/elixir-snippets'
 " go
 "" Go Lang Bundle
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
 
 " html
 "" HTML Bundle
@@ -188,12 +193,6 @@ let g:gruvbox_italic=1
 set background=dark
 colorscheme gruvbox
 
-
-""set mousemodel=popup
-""set t_Co=256
-""set guioptions=egmrti
-""set gfn=Monospace\ 10
-
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
     set guifont=Menlo:h12
@@ -270,16 +269,7 @@ cnoreabbrev W w
 cnoreabbrev Q q
 cnoreabbrev Qall qall
 
-"" NERDTree configuration
-let g:NERDTreeChDirMode=2
-let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
-let g:NERDTreeSortOrder=['^__\.py$', '\/$', '*', '\.swp$', '\.bak$', '\~$']
-let g:NERDTreeShowBookmarks=1
-let g:nerdtree_tabs_focus_on_files=1
-let g:NERDTreeMapOpenInTabSilent = '<RightMouse>'
-let g:NERDTreeWinSize = 50
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*.db,*.sqlite
-nnoremap <silent> <F2> :NERDTreeFind<CR>
+noremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " grep.vim
@@ -310,7 +300,7 @@ function! RunLint()
     "Save current cursor position"
     let l:winview = winsaveview()
     "run eslint fix on current buffer"
-    ! npm run lint 
+    ! npm run lint
     "Restore cursor position"
     call winrestview(l:winview)
 endfunction
@@ -354,16 +344,6 @@ set autoread
 noremap <Leader>h :<C-u>split<CR>
 noremap <Leader>v :<C-u>vsplit<CR>
 
-"" Git
-noremap <Leader>ga :Gwrite<CR>
-noremap <Leader>gc :Gcommit<CR>
-noremap <Leader>gsh :Gpush<CR>
-noremap <Leader>gll :Gpull<CR>
-noremap <Leader>gs :Gstatus<CR>
-noremap <Leader>gb :Gblame<CR>
-noremap <Leader>gd :Gvdiff<CR>
-noremap <Leader>gr :Gremove<CR>
-
 " session management
 nnoremap <leader>so :OpenSession<Space>
 nnoremap <leader>ss :SaveSession<Space>
@@ -395,13 +375,6 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
-" ripgrep
-if executable('rg')
-  let $FZF_DEFAULT_COMMAND = 'rg --files --hidden --follow --glob "!.git/*"'
-  set grepprg=rg\ --vimgrep
-  command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
-endif
-
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 nnoremap <silent> <leader>b :Buffers<CR>
 nnoremap <silent> <leader>e :FZF -m<CR>
@@ -411,17 +384,6 @@ let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<c-b>"
 let g:UltiSnipsEditSplit="vertical"
-
-" syntastic
-""let g:syntastic_always_populate_loc_list=1
-""let g:syntastic_error_symbol='✗'
-""let g:syntastic_warning_symbol='⚠'
-""let g:syntastic_style_error_symbol = '✗'
-""let g:syntastic_style_warning_symbol = '⚠'
-""let g:syntastic_auto_loc_list=1
-""let g:syntastic_aggregate_errors = 1
-""let g:syntastic_javascript_checkers = ['eslint']
-""let g:syntastic_javascript_eslint_exe = 'npm run lint --'
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -438,10 +400,6 @@ endif
 
 "" Copy/Paste/Cut
 set clipboard^=unnamed,unnamedplus
-
-noremap YY "+y<CR>
-noremap <leader>p "+gP<CR>
-noremap XX "+x<CR>
 
 if has('macunix')
   " pbcopy for OSX copy/paste
@@ -466,14 +424,6 @@ noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
 noremap <C-h> <C-w>h
-
-"" Vmap for maintain Visual Mode after shifting > and <
-vmap < <gv
-vmap > >gv
-
-"" Move visual block
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
 
 "" Open current line on GitHub
 nnoremap <Leader>o :.Gbrowse<CR>
@@ -500,10 +450,6 @@ endfunction
 let g:go_list_type = "quickfix"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_fail_silently = 1
-
-""let g:syntastic_go_checkers = ['golint', 'govet']
-""let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
-
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
@@ -518,39 +464,6 @@ let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
 
 autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 softtabstop=4
-
-augroup completion_preview_close
-  autocmd!
-  if v:version > 703 || v:version == 703 && has('patch598')
-    autocmd CompleteDone * if !&previewwindow && &completeopt =~ 'preview' | silent! pclose | endif
-  endif
-augroup END
-
-augroup go
-
-  au!
-  au Filetype go command! -bang A call go#alternate#Switch(<bang>0, 'edit')
-  au Filetype go command! -bang AV call go#alternate#Switch(<bang>0, 'vsplit')
-  au Filetype go command! -bang AS call go#alternate#Switch(<bang>0, 'split')
-  au Filetype go command! -bang AT call go#alternate#Switch(<bang>0, 'tabe')
-
-  au FileType go nmap <Leader>dd <Plug>(go-def-vertical)
-  au FileType go nmap <Leader>dv <Plug>(go-doc-vertical)
-  au FileType go nmap <Leader>db <Plug>(go-doc-browser)
-
-  au FileType go nmap <leader>r  <Plug>(go-run)
-  au FileType go nmap <leader>t  <Plug>(go-test)
-  au FileType go nmap <Leader>gt <Plug>(go-coverage-toggle)
-  au FileType go nmap <Leader>i <Plug>(go-info)
-  au FileType go nmap <silent> <Leader>l <Plug>(go-metalinter)
-  au FileType go nmap <C-g> :GoDecls<cr>
-  au FileType go nmap <leader>dr :GoDeclsDir<cr>
-  au FileType go imap <C-g> <esc>:<C-u>GoDecls<cr>
-  au FileType go imap <leader>dr <esc>:<C-u>GoDeclsDir<cr>
-  au FileType go nmap <leader>rb :<C-u>call <SID>build_go_files()<CR>
-
-augroup END
-
 
 " html
 " for html files, 2 spaces
