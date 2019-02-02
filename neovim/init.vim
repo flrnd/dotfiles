@@ -246,6 +246,21 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tagbar#enabled = 1
 let g:airline_skip_empty_sections = 1
 
+" Ale
+let g:ale_linters = {'ansible': ['ansible-lint'], 'javascript': ['eslint'], 'typescript': ['tslint'], 'python': ['flake8'], 'vue': ['vls'], 'go': ['go build', 'gofmt', 'golint'], 'elixir': ['mix'], '*': ['trim_whitespace', 'remove_trailing_lines']}
+let g:ale_fixers = {
+      \ 'go': ['gofmt'],
+      \ 'javascript': ['eslint', 'prettier'],
+      \ 'typescript': ['tslint', 'prettier'],
+      \ 'vue': ['prettier'],
+      \ 'python': ['black'],
+      \ '*': ['trim_whitespace', 'remove_trailing_lines']
+      \}
+let g:ale_lint_on_insert_leave = 1
+let g:ale_fix_on_save = 1
+let g:ale_warn_about_trailing_whitespace = 1
+let g:ale_lint_delay = 100
+let g:ale_lint_on_text_changed = 'always'
 "*****************************************************************************
 "" Abbreviations
 "*****************************************************************************
@@ -448,7 +463,6 @@ autocmd BufNewFile,BufRead *.go setlocal noexpandtab tabstop=4 shiftwidth=4 soft
 " html
 " for html files, 2 spaces
 autocmd Filetype html setlocal ts=2 sw=2 expandtab
-
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
