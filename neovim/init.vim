@@ -209,9 +209,8 @@ endif
 let g:ale_linters = {'ansible': ['ansible-lint'], 'javascript': ['eslint'], 'typescript': ['tslint'], 'python': ['flake8'], 'vue': ['vls'], 'go': ['go build', 'gofmt', 'golint'], 'elixir': ['mix'], '*': ['trim_whitespace', 'remove_trailing_lines']}
 let g:ale_fixers = {
       \ 'go': ['gofmt'],
-      \ 'javascript': ['eslint', 'prettier'],
-      \ 'typescript': ['tslint', 'prettier'],
-      \ 'vue': ['prettier'],
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['tslint'],
       \ 'python': ['black'],
       \ '*': ['trim_whitespace', 'remove_trailing_lines']
       \}
