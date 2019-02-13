@@ -1,5 +1,13 @@
+# Build:
+# docker build -t envnode10.5.1 .
+#
+# # mount the source code project in an interactive container:
+# docker --rm -v `pwd`:/home/nodev/src -i -t bash
+
+
 FROM ubuntu:latest
 
+# install some packages
 RUN apt-get update && apt-get install -y \
     apt-utils \
     bash-completion \
@@ -18,6 +26,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     &&  rm -rf /var/lib/apt/lists/*
 
+# NODE version and yarn install
 ENV NODE_VERSION=10.15.1
 
 RUN ARCH= && dpkgArch="$(dpkg --print-architecture)" \
@@ -76,8 +85,9 @@ RUN set -ex \
   && ln -s /opt/yarn-v$YARN_VERSION/bin/yarnpkg /usr/local/bin/yarnpkg \
   && rm yarn-v$YARN_VERSION.tar.gz.asc yarn-v$YARN_VERSION.tar.gz
 
+# Configure locales
 RUN localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
-
+# Add an unprivileged USER
 RUN groupadd --gid 1000 nodev \
 && useradd --uid 1000 --gid nodev --shell /usr/bin/fish --create-home nodev
 
