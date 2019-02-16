@@ -98,8 +98,8 @@ Plug 'Shougo/denite.nvim'
 
 " python
 "" Python Bundle
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+""Plug 'davidhalter/jedi-vim'
+""Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 "*****************************************************************************
 "*****************************************************************************
@@ -204,7 +204,17 @@ if exists("*fugitive#statusline")
 endif
 
 " Ale
-let g:ale_linters = {'ansible': ['ansible-lint'], 'javascript': ['eslint'], 'typescript': ['tslint'], 'python': ['flake8'], 'vue': ['vls'], 'go': ['go build', 'gofmt', 'golint'], 'elixir': ['mix'], '*': ['trim_whitespace', 'remove_trailing_lines']}
+let g:ale_linters = {
+      \ 'ansible': ['ansible-lint'],
+      \ 'javascript': ['eslint'],
+      \ 'typescript': ['tslint'],
+      \ 'python': ['flake8'],
+      \ 'vue': ['vls'],
+      \ 'go': ['golint', 'gofmt', 'go build'],
+      \ 'elixir': ['mix'],
+      \ '*': ['trim_whitespace',
+      \ 'remove_trailing_lines']
+      \}
 let g:ale_fixers = {
       \ 'go': ['gofmt'],
       \ 'javascript': ['eslint'],
