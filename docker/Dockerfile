@@ -2,7 +2,7 @@
 # docker build -t envnode10.5.1 .
 #
 # # mount the source code project in an interactive container:
-# docker --rm -v `pwd`:/home/nodev/src -i -t bash
+# docker run --rm -v `pwd`:/home/nodev/src -i -t envnode10.5.1 bash
 
 
 FROM ubuntu:latest
