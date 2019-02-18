@@ -67,7 +67,7 @@ Plug 'carlosgaldino/elixir-snippets'
 " go
 "" Go Lang Bundle
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-
+Plug 'buoto/gotests-vim'
 " html
 "" HTML Bundle
 Plug 'hail2u/vim-css3-syntax'
