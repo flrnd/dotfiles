@@ -61,8 +61,8 @@ Plug 'morhetz/gruvbox'
 "*****************************************************************************
 
 " elixir
-Plug 'elixir-lang/vim-elixir'
-Plug 'carlosgaldino/elixir-snippets'
+""Plug 'elixir-lang/vim-elixir'
+""Plug 'carlosgaldino/elixir-snippets'
 
 " go
 "" Go Lang Bundle
@@ -78,7 +78,7 @@ Plug 'mattn/emmet-vim'
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
-Plug 'posva/vim-vue'
+""Plug 'posva/vim-vue'
 
 " typescript
 "" Typescript support
@@ -209,9 +209,7 @@ let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'typescript': ['tslint'],
       \ 'python': ['flake8'],
-      \ 'vue': ['vls'],
-      \ 'go': ['golint', 'gofmt', 'go build'],
-      \ 'elixir': ['mix'],
+      \ 'go': ['golint'],
       \ '*': ['trim_whitespace',
       \ 'remove_trailing_lines']
       \}
@@ -405,15 +403,15 @@ augroup vimrc-python
 augroup END
 
 " jedi-vim
-let g:jedi#popup_on_dot = 0
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
+""let g:jedi#popup_on_dot = 0
+""let g:jedi#goto_assignments_command = "<leader>g"
+""let g:jedi#goto_definitions_command = "<leader>d"
+""let g:jedi#documentation_command = "K"
+""let g:jedi#usages_command = "<leader>n"
+""let g:jedi#rename_command = "<leader>r"
+""let g:jedi#show_call_signatures = "0"
+""let g:jedi#completions_command = "<C-Space>"
+""let g:jedi#smart_auto_mappings = 0
 
 " vim-airline
 let g:airline_theme = 'gruvbox'
