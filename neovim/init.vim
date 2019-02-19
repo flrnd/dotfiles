@@ -98,8 +98,8 @@ Plug 'Shougo/denite.nvim'
 
 " python
 "" Python Bundle
-""Plug 'davidhalter/jedi-vim'
-""Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
+Plug 'davidhalter/jedi-vim'
+Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
 
 "*****************************************************************************
 "*****************************************************************************
@@ -403,15 +403,15 @@ augroup vimrc-python
 augroup END
 
 " jedi-vim
-""let g:jedi#popup_on_dot = 0
-""let g:jedi#goto_assignments_command = "<leader>g"
-""let g:jedi#goto_definitions_command = "<leader>d"
-""let g:jedi#documentation_command = "K"
-""let g:jedi#usages_command = "<leader>n"
-""let g:jedi#rename_command = "<leader>r"
-""let g:jedi#show_call_signatures = "0"
-""let g:jedi#completions_command = "<C-Space>"
-""let g:jedi#smart_auto_mappings = 0
+let g:jedi#popup_on_dot = 1
+let g:jedi#goto_assignments_command = "<leader>g"
+let g:jedi#goto_definitions_command = "<leader>d"
+let g:jedi#documentation_command = "K"
+let g:jedi#usages_command = "<leader>n"
+let g:jedi#rename_command = "<leader>r"
+let g:jedi#show_call_signatures = "0"
+let g:jedi#completions_command = "<C-Space>"
+let g:jedi#smart_auto_mappings = 0
 
 " vim-airline
 let g:airline_theme = 'gruvbox'
