@@ -38,8 +38,11 @@ Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+
 if isdirectory('/usr/local/opt/fzf')
   Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
 else
@@ -208,6 +211,11 @@ nnoremap N Nzzzv
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
+
+" Prettier
+" single quotes over double quotes
+" Prettier default: false
+let g:prettier#config#single_quote = 'true'
 
 " Ale
 let g:ale_linters = {
