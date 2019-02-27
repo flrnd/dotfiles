@@ -58,7 +58,6 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Color
 Plug 'morhetz/gruvbox'
-Plug 'chriskempson/base16-vim'
 
 "*****************************************************************************
 "" Custom bundles
