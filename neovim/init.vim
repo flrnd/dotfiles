@@ -55,6 +55,7 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Color
 Plug 'morhetz/gruvbox'
+Plug 'chriskempson/base16-vim'
 
 "*****************************************************************************
 "" Custom bundles
@@ -169,7 +170,6 @@ set termguicolors
 let g:gruvbox_italic=1
 set background=dark
 colorscheme gruvbox
-
 let g:CSApprox_loaded = 1
 
 " Lightline
