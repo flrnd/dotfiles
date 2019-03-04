@@ -57,8 +57,8 @@ endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Color
-Plug 'morhetz/gruvbox'
-
+"Plug 'morhetz/gruvbox'
+Plug 'joshdick/onedark.vim'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -168,15 +168,16 @@ set smartindent
 let no_buffers_menu=1
 
 " color
+syntax on
 set termguicolors
-let g:gruvbox_italic=1
-set background=dark
-colorscheme gruvbox
+"let g:gruvbox_italic=1
+"set background=dark
+colorscheme onedark
 let g:CSApprox_loaded = 1
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'onedark',
       \ }
 
 "IndentLine
