@@ -57,8 +57,9 @@ endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Color
-"Plug 'morhetz/gruvbox'
 Plug 'joshdick/onedark.vim'
+
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -171,7 +172,7 @@ let no_buffers_menu=1
 syntax on
 set termguicolors
 "let g:gruvbox_italic=1
-"set background=dark
+
 colorscheme onedark
 let g:CSApprox_loaded = 1
 
