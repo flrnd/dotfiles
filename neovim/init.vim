@@ -209,12 +209,10 @@ if exists("*fugitive#statusline")
 endif
 
 " Prettier
-" when running at every change you may want to disable quickfix
-let g:prettier#quickfix_enabled = 0
-let g:prettier#autoformat = 0
-autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
+let g:prettier#autoformat = 0
+autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Ale
 let g:ale_linters = {
