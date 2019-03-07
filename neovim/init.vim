@@ -101,11 +101,6 @@ endif
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
-" python
-"" Python Bundle
-Plug 'davidhalter/jedi-vim'
-Plug 'raimon49/requirements.txt.vim', {'for': 'requirements'}
-
 "*****************************************************************************
 "*****************************************************************************
 
@@ -214,10 +209,13 @@ if exists("*fugitive#statusline")
 endif
 
 " Prettier
-" single quotes over double quotes
-" Prettier default: false
+" when running at every change you may want to disable quickfix
+let g:prettier#quickfix_enabled = 0
+let g:prettier#autoformat = 0
+autocmd BufWritePre,TextChanged,InsertLeave *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
+
 " Ale
 let g:ale_linters = {
       \ 'ansible': ['ansible-lint'],
@@ -374,9 +372,6 @@ endif
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
-
-" elixir
-
 " go
 " vim-go
 
@@ -417,14 +412,3 @@ augroup vimrc-python
       \ formatoptions+=croq softtabstop=4
       \ cinwords=if,elif,else,for,while,try,except,finally,def,class,with
 augroup END
-
-" jedi-vim
-let g:jedi#popup_on_dot = 1
-let g:jedi#goto_assignments_command = "<leader>g"
-let g:jedi#goto_definitions_command = "<leader>d"
-let g:jedi#documentation_command = "K"
-let g:jedi#usages_command = "<leader>n"
-let g:jedi#rename_command = "<leader>r"
-let g:jedi#show_call_signatures = "0"
-let g:jedi#completions_command = "<C-Space>"
-let g:jedi#smart_auto_mappings = 0
