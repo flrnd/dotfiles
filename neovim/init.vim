@@ -39,7 +39,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
+Plug 'junegunn/limelight.vim'
 " Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
 
@@ -72,19 +72,23 @@ Plug 'joshdick/onedark.vim'
 "" Go Lang Bundle
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'tweekmonster/hl-goimport.vim', {'for': 'go'}
-Plug 'buoto/gotests-vim'
+Plug 'buoto/gotests-vim', {'for': 'go'}
 
 " html
 "" HTML Bundle
 Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
+Plug 'alvan/vim-closetag'
 
 " javascript
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
 Plug 'mxw/vim-jsx'
-"Plug 'posva/vim-vue'
+Plug 'posva/vim-vue'
+
+"Python
+Plug 'vim-python/python-syntax'
 
 " typescript
 "" Typescript support
@@ -165,7 +169,6 @@ set smartindent
 let no_buffers_menu=1
 
 " color
-syntax on
 set termguicolors
 "let g:gruvbox_italic=1
 
@@ -182,6 +185,9 @@ let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = 0
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
+
+"Syntax
+syntax on
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -208,7 +214,8 @@ nnoremap N Nzzzv
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
-
+"Close tag
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx'
 " Prettier
 let g:prettier#config#single_quote = 'true'
 let g:prettier#config#bracket_spacing = 'true'
@@ -222,6 +229,7 @@ let g:ale_linters = {
       \ 'typescript': ['tslint'],
       \ 'python': ['flake8'],
       \ 'go': ['golint'],
+      \ 'vue': ['eslint'],
       \ '*': ['trim_whitespace',
       \ 'remove_trailing_lines']
       \}
@@ -253,7 +261,7 @@ noremap <silent> <F2> :NERDTreeFind<CR>
 nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " Vue
-"let g:vue_disable_pre_processors=1
+let g:vue_disable_pre_processors=1
 
 
 "*****************************************************************************
@@ -292,17 +300,12 @@ augroup vimrc-remember-cursor-position
   autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 augroup END
 
-"" txt
-augroup vimrc-wrapping
+" Reduce delay when switching between modes.
+" (Shamely stolen from https://github.com/nickjj/dotfiles)
+augroup NoInsertKeycodes
   autocmd!
-  autocmd BufRead,BufNewFile *.txt call s:setupWrapping()
-augroup END
-
-"" make/cmake
-augroup vimrc-make-cmake
-  autocmd!
-  autocmd FileType make setlocal noexpandtab
-  autocmd BufNewFile,BufRead CMakeLists.txt setlocal filetype=cmake
+  autocmd InsertEnter * set ttimeoutlen=0
+  autocmd InsertLeave * set ttimeoutlen=500
 augroup END
 
 set autoread
