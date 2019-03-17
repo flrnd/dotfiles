@@ -59,7 +59,6 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 "" Color
 Plug 'joshdick/onedark.vim'
 
-
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -173,6 +172,7 @@ set termguicolors
 "let g:gruvbox_italic=1
 
 colorscheme onedark
+
 let g:CSApprox_loaded = 1
 
 " Lightline
