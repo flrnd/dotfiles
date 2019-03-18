@@ -2,7 +2,7 @@
 fishd.*
 .config/fish/fish_history
 fish/fish_history
-fish/functions
+
 
 # Swap
 [._]*.s[a-v][a-z]
