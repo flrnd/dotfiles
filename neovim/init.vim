@@ -121,7 +121,6 @@ filetype plugin indent on
 set encoding=utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8
-set bomb
 set binary
 set ttyfast
 set textwidth=100
@@ -173,7 +172,9 @@ set termguicolors
 
 colorscheme onedark
 
-let g:CSApprox_loaded = 1
+if !has("gui")
+  let g:CSApprox_loaded = 1
+endif
 
 " Lightline
 let g:lightline = {
@@ -214,6 +215,7 @@ nnoremap N Nzzzv
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
+
 "Close tag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx'
 " Prettier
