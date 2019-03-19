@@ -81,8 +81,9 @@ Plug 'alvan/vim-closetag'
 
 " javascript
 "" Javascript Bundle
-Plug 'pangloss/vim-javascript'
-Plug 'othree/yajs.vim'
+Plug 'pangloss/vim-javascript', {'for': 'javascript'}
+Plug 'othree/yajs.vim', {'for': 'javascript'}
+Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'mxw/vim-jsx'
 Plug 'posva/vim-vue'
 
@@ -169,6 +170,11 @@ let no_buffers_menu=1
 " color
 set termguicolors
 "let g:gruvbox_italic=1
+
+let g:onedark_color_overrides = {
+\ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
+\ "purple": { "gui": "#af98e6", "cterm": "170", "cterm16": "5" }
+\}
 
 colorscheme onedark
 " onedark.vim override: Don't set a background color when running in a terminal;
