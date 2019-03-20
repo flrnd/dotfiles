@@ -57,8 +57,8 @@ endif
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 "" Color
-Plug 'joshdick/onedark.vim'
-
+"Plug 'larsbs/vimterial_dark'
+Plug 'dracula/vim', { 'as': 'dracula' }
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -171,24 +171,7 @@ let no_buffers_menu=1
 set termguicolors
 "let g:gruvbox_italic=1
 
-let g:onedark_color_overrides = {
-\ "black": {"gui": "#2F343F", "cterm": "235", "cterm16": "0" },
-\ "purple": { "gui": "#af98e6", "cterm": "170", "cterm16": "5" }
-\}
-
-colorscheme onedark
-" onedark.vim override: Don't set a background color when running in a terminal;
-" just use the terminal's background color
-" `gui` is the hex color code used in GUI mode/nvim true-color mode
-" `cterm` is the color code used in 256-color mode
-" `cterm16` is the color code used in 16-color mode
-if (has("autocmd") && !has("gui_running"))
-  augroup colorset
-    autocmd!
-    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
-    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
-  augroup END
-endif
+colorscheme dracula
 
 if !has("gui")
   let g:CSApprox_loaded = 1
@@ -196,7 +179,7 @@ endif
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'dracula',
       \ }
 
 "IndentLine
