@@ -1,4 +1,4 @@
-" Neovim config
+"neovim config
 
 "*****************************************************************************
 "" Vim-PLug core
@@ -56,9 +56,8 @@ endif
 
 Plug 'Shougo/vimproc.vim', {'do': g:make}
 
-"" Color
-"Plug 'larsbs/vimterial_dark'
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Color scheme
+Plug 'joshdick/onedark.vim'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -82,17 +81,17 @@ Plug 'alvan/vim-closetag'
 " javascript
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-Plug 'othree/yajs.vim', {'for': 'javascript'}
-Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
-Plug 'mxw/vim-jsx'
-Plug 'posva/vim-vue'
+"Plug 'othree/yajs.vim', {'for': 'javascript'}
+"Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+"Plug 'posva/vim-vue'
+Plug 'amadeus/vim-jsx'
 
 "Python
 Plug 'vim-python/python-syntax'
 
 " typescript
 "" Typescript support
-Plug 'HerringtonDarkholme/yats.vim'
+"Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
 " For async completion
 if has('nvim')
@@ -169,9 +168,15 @@ let no_buffers_menu=1
 
 " color
 set termguicolors
-"let g:gruvbox_italic=1
+syntax enable
 
-colorscheme dracula
+"if strftime('%H') >= 7 && strftime('%H') < 19
+"  set background=light
+"else
+"  set background=dark
+"endif
+
+colors onedark
 
 if !has("gui")
   let g:CSApprox_loaded = 1
@@ -179,7 +184,7 @@ endif
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'dracula',
+      \ 'colorscheme': 'onedark',
       \ }
 
 "IndentLine
@@ -187,9 +192,6 @@ let g:indentLine_enabled = 1
 let g:indentLine_concealcursor = 0
 let g:indentLine_char = '┆'
 let g:indentLine_faster = 1
-
-"Syntax
-syntax on
 
 "" Disable the blinking cursor.
 set gcr=a:blinkon0
@@ -265,7 +267,6 @@ nnoremap <silent> <F3> :NERDTreeToggle<CR>
 
 " Vue
 let g:vue_disable_pre_processors=1
-
 
 "*****************************************************************************
 "" Functions
