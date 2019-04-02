@@ -24,3 +24,7 @@ abbr gs "git status -s"
 #prompt
 source ~/.config/fish/functions/fish_prompt.fish
 source ~/.config/fish/functions/rprompt.fish
+
+# fnm
+set PATH $HOME/.fnm $PATH
+fnm env --multi | source
