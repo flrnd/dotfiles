@@ -7,7 +7,8 @@
 
 "Note: install vim-plug if not present
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim
+        \--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
 
@@ -20,6 +21,7 @@ if has('vim_starting')
 endif
 
 "}}}
+"Plug Packages {{{
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
 
@@ -81,9 +83,9 @@ Plug 'alvan/vim-closetag'
 " javascript
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
-"Plug 'othree/yajs.vim', {'for': 'javascript'}
-"Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
-"Plug 'posva/vim-vue'
+Plug 'othree/yajs.vim', {'for': 'javascript'}
+Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
+Plug 'posva/vim-vue'
 Plug 'amadeus/vim-jsx'
 
 "Python
@@ -109,7 +111,7 @@ Plug 'Shougo/denite.nvim'
 "*****************************************************************************
 
 call plug#end()
-
+"}}}
 " Required:
 filetype plugin indent on
 
