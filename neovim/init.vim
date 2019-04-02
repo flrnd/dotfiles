@@ -7,8 +7,7 @@
 
 "Note: install vim-plug if not present
 if empty(glob('~/.config/nvim/autoload/plug.vim'))
-  silent !curl -fLo ~/.config/nvim/autoload/plug.vim
-        \--create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
 
@@ -84,7 +83,6 @@ Plug 'alvan/vim-closetag'
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
-Plug 'othree/es.next.syntax.vim', {'for': 'javascript'}
 Plug 'posva/vim-vue'
 Plug 'amadeus/vim-jsx'
 
@@ -93,8 +91,8 @@ Plug 'vim-python/python-syntax'
 
 " typescript
 "" Typescript support
-"Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': ':!install.sh \| UpdateRemotePlugins'}
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " For async completion
 if has('nvim')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
