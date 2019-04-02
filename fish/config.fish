@@ -23,4 +23,3 @@ abbr gs "git status -s"
 
 #prompt
 source ~/.config/fish/functions/fish_prompt.fish
-source ~/.config/fish/functions/rprompt.fish
