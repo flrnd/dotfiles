@@ -59,13 +59,10 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 " Color scheme
 Plug 'joshdick/onedark.vim'
+
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
-
-" elixir
-"Plug 'elixir-lang/vim-elixir'
-" Plug 'carlosgaldino/elixir-snippets'
 
 " go
 "" Go Lang Bundle
@@ -94,14 +91,7 @@ Plug 'vim-python/python-syntax'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 " For async completion
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
-
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
@@ -268,6 +258,34 @@ nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 " Vue
 let g:vue_disable_pre_processors=1
 
+" go & vim-go
+"
+" run :GoBuild or :GoTestCompile based on the go file
+function! s:build_go_files()
+  let l:file = expand('%')
+  if l:file =~# '^\f\+_test\.go$'
+    call go#test#Test(0, 1)
+  elseif l:file =~# '^\f\+\.go$'
+    call go#cmd#Build(0)
+  endif
+endfunction
+
+let g:go_list_type = "quickfix"
+let g:go_fmt_command = "goimports"
+let g:go_fmt_fail_silently = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_space_tab_error = 0
+let g:go_highlight_array_whitespace_error = 0
+let g:go_highlight_trailing_whitespace_error = 0
+let g:go_highlight_extra_types = 1
+
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
@@ -292,11 +310,6 @@ command! RunLint :call RunLint()
 "*****************************************************************************
 "" Autocmd Rules
 "*****************************************************************************
-"" The PC is fast enough, do syntax highlight syncing from start unless 200 lines
-augroup vimrc-sync-fromstart
-  autocmd!
-  autocmd BufEnter * :syntax sync maxlines=200
-augroup END
 
 "" Remember cursor position
 augroup vimrc-remember-cursor-position
@@ -368,7 +381,7 @@ if has('autocmd')
 endif
 
 "" Copy/Paste/Cut
-set clipboard^=unnamed,unnamedplus
+set clipboard=unnamed,unnamedplus
 
 if has('macunix')
   " pbcopy for OSX copy/paste
@@ -379,34 +392,6 @@ endif
 "*****************************************************************************
 "" Custom configs
 "*****************************************************************************
-" go
-" vim-go
-
-" run :GoBuild or :GoTestCompile based on the go file
-function! s:build_go_files()
-  let l:file = expand('%')
-  if l:file =~# '^\f\+_test\.go$'
-    call go#test#Test(0, 1)
-  elseif l:file =~# '^\f\+\.go$'
-    call go#cmd#Build(0)
-  endif
-endfunction
-
-let g:go_list_type = "quickfix"
-let g:go_fmt_command = "goimports"
-let g:go_fmt_fail_silently = 1
-let g:go_highlight_types = 1
-let g:go_highlight_fields = 1
-let g:go_highlight_functions = 1
-let g:go_highlight_methods = 1
-let g:go_highlight_operators = 1
-let g:go_highlight_build_constraints = 1
-let g:go_highlight_structs = 1
-let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
-let g:go_highlight_extra_types = 1
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
