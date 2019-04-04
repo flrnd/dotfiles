@@ -59,7 +59,7 @@ Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 " Color scheme
 Plug 'joshdick/onedark.vim'
-
+Plug 'NLKNguyen/papercolor-theme'
 "*****************************************************************************
 "" Custom bundles
 "*****************************************************************************
@@ -76,12 +76,15 @@ Plug 'tpope/vim-haml'
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 
+"Css
+Plug 'ap/vim-css-color'
+
 " javascript
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'posva/vim-vue'
-Plug 'amadeus/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 "Python
 Plug 'vim-python/python-syntax'
@@ -130,6 +133,9 @@ let mapleader=','
 "" Enable hidden buffers
 set hidden
 
+" Better display for messages
+set cmdheight=2
+
 "" Searching
 set hlsearch
 set incsearch
@@ -173,9 +179,7 @@ if !has("gui")
 endif
 
 " Lightline
-let g:lightline = {
-      \ 'colorscheme': 'onedark',
-      \ }
+let g:lightline = { 'colorscheme': 'onedark' }
 
 "IndentLine
 let g:indentLine_enabled = 1
