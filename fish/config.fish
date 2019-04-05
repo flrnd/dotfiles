@@ -2,7 +2,7 @@ set -x EDITOR vim
 set -x VISUAL $EDITOR
 set -x GIT_EDITOR $EDITOR
 set -x PAGER "less"
-set -x FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --exclude node_modules"
+set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --exclude node_modules"
 
 # go support
 if test -e $HOME/go/bin
