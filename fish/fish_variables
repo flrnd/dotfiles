@@ -1,12 +1,13 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export GOPATH:/home/flrnprz/go
+SETUVAR --export --path GOPATH:/home/flrnprz/src\x2dhub/go/
 SETUVAR __fish_classic_git_prompt_initialized:\x1d
 SETUVAR __fish_init_2_39_8:\x1d
 SETUVAR __fish_init_2_3_0:\x1d
 SETUVAR __fish_init_3_x:\x1d
 SETUVAR _fish_abbr_ga:git\x20add
 SETUVAR _fish_abbr_gcb:git\x20checkout\x20\x2db
+SETUVAR _fish_abbr_gm:git\x20commit\x20\x2dm
 SETUVAR _fish_abbr_gp:git\x20push
 SETUVAR _fish_abbr_gpoh:git\x20push\x20\x2du\x20origin\x20HEAD
 SETUVAR _fish_abbr_gs:git\x20status\x20\x2ds
@@ -38,4 +39,4 @@ SETUVAR fish_pager_color_completion:normal
 SETUVAR fish_pager_color_description:B3A06D\x1eyellow
 SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
-SETUVAR fish_user_paths:/home/flrnprz/\x2efzf/bin\x1e/usr/local/opt/fzf/bin
+SETUVAR --export fish_user_paths:/home/flrnprz/go/bin\x1e/home/flrnprz/go/bin\x1e/home/flrnprz/go/bin\x1e/home/flrnprz/\x2efzf/bin\x1e/usr/local/opt/fzf/bin

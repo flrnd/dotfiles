@@ -6,17 +6,18 @@ set -x FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --exclu
 
 # go support
 if test -e $HOME/go/bin
-  set -x PATH $PATH $HOME/go/bin
+  set -x fish_user_paths $HOME/go/bin $fish_user_paths
 end
 
-if test -d ~/.config/node/global/bin
-  set -gx PATH ~/.config/node/global/bin $PATH
+if test -d ~/.yarn/bin
+  set -gx fish_user_paths ~/.yarn/bin $fish_user_paths
 end
 
 # Abbreviations
 abbr nv "nvim"
 abbr ga "git add"
 abbr gcb "git checkout -b"
+abbr gm "git commit -m"
 abbr gp "git push"
 abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
