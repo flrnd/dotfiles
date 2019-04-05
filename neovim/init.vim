@@ -10,16 +10,8 @@ if empty(glob('~/.config/nvim/autoload/plug.vim'))
   silent !curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
   autocmd VimEnter * PlugInstall
 endif
-
-"Note: Skip initialization for vim-tiny or vim-small.
-if !1 | finish | endif
-if has('vim_starting')
-  set nocompatible               " Be iMproved
-  " Required:
-  call plug#begin()
-endif
-
 "}}}
+"
 "Plug Packages {{{
 " Required:
 call plug#begin(expand('~/.config/nvim/plugged'))
@@ -28,41 +20,28 @@ call plug#begin(expand('~/.config/nvim/plugged'))
 "" Plug install packages
 "*****************************************************************************
 Plug 'scrooloose/nerdtree'
-Plug 'jistr/vim-nerdtree-tabs'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'majutsushi/tagbar'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
 Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-surround'
 Plug 'w0rp/ale'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'junegunn/limelight.vim'
-" Plug 'airblade/vim-gitgutter'
 Plug 'mhinz/vim-signify'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+Plug 'plasticboy/vim-markdown'
+" For async completion
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" For Denite features
+Plug 'Shougo/denite.nvim'
 
-if isdirectory('/usr/local/opt/fzf')
-  Plug '/usr/local/opt/fzf' | Plug 'junegunn/fzf.vim'
-else
-  Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-endif
-let g:make = 'gmake'
-if exists('make')
-  let g:make = 'make'
-endif
-
-Plug 'Shougo/vimproc.vim', {'do': g:make}
 
 " Color scheme
 Plug 'joshdick/onedark.vim'
-Plug 'NLKNguyen/papercolor-theme'
-"*****************************************************************************
-"" Custom bundles
-"*****************************************************************************
 
 " go
 "" Go Lang Bundle
@@ -93,19 +72,11 @@ Plug 'vim-python/python-syntax'
 "" Typescript support
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-" For async completion
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" For Denite features
-Plug 'Shougo/denite.nvim'
-
-"*****************************************************************************
-"*****************************************************************************
 
 call plug#end()
 "}}}
 " Required:
 filetype plugin indent on
-
 
 "*****************************************************************************
 "" Basic Setup
@@ -159,6 +130,9 @@ set number
 set colorcolumn=100
 set nowrap
 set smartindent
+
+"" Copy/Paste/Cut
+set clipboard+=unnamed,unnamedplus
 
 let no_buffers_menu=1
 
@@ -293,6 +267,7 @@ let g:go_highlight_extra_types = 1
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
+
 if !exists('*s:setupWrapping')
   function s:setupWrapping()
     set wrap
@@ -364,7 +339,7 @@ let $FZF_DEFAULT_COMMAND =  "find * -path '*/\.*' -prune -o -path 'node_modules/
 " The Silver Searcher
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --hidden --ignore .git -g ""'
-  set grepprg=ag\ --nogroup\ --nocolor
+  set grepprg=ag\ --nogroup\
 endif
 
 cnoremap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
@@ -374,18 +349,11 @@ nnoremap <silent> <leader>e :FZF -m<CR>
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
 
-" Tagbar
-nmap <silent> <F4> :TagbarToggle<CR>
-let g:tagbar_autofocus = 1
-
 " Disable visualbell
 set noerrorbells visualbell t_vb=
 if has('autocmd')
   autocmd GUIEnter * set visualbell t_vb=
 endif
-
-"" Copy/Paste/Cut
-set clipboard=unnamed,unnamedplus
 
 if has('macunix')
   " pbcopy for OSX copy/paste
