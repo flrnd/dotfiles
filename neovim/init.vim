@@ -33,12 +33,15 @@ Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'plasticboy/vim-markdown'
+"Plug 'plasticboy/vim-markdown'
 " For async completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
+"Plug 'prettier/vim-prettier', {
+"  \ 'do': 'yarn install',
+"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 
 " Color scheme
 Plug 'joshdick/onedark.vim'
@@ -89,6 +92,7 @@ set binary
 set ttyfast
 set textwidth=100
 set signcolumn=yes
+
 "" Fix backspace indent
 set backspace=indent,eol,start
 
@@ -190,10 +194,10 @@ endif
 "Close tag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx'
 " Prettier
-let g:prettier#config#single_quote = 'true'
-let g:prettier#config#bracket_spacing = 'true'
-let g:prettier#autoformat = 0
-autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
+"let g:prettier#config#single_quote = 'true'
+"let g:prettier#config#bracket_spacing = 'true'
+"let g:prettier#autoformat = 0
+"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Ale
 let g:ale_linters = {
@@ -210,6 +214,7 @@ let g:ale_fixers = {
       \ 'go': ['gofmt'],
       \ 'javascript': ['prettier'],
       \ 'typescript': ['prettier'],
+      \ 'markdown': ['prettier'],
       \ 'python': ['black'],
       \ '*': ['trim_whitespace', 'remove_trailing_lines']
       \}
@@ -267,14 +272,6 @@ let g:go_highlight_extra_types = 1
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
-
-if !exists('*s:setupWrapping')
-  function s:setupWrapping()
-    set wrap
-    set wm=2
-    set textwidth=100
-  endfunction
-endif
 
 function! RunLint()
     "Save current cursor position"
