@@ -67,7 +67,6 @@ Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'posva/vim-vue'
 Plug 'MaxMEllon/vim-jsx-pretty'
-
 "Python
 Plug 'vim-python/python-syntax'
 
@@ -136,7 +135,7 @@ set nowrap
 set smartindent
 
 "" Copy/Paste/Cut
-set clipboard+=unnamed,unnamedplus
+set clipboard+=unnamedplus
 
 let no_buffers_menu=1
 
@@ -192,7 +191,7 @@ if exists("*fugitive#statusline")
 endif
 
 "Close tag
-let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx'
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx,*.js'
 " Prettier
 "let g:prettier#config#single_quote = 'true'
 "let g:prettier#config#bracket_spacing = 'true'
@@ -202,6 +201,8 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx'
 " Ale
 let g:ale_linters = {
       \ 'ansible': ['ansible-lint'],
+      \ 'html': ['htmlhint'],
+      \ 'css': ['csslint'],
       \ 'javascript': ['eslint'],
       \ 'typescript': ['tslint'],
       \ 'python': ['flake8'],
@@ -211,6 +212,8 @@ let g:ale_linters = {
       \ 'remove_trailing_lines']
       \}
 let g:ale_fixers = {
+      \ 'html': ['prettier'],
+      \ 'css': ['prettier'],
       \ 'go': ['gofmt'],
       \ 'javascript': ['prettier'],
       \ 'typescript': ['prettier'],
