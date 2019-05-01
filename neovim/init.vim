@@ -33,7 +33,6 @@ Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-signify'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-"Plug 'plasticboy/vim-markdown'
 " For async completion
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " For Denite features
