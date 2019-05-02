@@ -6,11 +6,12 @@ set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --e
 
 # go support
 if test -e $HOME/go/bin
-  set -x fish_user_paths $HOME/go/bin $fish_user_paths
+  set -x PATH -U $HOME/go/bin $PATH
+  set -x -U GOPATH $HOME/src-hub/go
 end
 
 if test -d ~/.yarn/bin
-  set -gx fish_user_paths ~/.yarn/bin $fish_user_paths
+  set -x -U PATH ~/.yarn/bin $PATH
 end
 
 # Abbreviations
