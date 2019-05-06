@@ -8,6 +8,7 @@ set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --e
 if test -e $HOME/go/bin
   set -x PATH -U $HOME/go/bin $PATH
   set -x -U GOPATH $HOME/src-hub/go
+  set -x PATH -U $GOPATH/bin $PATH
 end
 
 if test -d ~/.yarn/bin
