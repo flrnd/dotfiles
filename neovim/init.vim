@@ -67,13 +67,14 @@ Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 Plug 'posva/vim-vue'
 Plug 'MaxMEllon/vim-jsx-pretty'
+
 "Python
 Plug 'vim-python/python-syntax'
 
 " typescript
 "" Typescript support
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
+Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh'}
 
 call plug#end()
 "}}}
@@ -86,7 +87,6 @@ filetype plugin indent on
 
 set encoding=utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8
 set binary
 set ttyfast
 set textwidth=100
@@ -141,7 +141,7 @@ let no_buffers_menu=1
 
 " color
 set termguicolors
-syntax enable
+syntax on
 
 "if strftime('%H') >= 7 && strftime('%H') < 19
 "  set background=light
@@ -149,7 +149,7 @@ syntax enable
 "  set background=dark
 "endif
 
-colors onedark
+colorscheme onedark
 
 if !has("gui")
   let g:CSApprox_loaded = 1
@@ -192,11 +192,6 @@ endif
 
 "Close tag
 let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.vue,*.jsx,*.js'
-" Prettier
-"let g:prettier#config#single_quote = 'true'
-"let g:prettier#config#bracket_spacing = 'true'
-"let g:prettier#autoformat = 0
-"autocmd BufWritePre *.js,*.jsx,*.mjs,*.ts,*.tsx,*.css,*.less,*.scss,*.json,*.graphql,*.md,*.vue,*.yaml,*.html PrettierAsync
 
 " Ale
 let g:ale_linters = {
@@ -229,6 +224,8 @@ let g:ale_warn_about_trailing_whitespace = 1
 let g:ale_lint_delay = 100
 let g:ale_lint_on_text_changed = 'always'
 
+let g:python_highlight_all = 1
+let g:yats_host_keyword = 1
 "" NERDTree configuration
 let g:NERDTreeChDirMode=2
 let g:NERDTreeIgnore=['\.rbc$', '\~$', '\.pyc$', '\.db$', '\.sqlite$', '__pycache__']
@@ -262,16 +259,15 @@ let g:go_fmt_fail_silently = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
 let g:go_highlight_methods = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 let g:go_highlight_structs = 1
 let g:go_highlight_generate_tags = 1
-let g:go_highlight_space_tab_error = 0
-let g:go_highlight_array_whitespace_error = 0
-let g:go_highlight_trailing_whitespace_error = 0
 let g:go_highlight_extra_types = 1
-
+let g:go_highlight_variable_declarations = 1
+let g:go_highlight_variable_assignments = 1
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
