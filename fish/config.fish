@@ -6,11 +6,13 @@ set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --e
 
 # go support
 if test -e $HOME/go/bin
-  set -x fish_user_paths $HOME/go/bin $fish_user_paths
+  set PATH $HOME/go/bin $PATH
+  set GOPATH $HOME/src-hub/go
+  set PATH $GOPATH/bin $PATH
 end
 
-if test -d ~/.yarn/bin
-  set -gx fish_user_paths ~/.yarn/bin $fish_user_paths
+if test -e ~/.yarn/bin
+  set PATH ~/.yarn/bin $PATH
 end
 
 # Abbreviations
@@ -26,7 +28,7 @@ abbr gs "git status -s"
 source ~/.config/fish/functions/fish_prompt.fish
 
 # fnm
-if test -e $HOME/.fmn
+if test -e $HOME/.fnm
   set PATH $HOME/.fnm $PATH
   fnm env --multi | source
 end
