@@ -5,14 +5,16 @@ set -x PAGER "less"
 set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --exclude node_modules"
 
 # go support
-if test -e $HOME/go/bin
-  set PATH $HOME/go/bin $PATH
-  set GOPATH $HOME/src-hub/go
-  set PATH $GOPATH/bin $PATH
+if test -e /usr/local/go/
+  set PATH /usr/local/go/bin $PATH
 end
 
 if test -e ~/.yarn/bin
   set PATH ~/.yarn/bin $PATH
+end
+
+if test -e ~/go/bin
+  set PATH ~/go/bin $PATH
 end
 
 # Abbreviations
