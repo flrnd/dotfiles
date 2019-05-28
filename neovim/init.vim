@@ -27,7 +27,6 @@ Plug 'itchyny/lightline.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
 Plug 'jiangmiao/auto-pairs'
-Plug 'editorconfig/editorconfig-vim'
 Plug 'w0rp/ale'
 Plug 'junegunn/limelight.vim'
 Plug 'mhinz/vim-signify'
@@ -38,42 +37,36 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 " For Denite features
 Plug 'Shougo/denite.nvim'
 
-"Plug 'prettier/vim-prettier', {
-"  \ 'do': 'yarn install',
-"  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
-
 " Color scheme
-Plug 'joshdick/onedark.vim'
+Plug 'dracula/vim', { 'as': 'dracula' }
 
 " go
 "" Go Lang Bundle
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plug 'tweekmonster/hl-goimport.vim', {'for': 'go'}
-Plug 'buoto/gotests-vim', {'for': 'go'}
+Plug 'fatih/vim-go'
+Plug 'tweekmonster/hl-goimport.vim'
+Plug 'buoto/gotests-vim'
 
-" html
-"" HTML Bundle
-Plug 'tpope/vim-haml'
-Plug 'mattn/emmet-vim'
+"" HTML / CSS / XML Bundle
+Plug 'tpope/vim-haml', {'for': ['haml', 'sass', 'scss']}
+Plug 'mattn/emmet-vim', {'for': ['html', 'css','javascript', 'typescript', 'less', 'scss', 'vue']}
 Plug 'alvan/vim-closetag'
-
-"Css
 Plug 'ap/vim-css-color'
+Plug 'amadeus/vim-xml'
 
 " javascript
 "" Javascript Bundle
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
-Plug 'posva/vim-vue'
-Plug 'MaxMEllon/vim-jsx-pretty'
+"Plug 'posva/vim-vue', {'for': 'vue'}
+Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
 
 "Python
-Plug 'vim-python/python-syntax'
+Plug 'vim-python/python-syntax', {'for': 'python'}
 
 " typescript
 "" Typescript support
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh'}
+Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh', 'for': 'typescript'}
 
 call plug#end()
 "}}}
@@ -134,7 +127,13 @@ set nowrap
 set smartindent
 
 "" Copy/Paste/Cut
-set clipboard+=unnamedplus
+if has('clipboard')
+  if has('unnamedplus')  " When possible use + register for copy-paste
+    set clipboard^=unnamed,unnamedplus
+  else         " On mac and Windows, use * register for copy-paste
+    set clipboard^=unnamed
+  endif
+endif
 
 let no_buffers_menu=1
 
@@ -142,20 +141,22 @@ let no_buffers_menu=1
 set termguicolors
 syntax on
 
-"if strftime('%H') >= 7 && strftime('%H') < 19
+"if strftime('%H') >= 10 && strftime('%H') < 22
 "  set background=light
 "else
 "  set background=dark
 "endif
 
-colorscheme onedark
+set background=dark
+colorscheme dracula
+let g:lightlinetheme = 'dracula'
 
 if !has("gui")
   let g:CSApprox_loaded = 1
 endif
 
 " Lightline
-let g:lightline = { 'colorscheme': 'onedark' }
+let g:lightline = { 'colorscheme': lightlinetheme }
 
 "IndentLine
 let g:indentLine_enabled = 1
@@ -200,7 +201,7 @@ let g:ale_linters = {
       \ 'javascript': ['eslint'],
       \ 'typescript': ['tslint'],
       \ 'python': ['flake8'],
-      \ 'go': ['golint'],
+      \ 'go': ['golint','govet'],
       \ 'vue': ['eslint'],
       \ '*': ['trim_whitespace',
       \ 'remove_trailing_lines']
@@ -209,8 +210,8 @@ let g:ale_fixers = {
       \ 'html': ['prettier'],
       \ 'css': ['prettier'],
       \ 'go': ['gofmt'],
-      \ 'javascript': ['prettier'],
-      \ 'typescript': ['prettier'],
+      \ 'javascript': ['eslint', 'prettier'],
+      \ 'typescript': ['tslint', 'prettier'],
       \ 'markdown': ['prettier'],
       \ 'python': ['black'],
       \ '*': ['trim_whitespace', 'remove_trailing_lines']
@@ -241,7 +242,6 @@ nnoremap <silent> <C-t> :NERDTreeToggle<CR>
 let g:vue_disable_pre_processors=1
 
 " go & vim-go
-"
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()
   let l:file = expand('%')
