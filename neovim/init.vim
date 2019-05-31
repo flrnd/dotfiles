@@ -39,6 +39,8 @@ Plug 'Shougo/denite.nvim'
 
 " Color scheme
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'flrnprz/plastic.vim', { 'as': 'plastic' }
+Plug 'lifepillar/vim-colortemplate'
 
 " go
 "" Go Lang Bundle
@@ -148,8 +150,8 @@ syntax on
 "endif
 
 set background=dark
-colorscheme dracula
-let g:lightlinetheme = 'dracula'
+colorscheme plastic
+let g:lightlinetheme = 'plastic'
 
 if !has("gui")
   let g:CSApprox_loaded = 1
