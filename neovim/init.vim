@@ -40,7 +40,8 @@ Plug 'Shougo/denite.nvim'
 " Color scheme
 Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'flrnprz/plastic.vim', { 'as': 'plastic' }
-Plug 'lifepillar/vim-colortemplate'
+Plug 'flrnprz/candid.vim', { 'as': 'candid' }
+Plug 'joshdick/onedark.vim'
 
 " go
 "" Go Lang Bundle
@@ -50,7 +51,7 @@ Plug 'buoto/gotests-vim'
 
 "" HTML / CSS / XML Bundle
 Plug 'tpope/vim-haml', {'for': ['haml', 'sass', 'scss']}
-Plug 'mattn/emmet-vim', {'for': ['html', 'css','javascript', 'typescript', 'less', 'scss', 'vue']}
+Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
 Plug 'ap/vim-css-color'
 Plug 'amadeus/vim-xml'
@@ -60,15 +61,15 @@ Plug 'amadeus/vim-xml'
 Plug 'pangloss/vim-javascript', {'for': 'javascript'}
 Plug 'othree/yajs.vim', {'for': 'javascript'}
 "Plug 'posva/vim-vue', {'for': 'vue'}
-Plug 'MaxMEllon/vim-jsx-pretty', {'for': ['javascript', 'typescript']}
+Plug 'MaxMEllon/vim-jsx-pretty'
 
 "Python
 Plug 'vim-python/python-syntax', {'for': 'python'}
 
 " typescript
 "" Typescript support
+Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'mhartington/nvim-typescript', {'do': 'sh install.sh', 'for': 'typescript'}
 
 call plug#end()
 "}}}
@@ -150,8 +151,8 @@ syntax on
 "endif
 
 set background=dark
-colorscheme plastic
-let g:lightlinetheme = 'plastic'
+colorscheme candid
+let g:lightlinetheme = 'candid'
 
 if !has("gui")
   let g:CSApprox_loaded = 1
@@ -201,7 +202,7 @@ let g:ale_linters = {
       \ 'html': ['htmlhint'],
       \ 'css': ['csslint'],
       \ 'javascript': ['eslint'],
-      \ 'typescript': ['tslint'],
+      \ 'typescript': ['tsserver'],
       \ 'python': ['flake8'],
       \ 'go': ['golint','govet'],
       \ 'vue': ['eslint'],
@@ -213,7 +214,7 @@ let g:ale_fixers = {
       \ 'css': ['prettier'],
       \ 'go': ['gofmt'],
       \ 'javascript': ['eslint', 'prettier'],
-      \ 'typescript': ['tslint', 'prettier'],
+      \ 'typescript': ['tsserver', 'prettier'],
       \ 'markdown': ['prettier'],
       \ 'python': ['black'],
       \ '*': ['trim_whitespace', 'remove_trailing_lines']
@@ -364,7 +365,8 @@ endif
 
 " javascript
 let g:javascript_enable_domhtmlcss = 1
-
+" typescript
+"let g:typescript_indent_disable = 1
 " python
 " vim-python
 augroup vimrc-python
