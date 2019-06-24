@@ -86,6 +86,7 @@ set binary
 set ttyfast
 set textwidth=100
 set signcolumn=yes
+set relativenumber
 
 "" Fix backspace indent
 set backspace=indent,eol,start
