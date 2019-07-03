@@ -32,7 +32,7 @@ shopt -s checkwinsize
 #shopt -s globstar
 
 # Ignore case on auto-completion
-bind "set completion-ignore-case on"
+#bind "set completion-ignore-case on"
 
 # Show auto-completion list automatically,
 # without double tab and like zsh
