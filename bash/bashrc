@@ -3,6 +3,7 @@
 # for examples
 
 # If not running interactively, don't do anything
+
 case $- in
     *i*) ;;
       *) return;;
@@ -15,6 +16,9 @@ HISTCONTROL=ignoreboth
 # append to the history file, don't overwrite it
 shopt -s histappend
 
+# Allow ctrl-S for history navigation (with ctrl-R)
+stty -ixon
+
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=1000
 HISTFILESIZE=2000
@@ -26,6 +30,15 @@ shopt -s checkwinsize
 # If set, the pattern "**" used in a pathname expansion context will
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
+
+# Ignore case on auto-completion
+bind 'set completion-ignore-case on'
+
+# Show auto-completion list automatically,
+# without double tab and like zsh
+bind 'set show-all-if-ambiguous On'
+bind 'TAB:menu-complete'
+
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -63,13 +76,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-function custom_prompt() {
-  __git_ps1 "\[\033[0;31m\]\u \[\033[0;36m\]\h:\w\[\033[00m\]" " \n\[\033[0;31m\]>\[\033[00m\] " " %s"
-  VTE_PWD_THING="$(__vte_osc7)"
-  PS1="$PS1$VTE_PWD_THING"
-}
-PROMPT_COMMAND=custom_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*)
@@ -94,10 +100,10 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
+# some more ls aliases (check .bash_aliases)
+#alias ll='ls -alF'
+#alias la='ls -A'
+#alias l='ls -CF'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -123,20 +129,26 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# important - needed for tilix terminal
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
         source /etc/profile.d/vte.sh
 fi
 
+# fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # fnm
 export PATH=/home/flrnprz/.fnm:$PATH
 eval "`fnm env --multi`"
 
-#git
-source ~/.bash/git-prompt.sh
-export GIT_PS1_SHOWCOLORHINTS=true
-export GIT_PS1_SHOWDIRTYSTATE=true
-export GIT_PS1_SHOWUNTRACKEDFILES=true
-export GIT_PS1_SHOWUPSTREAM="auto"
-export PROMPT_COMMAND='__git_ps1 "\w" "\n\\\$ "' # Git branch (relies on git-prompt.sh)
+#git aware prompt
+if [[ -e /usr/lib/git-core/git-sh-prompt  ]]; then
+  source /usr/lib/git-core/git-sh-prompt
+  export GIT_PS1_SHOWCOLORHINTS=true
+  export GIT_PS1_SHOWDIRTYSTATE=true
+  export GIT_PS1_SHOWUNTRACKEDFILES=true
+  export GIT_PS1_SHOWUPSTREAM="auto"
+  export PROMPT_COMMAND='__git_ps1 "\[\033[01;34m\]\w\[\033[00m\]" "\n\\\$ "' # Git branch (relies on git-sh-prompt)
+  # use existing PS1 settings
+  #PROMPT_COMMAND=$(sed -r 's|^(.+)(\\\$\s*)$|__git_ps1 "\1" "\2"|' <<< $PS1)
+fi
