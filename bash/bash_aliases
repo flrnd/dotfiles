@@ -39,7 +39,9 @@ alias ldir="ls -l | egrep '^d'" # directories only
 alias fd='fdfind'
 
 #gpaste-client
-alias gpasteg='gpaste-client get'
-alias gpastes='gpaste-client select'
-alias gpastel='gpaste-client | less'
+if [ -x "$(command -v gpaste-client)"  ]; then
+  alias gpasteg='gpaste-client get'
+  alias gpastes='gpaste-client select'
+  alias gpastel='gpaste-client | less'
+fi
 
