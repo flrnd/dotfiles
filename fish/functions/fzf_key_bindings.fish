@@ -1,1 +1,1 @@
-/home/flrnprz/.fzf/shell/key-bindings.fish
+/home/flrn/.fzf/shell/key-bindings.fish
