@@ -41,6 +41,5 @@ function fish_prompt
   printf '%s' (__fish_git_prompt)
   set_color -o magenta
   printf '\n❯ '
-
   set_color normal
 end
