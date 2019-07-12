@@ -3,7 +3,7 @@ set -x VISUAL $EDITOR
 set -x GIT_EDITOR $EDITOR
 set -x PAGER "less"
 set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --exclude node_modules"
-
+set -x BAT_THEME "GitHub"
 # go support
 if test -e /usr/local/go/
   set PATH /usr/local/go/bin $PATH
@@ -79,3 +79,5 @@ if test -x (command -v gpaste-client)
   alias gpastes='gpaste-client select'
   alias gpastel='gpaste-client | less'
 end
+
+
