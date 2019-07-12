@@ -66,6 +66,9 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 "Python
 Plug 'vim-python/python-syntax', {'for': 'python'}
 
+" Elm
+Plug 'elmcast/elm-vim'
+
 " typescript
 "" Typescript support
 Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
