@@ -34,6 +34,7 @@ alias mkdir 'mkdir -p'
 alias ps 'ps auxf'
 alias less 'less -R'
 alias vi 'nvim'
+alias emacs 'emacs -nw'
 alias svi 'sudo nvim'
 alias vis 'nvim "+set si"'
 
