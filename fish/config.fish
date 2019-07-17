@@ -3,18 +3,25 @@ set -x VISUAL $EDITOR
 set -x GIT_EDITOR $EDITOR
 set -x PAGER "less"
 set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --exclude node_modules"
-set -x BAT_THEME "GitHub"
+set -x BAT_THEME "OneHalfDark"
+
 # go support
 if test -e /usr/local/go/
   set PATH /usr/local/go/bin $PATH
 end
 
-if test -e ~/.yarn/bin
-  set PATH ~/.yarn/bin $PATH
-end
-
 if test -e ~/go/bin
   set PATH ~/go/bin $PATH
+end
+
+# Haskell stack and others
+if test -e ~/.local/bin
+  set PATH ~/.local/bin $PATH
+end
+
+# Yarn
+if test -e ~/.yarn/bin
+  set PATH ~/.yarn/bin $PATH
 end
 
 # Alias's to modified commands
@@ -80,4 +87,6 @@ if test -x (command -v gpaste-client)
   alias gpastel='gpaste-client | less'
 end
 
+#kitty
+kitty + complete setup fish | source
 
