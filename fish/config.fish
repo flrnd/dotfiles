@@ -19,6 +19,11 @@ if test -e ~/.local/bin
   set PATH ~/.local/bin $PATH
 end
 
+# needed for emacs doom
+if test -e ~/.emacs.d/bin
+   set PATH ~/.emacs.d/bin $PATH
+end
+
 # Yarn
 if test -e ~/.yarn/bin
   set PATH ~/.yarn/bin $PATH
@@ -64,6 +69,7 @@ alias ldir "ls -l | egrep '^d'" # directories only
 alias fd 'fdfind'
 
 # Abbreviations
+abbr em "emacs"
 abbr nv "nvim"
 abbr ga "git add"
 abbr gcb "git checkout -b"
