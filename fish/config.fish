@@ -1,5 +1,5 @@
-set -x EDITOR vim
-set -x VISUAL $EDITOR
+set -x EDITOR emacs -nw
+set -x VISUAL emacs
 set -x GIT_EDITOR $EDITOR
 set -x PAGER "less"
 set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --exclude node_modules"
@@ -38,8 +38,7 @@ alias rmf 'rm -ivrf'
 alias mkdir 'mkdir -p'
 alias ps 'ps auxf'
 alias less 'less -R'
-alias vi 'nvim'
-alias emacs 'emacs -nw'
+alias vi '~/.local/bin/nvim'
 alias svi 'sudo nvim'
 alias vis 'nvim "+set si"'
 
