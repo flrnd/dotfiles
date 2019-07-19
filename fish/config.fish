@@ -1,5 +1,5 @@
-set -x EDITOR emacs -nw
-set -x VISUAL emacs
+set -x EDITOR nvim
+set -x VISUAL $EDITOR
 set -x GIT_EDITOR $EDITOR
 set -x PAGER "less"
 set -x FZF_DEFAULT_COMMAND "fdfind --type f --follow --hidden --exclude .git --exclude node_modules"
@@ -7,7 +7,8 @@ set -x BAT_THEME "OneHalfDark"
 
 # go support
 if test -e /usr/local/go/
-  set PATH /usr/local/go/bin $PATH
+  set -x GOPATH /usr/local/go $GOPATH
+  set PATH $GOPATH/bin $PATH
 end
 
 if test -e ~/go/bin
@@ -38,7 +39,7 @@ alias rmf 'rm -ivrf'
 alias mkdir 'mkdir -p'
 alias ps 'ps auxf'
 alias less 'less -R'
-alias vi '~/.local/bin/nvim'
+alias vi 'nvim'
 alias svi 'sudo nvim'
 alias vis 'nvim "+set si"'
 
