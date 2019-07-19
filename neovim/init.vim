@@ -34,7 +34,7 @@ set expandtab
 set hidden
 
 " Better display for messages
-set cmdheight=1
+set cmdheight=2
 
 "" Searching
 set hlsearch
@@ -119,6 +119,14 @@ nnoremap <leader>j :<C-u>DeniteCursorWord grep:.<CR>
 nmap <leader>n :NERDTreeToggle<CR>
 nmap <leader>t :NERDTreeFind<CR>
 
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+
 if has('macunix')
   " pbcopy for OSX copy/paste
   vmap <C-x> :!pbcopy<CR>
@@ -129,6 +137,20 @@ endif
 "*****************************************************************************
 "" Plugins Setup
 "*****************************************************************************"
+function! StatusDiagnostic() abort
+  let info = get(b:, 'coc_diagnostic_info', {})
+  if empty(info) | return '' | endif
+  let msgs = []
+  if get(info, 'error', 0)
+    call add(msgs, 'E' . info['error'])
+  endif
+  if get(info, 'warning', 0)
+    call add(msgs, 'W' . info['warning'])
+  endif
+  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
+endfunction
+
+set statusline+=%{StatusDiagnostic()}
 
 " Lightline
 let g:lightline = {
@@ -263,6 +285,7 @@ let g:hindent_command = "brittany"
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
+
 function! CocCurrentFunction()
     return get(b:, 'coc_current_function', '')
 endfunction
