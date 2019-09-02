@@ -1,0 +1,72 @@
+# Sample .bashrc for SuSE Linux
+# Copyright (c) SuSE GmbH Nuernberg
+
+# There are 3 different types of shells in bash: the login shell, normal shell
+# and interactive shell. Login shells read ~/.profile and interactive shells
+# read ~/.bashrc; in our setup, /etc/profile sources ~/.bashrc - thus all
+# settings made here will also take effect in a login shell.
+#
+# NOTE: It is recommended to make language settings in ~/.profile rather than
+# here, since multilingual X sessions would not work properly if LANG is over-
+# ridden in every subshell.
+
+# Some applications read the EDITOR variable to determine your favourite text
+# editor. So uncomment the line below and enter the editor of your choice :-)
+#export EDITOR=/usr/bin/vim
+#export EDITOR=/usr/bin/mcedit
+
+# For some news readers it makes sense to specify the NEWSSERVER variable here
+#export NEWSSERVER=your.news.server
+
+# If you want to use a Palm device with Linux, uncomment the two lines below.
+# For some (older) Palm Pilots, you might need to set a lower baud rate
+# e.g. 57600 or 38400; lowest is 9600 (very slow!)
+#
+#export PILOTPORT=/dev/pilot
+#export PILOTRATE=115200
+
+test -s ~/.alias && . ~/.alias || true
+test -s ~/.bash_aliases && . ~/.bash_aliases || true
+
+# don't put duplicate lines or lines starting with space in the history.
+# See bash(1) for more options
+HISTCONTROL=ignoreboth,erasedup
+
+# append to the history file, don't overwrite it
+shopt -s histappend
+
+# Allow ctrl-S for history navigation (with ctrl-R)
+stty -ixon
+
+# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
+HISTSIZE=1000
+HISTFILESIZE=2000
+
+# check the window size after each command and, if necessary,
+# update the values of LINES and COLUMNS.
+shopt -s checkwinsize
+
+# Show auto-completion list automatically,
+# without double tab and like zsh
+bind "set show-all-if-ambiguous On"
+bind "TAB:menu-complete"
+
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
+# fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+export FZF_DEFAULT_COMMAND='fd --type f --follow --hidden --exclude .git --exclude node_modules'
+
+#git aware prompt
+if [[ -e /etc/bash_completion.d/git-prompt.sh  ]]; then
+  #source /usr/lib/git-core/git-sh-prompt
+  export GIT_PS1_SHOWCOLORHINTS=true
+  export GIT_PS1_SHOWDIRTYSTATE=true
+  export GIT_PS1_SHOWUNTRACKEDFILES=true
+  export GIT_PS1_SHOWUPSTREAM="auto"
+  export PROMPT_COMMAND='__git_ps1 "\[\033[01;34m\]\w\[\033[00m\]" "\n\[\033[01;35m\]❯\[\033[00m\] "' # Git branch (relies on git-sh-prompt)
+  # use existing PS1 settings
+  #PROMPT_COMMAND=$(sed -r 's|^(.+)(\\\$\s*)$|__git_ps1 "\1" "\2"|' <<< $PS1)
+fi
