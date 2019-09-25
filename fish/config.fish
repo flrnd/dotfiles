@@ -7,7 +7,7 @@ set -x BAT_THEME "OneHalfDark"
 
 # go support
 if test -e /usr/local/go/
-  set -x GOPATH /usr/local/go $GOPATH
+  set -x GOPATH $HOME/go $GOPATH
   set PATH $GOPATH/bin $PATH
 end
 
@@ -64,7 +64,7 @@ alias ll 'ls -Fls' # long listing format
 alias labc 'ls -lap' #alphabetical sort
 alias lf "ls -l | egrep -v '^d'" # files only
 alias ldir "ls -l | egrep '^d'" # directories only
-
+alias genpass 
 # fd-find
 alias fd 'fdfind'
 
@@ -95,5 +95,5 @@ if test -x (command -v gpaste-client)
 end
 
 #kitty
-kitty + complete setup fish | source
+#kitty + complete setup fish | source
 
