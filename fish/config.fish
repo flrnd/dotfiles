@@ -64,7 +64,7 @@ alias ll 'ls -Fls' # long listing format
 alias labc 'ls -lap' #alphabetical sort
 alias lf "ls -l | egrep -v '^d'" # files only
 alias ldir "ls -l | egrep '^d'" # directories only
-alias genpass 
+#alias genpass
 # fd-find
 alias fd 'fdfind'
 
@@ -82,10 +82,10 @@ abbr gs "git status -s"
 source ~/.config/fish/functions/fish_prompt.fish
 
 # fnm
-if test -e $HOME/.fnm
-  set PATH $HOME/.fnm $PATH
-  fnm env --multi | source
-end
+#if test -e $HOME/.fnm
+#  set PATH $HOME/.fnm $PATH
+#  fnm env --multi | source
+#end
 
 #gpaste-client
 if test -x (command -v gpaste-client)
@@ -97,3 +97,5 @@ end
 #kitty
 #kitty + complete setup fish | source
 
+source ~/.asdf/asdf.fish
+thefuck --alias | source
