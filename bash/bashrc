@@ -98,12 +98,7 @@ if [ -x /usr/bin/dircolors ]; then
 fi
 
 # colored GCC warnings and errors
-#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
-
-# some more ls aliases (check .bash_aliases)
-#alias ll='ls -alF'
-#alias la='ls -A'
-#alias l='ls -CF'
+export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -145,15 +140,14 @@ if [ -d $HOME/.fnm ]; then
 fi
 
 #git aware prompt
-if [[ -e /usr/lib/git-core/git-sh-prompt  ]]; then
-  source /usr/lib/git-core/git-sh-prompt
-  export GIT_PS1_SHOWCOLORHINTS=true
-  export GIT_PS1_SHOWDIRTYSTATE=true
-  export GIT_PS1_SHOWUNTRACKEDFILES=true
-  export GIT_PS1_SHOWUPSTREAM="auto"
-  export PROMPT_COMMAND='__git_ps1 "\[\033[01;34m\]\w\[\033[00m\]" "\n\[\033[01;35m\]❯\[\033[00m\] "' # Git branch (relies on git-sh-prompt)
-  # use existing PS1 settings
-  #PROMPT_COMMAND=$(sed -r 's|^(.+)(\\\$\s*)$|__git_ps1 "\1" "\2"|' <<< $PS1)
+if [ ! -f ~/.git-prompt.sh  ]; then
+  GIT_URL=https://raw.githubusercontent.com/git/git/master/contrib/completion/git-prompt.sh
+  GIT_PROMPT_FILE=$HOME/.git-prompt.sh
+  curl $GIT_URL --output $GIT_PROMPT_FILE && source $GIT_PROMPT_FILE
+  source ~/.bash_git_prompt
+elif [ -f ~/.git-prompt.sh ]; then
+  source ~/.git-prompt.sh
+  source ~/.bash_git_prompt
 fi
 
 export BAT_THEME="GitHub"
