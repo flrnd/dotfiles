@@ -133,36 +133,76 @@ if has('macunix')
   vmap <C-c> :w !pbcopy<CR><CR>
 endif
 
+"*****************************************************************************
+"" Abbreviations
+"*****************************************************************************
+"" no one is really happy until you have this shortcuts
+""" Stolen from: https://github.com/viniciusgerevini/dotfiles/blob/master/vim/.vimrc (Thanks!)
+cnoreabbrev W! w!
+cnoreabbrev Q! q!
+cnoreabbrev Qall! qall!
+cnoreabbrev Wq wq
+cnoreabbrev Wa wa
+cnoreabbrev wQ wq
+cnoreabbrev WQ wq
+cnoreabbrev W w
+cnoreabbrev Q q
+cnoreabbrev Qall qall
 
 "*****************************************************************************
 "" Plugins Setup
 "*****************************************************************************"
-function! StatusDiagnostic() abort
-  let info = get(b:, 'coc_diagnostic_info', {})
-  if empty(info) | return '' | endif
-  let msgs = []
-  if get(info, 'error', 0)
-    call add(msgs, 'E' . info['error'])
-  endif
-  if get(info, 'warning', 0)
-    call add(msgs, 'W' . info['warning'])
-  endif
-  return join(msgs, ' '). ' ' . get(g:, 'coc_status', '')
-endfunction
 
-set statusline+=%{StatusDiagnostic()}
+" Ale
+" let g:ale_sign_error = '✖'
+" let g:ale_sign_warning = '>'
+" let g:ale_completion_enabled = 1
+" let g:ale_linters_explicit = 1
+" let g:ale_lint_on_insert_leave = 1
+" let g:ale_fix_on_save = 1
+" let g:ale_warn_about_trailing_whitespace = 1
+" let g:ale_lint_delay = 100
+" let g:ale_lint_on_text_changed = 'normal'
+" let g:ale_set_loclist = 1
+" let g:ale_open_list = 0
+"
+" let g:ale_linters = {
+"       \ 'ansible': ['ansible-lint'],
+"       \ 'html': ['htmlhint'],
+"       \ 'haskell': ['hie'],
+"       \ 'css': ['csslint'],
+"       \ 'javascript': ['eslint'],
+"       \ 'typescript': ['tsserver'],
+"       \ 'python': ['flake8'],
+"       \ 'ruby': ['rubocop', 'ruby'],
+"       \ 'go': ['golint'],
+"       \ 'vue': ['eslint'],
+"       \ '*': ['trim_whitespace',
+"       \ 'remove_trailing_lines']
+"       \}
+"let g:ale_fixers = {
+"      \ 'html': ['prettier'],
+"      \ 'css': ['prettier'],
+"      \ 'go': ['gofmt'],
+"      \ 'javascript': ['eslint', 'prettier'],
+"      \ 'typescript': ['tsserver', 'prettier'],
+"      \ 'markdown': ['prettier'],
+"      \ 'python': ['black'],
+"      \ 'ruby': ['rubocop'],
+"      \ '*': ['trim_whitespace', 'remove_trailing_lines']
+"      \}
+
+autocmd QuitPre * if empty(&bt) | lclose | endif
+
+let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-json', 'coc-solargraph']
 
 " Lightline
 let g:lightline = {
       \ 'colorscheme': 'candid',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'cocstatus', 'currentfunction', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'cocstatus': 'coc#status',
-      \   'currentfunction': 'CocCurrentFunction'
-      \ },
+      \             [ 'readonly', 'filename', 'modified' ] ]
+      \ }
       \ }
 
 " IndentLine
@@ -285,10 +325,6 @@ let g:hindent_command = "brittany"
 "*****************************************************************************
 "" Functions
 "*****************************************************************************
-
-function! CocCurrentFunction()
-    return get(b:, 'coc_current_function', '')
-endfunction
 
 " run :GoBuild or :GoTestCompile based on the go file
 function! s:build_go_files()

@@ -1,24 +1,17 @@
 {
-  "suggest.echodocSupport": true,
-  "suggest.maxCompleteItemCount": 20,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "haskell", "go", "elm"],
+  "suggest.maxCompleteItemCount": 40,
+  "suggest.enablePreview": true,
+  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "haskell", "go", "elm", "ruby"],
   "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
   "diagnostic.errorSign": "‣",
   "diagnostic.warningSign": "•",
-  "diagnostic.infoSign": "⁃",
+  "diagnostic.infoSign": "i",
+  "diagnostic.displayByAle": false,
+  "diagnostic.virtualText": false,
+  "diagnostic.messageTarget": "float",
+  "solargraph.diagnostics": true,
+  "solargraph.formatting": true,
   "languageserver": {
-    "elmLS": {
-      "command": "elm-language-server",
-      "args": ["--stdio"],
-      "filetypes": ["elm"],
-      "rootPatterns": ["elm.json"],
-      "initializationOptions": {
-        "runtime": "node",
-        "elmPath": "elm",
-        "elmFormatPath": "elm-format",
-        "elmTestPath": "elm-test"
-      }
-    },
     "haskell": {
       "command": "hie-wrapper",
       "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],

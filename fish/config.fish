@@ -69,7 +69,7 @@ alias ldir "ls -l | egrep '^d'" # directories only
 alias fd 'fdfind'
 
 # mpv filters
-alias mpv mpv-nm
+alias mpv 'mpv --af="acompressor=ratio=4,loudnorm"'
 alias mpv-drc 'mpv --af="acompressor=ratio=4,loudnorm"'
 alias mpv-nm 'mpv --af=lavfi=[pan="stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE"]'
 alias mpv-nm-drc 'mpv --af=lavfi=[pan="stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE,loudnorm"]'
