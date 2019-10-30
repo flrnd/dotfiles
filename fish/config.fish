@@ -85,9 +85,9 @@ abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
 
 #prompt
-source ~/.config/fish/functions/fish_prompt.fish
+#source ~/.config/fish/functions/fish_prompt.fish
 
-# fnm
+#fnm
 #if test -e $HOME/.fnm
 #  set PATH $HOME/.fnm $PATH
 #  fnm env --multi | source
@@ -105,3 +105,5 @@ end
 
 source ~/.asdf/asdf.fish
 thefuck --alias | source
+starship init fish | source
+
