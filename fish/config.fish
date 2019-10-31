@@ -104,6 +104,6 @@ end
 #kitty + complete setup fish | source
 
 source ~/.asdf/asdf.fish
-thefuck --alias | source
+#thefuck --alias | source
 starship init fish | source
 
