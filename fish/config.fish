@@ -85,13 +85,7 @@ abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
 
 #prompt
-#source ~/.config/fish/functions/fish_prompt.fish
-
-#fnm
-#if test -e $HOME/.fnm
-#  set PATH $HOME/.fnm $PATH
-#  fnm env --multi | source
-#end
+source ~/.config/fish/functions/prompt.fish
 
 #gpaste-client
 if test -x (command -v gpaste-client)
@@ -100,10 +94,7 @@ if test -x (command -v gpaste-client)
   alias gpastel='gpaste-client | less'
 end
 
-#kitty
-#kitty + complete setup fish | source
-
 source ~/.asdf/asdf.fish
 #thefuck --alias | source
-starship init fish | source
+#starship init fish | source
 
