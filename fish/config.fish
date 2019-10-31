@@ -85,16 +85,8 @@ abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
 
 #prompt
-source ~/.config/fish/functions/prompt.fish
-
-#gpaste-client
-if test -x (command -v gpaste-client)
-  alias gpasteg='gpaste-client get'
-  alias gpastes='gpaste-client select'
-  alias gpastel='gpaste-client | less'
-end
+#source ~/.config/fish/functions/prompt.fish
 
 source ~/.asdf/asdf.fish
-#thefuck --alias | source
-#starship init fish | source
+starship init fish | source
 
