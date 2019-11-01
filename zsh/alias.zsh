@@ -2,6 +2,7 @@
 ls --version &>/dev/null
 if [ $? -eq 0 ]; then
   lsflags="--color --group-directories-first -Fh"
+  alias fd="fdfind"
 else
   lsflags="-GF"
   export CLICOLOR=1
@@ -14,7 +15,6 @@ alias ll="ls -al"
 alias lr="ls -lR"
 alias lt="ls -ltr"
 alias cat="bat"
-alias fd="fdfind"
 
 # directories
 alias cp="cp -i"
