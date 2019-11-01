@@ -85,8 +85,8 @@ abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
 
 #prompt
-#source ~/.config/fish/functions/prompt.fish
+source ~/.config/fish/functions/prompt.fish
 
 source ~/.asdf/asdf.fish
-starship init fish | source
+#starship init fish | source
 
