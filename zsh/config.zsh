@@ -15,7 +15,4 @@ eval "$(dircolors -b)"
 . $HOME/.asdf/completions/asdf.bash
 
 # prompt
-autoload -U promptinit; promptinit
-prompt pure
-
-[ -f ~/.zsh/prompt/theme.zsh ] && . ~/.zsh/prompt/theme.zsh
+. ~/.zsh/prompt/gitstatus/gitstatus.prompt.zsh

@@ -4,3 +4,6 @@
 [submodule "zsh/completion/external"]
 	path = zsh/completion/external
 	url = https://github.com/zsh-users/zsh-completions
+[submodule "zsh/prompt/gitstatus"]
+	path = zsh/prompt/gitstatus
+	url = https://github.com/romkatv/gitstatus.git
