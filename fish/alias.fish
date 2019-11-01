@@ -15,14 +15,14 @@ alias vis 'nvim "+set si"'
 set lsFlags ''
 switch (uname)
   case Linux
-    set lsFlags --color --group-directories-first -F
+    set lsFlags --color --group-directories-first -h
   case Darwin
-    set lsFlags -GF
-end
+    set lsFlags -G
+  end
 
 # Alias's for multiple directory listing commands
 alias ls 'ls {$lsFlags}'  # add colors and file type extensions
-alias la 'ls -Aa'         # show hidden files
+alias la 'ls -A'         # show hidden files
 alias lx 'ls -lXB'        # sort by extension
 alias lk 'ls -lSr'        # sort by size
 alias lc 'ls -lcr'        # sort by change time
