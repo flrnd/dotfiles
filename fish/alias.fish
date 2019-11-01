@@ -6,7 +6,6 @@ alias mv 'mv -i'
 alias rm 'rm -iv'
 alias rmf 'rm -ivrf'
 alias mkdir 'mkdir -p'
-alias ps 'ps auxf'
 alias less 'less -R'
 alias vi 'nvim'
 alias svi 'sudo nvim'
@@ -18,7 +17,7 @@ switch (uname)
     set lsFlags --color --group-directories-first -h
   case Darwin
     set lsFlags -G
-  end
+end
 
 # Alias's for multiple directory listing commands
 alias ls 'ls {$lsFlags}'  # add colors and file type extensions
@@ -53,5 +52,4 @@ abbr gm "git commit -m"
 abbr gp "git push"
 abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
-
 
