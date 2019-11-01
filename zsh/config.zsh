@@ -16,3 +16,4 @@ eval "$(dircolors -b)"
 
 # prompt
 . ~/.zsh/prompt/gitstatus/gitstatus.prompt.zsh
+. ~/.zsh/prompt/prompt.zsh
