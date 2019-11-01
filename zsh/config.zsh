@@ -15,5 +15,4 @@ eval "$(dircolors -b)"
 . $HOME/.asdf/completions/asdf.bash
 
 # prompt
-. ~/.zsh/prompt/gitstatus/gitstatus.prompt.zsh
 . ~/.zsh/prompt/prompt.zsh
