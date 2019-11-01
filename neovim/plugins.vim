@@ -83,5 +83,8 @@ Plug 'jparise/vim-graphql'
 "Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
 "Plug 'HerringtonDarkholme/yats.vim'
 
+" Fish
+Plug 'Stautob/vim-fish'
+
 call plug#end()
 "}}}
