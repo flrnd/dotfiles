@@ -2,6 +2,8 @@ EDITOR=nvim
 
 PROMPT='%n@%m %3~%(!.#.$)%(?.. [%?]) '
 
+fpath=( "$HOME/.zsh/functions" $fpath )
+
 export FZF_DEFAULT_COMMAND='fd --type f --follow --hidden --exclude .git --exclude node_modules'
 
 # set PATH so it includes user's private bin if it exists

@@ -3,7 +3,7 @@ function bench_shell
   switch (uname)
     case Linux
       set time '/usr/bin/time'
-    case Darwing
+    case Darwin
       set time 'gtime'
   end
 
