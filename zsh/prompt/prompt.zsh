@@ -61,6 +61,11 @@ git_info() {
     FLAGS+=( "$STAGED" )
   fi
 
+  local GIT_STASHED="$(git stash list 2> /dev/null)"
+  if [ -n $GIT_STASHED ]; then
+    FLAGS+=( "$STASHED" )
+  fi
+
   local -a GIT_INFO
   GIT_INFO+=( "%{$fg[yellow]%}$GIT_LOCATION%{$reset_color%}" )
   [ -n "$GIT_STATUS" ] && GIT_INFO+=( "$GIT_STATUS" )
