@@ -6,7 +6,7 @@ fpath=(~/.zsh $fpath)
 # load custom config
 . ~/.zsh/alias.zsh
 . ~/.zsh/directory.zsh
-. ~/.zsh/git.zsh
+. ~/.zsh/git/git.zsh
 . ~/.zsh/history.zsh
 . ~/.zsh/completion/completion.zsh
 
