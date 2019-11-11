@@ -1,7 +1,10 @@
 # GNU and BSD (macOS) ls flags aren't compatible
-ls --version &>/dev/null
-if [ $? -eq 0 ]; then
+OS_TYPE=$(uname 2> /dev/null)
+if [[ $OS_TYPE = "Linux" ]]; then
+  eval "$(dircolors -b)"
   lsflags="--color --group-directories-first -Fh"
+  # this has nothing to do with ls, but to avoid
+  # another if/else :P
   alias fd="fdfind"
 else
   lsflags="-GF"
