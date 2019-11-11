@@ -75,19 +75,19 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 # See /usr/share/doc/bash-doc/examples in the bash-doc package.
 
 if [ -f ~/.bash_aliases ]; then
-    . ~/.bash_aliases
+  . ~/.bash_aliases
 fi
 
 # important - needed for tilix terminal
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
+  source /etc/profile.d/vte.sh
 fi
 
 # fzf
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 export FZF_DEFAULT_COMMAND='fdfind --type f --follow --hidden --exclude .git --exclude node_modules'
 
-export BAT_THEME="GitHub"
+export BAT_THEME="TwoDark"
 
 # asdf-vm
 . $HOME/.asdf/asdf.sh
