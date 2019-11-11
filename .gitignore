@@ -41,3 +41,6 @@ Temporary Items
 
 #ansible
 *.retry
+
+# neovim
+neovim/plugged
