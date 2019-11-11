@@ -62,7 +62,7 @@ git_info() {
   fi
 
   local GIT_STASHED="$(git stash list 2> /dev/null)"
-  if [ -n $GIT_STASHED ]; then
+  if [[ -n $(git stash list 2> /dev/null) ]]; then
     FLAGS+=( "$STASHED" )
   fi
 
