@@ -2,10 +2,9 @@
 #export GIT_PS1_SHOWDIRTYSTATE=true
 #export GIT_PS1_SHOWUNTRACKEDFILES=true
 #export GIT_PS1_SHOWUPSTREAM="branch"
-
 #setopt PROMPT_SUBST ; PS1='%F{blue}%~%f$(__git_ps1)'$'\n'"%F{magenta}❯%f "
-# https://github.com/joshdick/dotfiles/blob/master/zshrc.symlink
 
+# https://github.com/joshdick/dotfiles/blob/master/zshrc.symlink
 setopt prompt_subst
 autoload -U colors && colors # Enable colors in prompt
 
