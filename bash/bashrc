@@ -92,3 +92,5 @@ export BAT_THEME="GitHub"
 # asdf-vm
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
+
+. $HOME/.bash_git_prompt
