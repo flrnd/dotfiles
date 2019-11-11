@@ -1,1 +1,7 @@
-setopt PROMPT_SUBST ; PS1='[%n@%m %c$(__git_ps1 " (%s)")]\$ '
+GIT_PS1_SHOWUPSTREAM="verbose"
+GIT_PS1_SHOWSTASHSTATE=true
+GIT_PS1_SHOWUNTRACKEDFILES=true
+GIT_PS1_DESCRIBE_STYLE="branch"
+GIT_PS1_SHOWCOLORHINTS=true
+
+setopt PROMPT_SUBST ; precmd () { __git_ps1 "%n" ":%~$ " "|%s"  }
