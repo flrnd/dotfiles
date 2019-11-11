@@ -12,8 +12,9 @@ end
 
 # golang
 if test -e /usr/local/go/
-  set -x GOPATH $HOME/go $GOPATH
+  set -lx GOPATH /usr/local/go $GOPATH
   set PATH $GOPATH/bin $PATH
+  set PATH $HOME/go/bin $PATH
 end
 
 # Haskell stack and others
