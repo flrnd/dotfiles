@@ -8,6 +8,9 @@ else
   export CLICOLOR=1
 fi
 
+# editor
+alias vi="nvim"
+
 # ls
 alias ls="ls ${lsflags}"
 alias la="ls -a"

@@ -1,5 +1,8 @@
 # dircolors
-eval "$(dircolors -b)"
+OS_TYPE=$(uname 2>/dev/null)
+if [[ $OS_TYPE = "Linux" ]]; then
+	eval "$(dircolors -b)"
+fi
 
 fpath=(~/.zsh $fpath)
 
