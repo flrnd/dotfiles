@@ -75,7 +75,6 @@ git_info() {
 
 # Use ❯ as the non-root prompt character; # for root
 # Change the prompt character color if the last command had a nonzero exit code
-PS1='
-$(ssh_info)%{$fg[blue]%}%~%u $(git_info)
+#RPROMPT='%*'
+PROMPT='$(ssh_info)%{$fg[blue]%}%~%u $(git_info)
 %(?.%{$fg[magenta]%}.%{$fg[red]%})%(!.#.❯)%{$reset_color%} '
-
