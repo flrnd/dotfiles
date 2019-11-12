@@ -1,4 +1,4 @@
-fpath=(~/.zsh $fpath)
+#fpath=(~/.zsh $fpath)
 
 # load custom config
 . ~/.zsh/alias.zsh
