@@ -5,6 +5,14 @@ set -lx PAGER "less"
 set -lx FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --exclude node_modules"
 set -lx BAT_THEME "OneHalfDark"
 
+# Abbreviations
+abbr ga "git add"
+abbr gcb "git checkout -b"
+abbr gm "git commit -m"
+abbr gp "git push"
+abbr gpoh "git push -u origin HEAD"
+abbr gs "git status -s"
+
 # home bin
 if test -e ~/bin
   set PATH ~/bin
@@ -12,9 +20,8 @@ end
 
 # golang
 if test -e /usr/local/go/
-  set -lx GOPATH /usr/local/go $GOPATH
+  set -lx GOPATH $HOME/go $GOPATH
   set PATH $GOPATH/bin $PATH
-  set PATH $HOME/go/bin $PATH
 end
 
 # Haskell stack and others
@@ -28,7 +35,8 @@ if test -e ~/.yarn/bin
 end
 
 #prompt
-. ~/.config/fish/alias.fish
 . ~/.config/fish/functions/prompt.fish
+
+#asdf-vm
 . ~/.asdf/asdf.fish
 
