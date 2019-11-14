@@ -90,7 +90,12 @@ export FZF_DEFAULT_COMMAND='fdfind --type f --follow --hidden --exclude .git --e
 export BAT_THEME="TwoDark"
 
 # asdf-vm
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+if [ -f ~/.asdf/asdf.sh ]; then
+	. $HOME/.asdf/asdf.sh
+	. $HOME/.asdf/completions/asdf.bash
+fi
 
-. $HOME/.bash_git_prompt
+if [ -f ~/.git-prompt.sh ]; then
+	. $HOME/.git-prompt.sh
+	. $HOME/.bash_git_prompt
+fi
