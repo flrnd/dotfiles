@@ -2,10 +2,11 @@
 
 # load custom config
 . ~/.zsh/alias.zsh
+. ~/.zsh/completion/completion.zsh
 . ~/.zsh/directory.zsh
+. ~/.zsh/functions.zsh
 . ~/.zsh/git/git.zsh
 . ~/.zsh/history.zsh
-. ~/.zsh/completion/completion.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
