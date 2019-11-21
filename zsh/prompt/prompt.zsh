@@ -3,7 +3,7 @@ setopt prompt_subst
 
 # Echoes a username/host string when connected over SSH (empty otherwise)
 ssh_info() {
-	[[ "$SSH_CONNECTION" != '' ]] && echo '%F{green}%n@%m%f%F{white}:%f' || echo ''
+	[[ "$SSH_CONNECTION" != '' ]] && echo '%F{green}%n@%m%f%F{white}: %f' || echo ''
 }
 
 # Echoes information about Git repository status when inside a Git repository
@@ -69,5 +69,5 @@ git_info() {
 # Use ❯ as the non-root prompt character; # for root
 # Change the prompt character color if the last command had a nonzero exit code
 #RPROMPT='%*'
-PROMPT='$(ssh_info) %F{blue}%~%u%f $(git_info)
+PROMPT='$(ssh_info)%F{blue}%~%u%f $(git_info)
 %(?.%F{magenta}.%F{red})%(!.#.>)%f%F{white}%f '
