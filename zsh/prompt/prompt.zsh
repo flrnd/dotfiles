@@ -1,16 +1,9 @@
-#export GIT_PS1_SHOWCOLORHINTS=true
-#export GIT_PS1_SHOWDIRTYSTATE=true
-#export GIT_PS1_SHOWUNTRACKEDFILES=true
-#export GIT_PS1_SHOWUPSTREAM="branch"
-#setopt PROMPT_SUBST ; PS1='%F{blue}%~%f$(__git_ps1)'$'\n'"%F{magenta}❯%f "
-
-# https://github.com/joshdick/dotfiles/blob/master/zshrc.symlink
 setopt prompt_subst
-autoload -U colors && colors # Enable colors in prompt
+#autoload -U colors && colors # Enable colors in prompt
 
 # Echoes a username/host string when connected over SSH (empty otherwise)
 ssh_info() {
-  [[ "$SSH_CONNECTION" != '' ]] && echo '%(!.%{$fg[red]%}.%{$fg[yellow]%})%n%{$reset_color%}@%{$fg[green]%}%m%{$reset_color%}:' || echo ''
+	[[ "$SSH_CONNECTION" != '' ]] && echo '%F{green}%n@%m%f%F{white}:%f' || echo ''
 }
 
 # Echoes information about Git repository status when inside a Git repository
@@ -22,13 +15,13 @@ git_info() {
   # Git branch/tag, or name-rev if on detached head
   local GIT_LOCATION=${$(git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD)#(refs/heads/|tags/)}
 
-  local AHEAD="%{$fg[cyan]%}⇡NUM%{$reset_color%}"
-  local BEHIND="%{$fg[cyan]%}⇣NUM%{$reset_color%}"
-  local MERGING="%{$fg[magenta]%}⚡︎%{$reset_color%}"
-  local UNTRACKED="%{$fg[yellow]%}?%{$reset_color%}"
-  local MODIFIED="%{$fg[red]%}*%{$reset_color%}"
-  local STAGED="%{$fg[green]%}+%{$reset_color%}"
-  local STASHED="%{$fg[magenta]%}≡%{$reset_color%}"
+  local AHEAD="%F{cyan}>NUM%f%F{white}%f"
+  local BEHIND="%F{cyan}<NUM%f%F{white}%f"
+  local MERGING="%F{magenta}M%f%F{white}%f"
+  local UNTRACKED="%F{yellow}?%f%F{white}%f"
+  local MODIFIED="%F{red}*%f%F{white}%f"
+  local STAGED="%F{green}+%f%F{white}%f"
+  local STASHED="%F{magenta}#%f%F{white}%f"
 
   local -a DIVERGENCES
   local -a FLAGS
@@ -65,7 +58,7 @@ git_info() {
   fi
 
   local -a GIT_INFO
-  GIT_INFO+=( "%{$fg[yellow]%}$GIT_LOCATION%{$reset_color%}" )
+  GIT_INFO+=( "%F{yellow}$GIT_LOCATION%f%F{white}%f" )
   [ -n "$GIT_STATUS" ] && GIT_INFO+=( "$GIT_STATUS" )
   [[ ${#DIVERGENCES[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)DIVERGENCES}" )
   [[ ${#FLAGS[@]} -ne 0 ]] && GIT_INFO+=( "${(j::)FLAGS}" )
@@ -76,5 +69,5 @@ git_info() {
 # Use ❯ as the non-root prompt character; # for root
 # Change the prompt character color if the last command had a nonzero exit code
 #RPROMPT='%*'
-PROMPT='$(ssh_info)%{$fg[blue]%}%~%u $(git_info)
-%(?.%{$fg[magenta]%}.%{$fg[red]%})%(!.#.❯)%{$reset_color%} '
+PROMPT='$(ssh_info) %F{blue}%~%u%f $(git_info)
+%(?.%F{magenta}.%F{red})%(!.#.>)%f%F{white}%f '
