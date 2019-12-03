@@ -80,8 +80,9 @@ Plug 'jparise/vim-graphql'
 
 " typescript
 "" Typescript support
+"Plug 'leafgarland/typescript-vim'
 "Plug 'mhartington/nvim-typescript', {'do': './install.sh'}
-"Plug 'HerringtonDarkholme/yats.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 
 " Fish
 Plug 'Stautob/vim-fish'
