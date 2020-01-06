@@ -6,6 +6,11 @@ if [[ $OS_TYPE = "Linux" ]]; then
   # this has nothing to do with ls, but to avoid
   # another if/else :P
   alias fd="fdfind"
+  if [[ type "batcat" > /dev/null ]]; then
+    alias cat="batcat"
+  elif  [[ type "bat" > /dev/null ]]; then
+    alias cat="bat"
+  fi
 else
   lsflags="-GF"
   export CLICOLOR=1
@@ -20,7 +25,6 @@ alias la="ls -a"
 alias ll="ls -al"
 alias lr="ls -lR"
 alias lt="ls -ltr"
-alias cat="bat"
 
 # directories
 alias cp="cp -i"
