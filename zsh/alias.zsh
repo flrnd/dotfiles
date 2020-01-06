@@ -6,9 +6,9 @@ if [[ $OS_TYPE = "Linux" ]]; then
   # this has nothing to do with ls, but to avoid
   # another if/else :P
   alias fd="fdfind"
-  if [[ type "batcat" > /dev/null ]]; then
+  if (( $+commands[batcat] )); then
     alias cat="batcat"
-  elif  [[ type "bat" > /dev/null ]]; then
+  elif  (( $+commands[bat] )); then
     alias cat="bat"
   fi
 else
