@@ -41,7 +41,7 @@ media() {
       $MPLAYER $1
       ;;
   esac
-o}
+}
 
 encrypt() {
   if (( ! $+commands[gpg] )); then
