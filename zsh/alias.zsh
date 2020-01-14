@@ -2,7 +2,6 @@
 OS_TYPE=$(uname 2> /dev/null)
 if [[ $OS_TYPE = "Linux" ]]; then
   eval "$(dircolors -b)"
-  lsflags="--color --group-directories-first -Fh"
   # this has nothing to do with ls, but to avoid
   # another if/else :P
   alias fd="fdfind"
@@ -21,8 +20,10 @@ alias vi="nvim"
 
 # ls
 if (( $+commands[exa] )); then
+  lsflags="--git"
   LS_COMMAND="exa"
 else
+  lsflags="--color --group-directories-first -Fh"
   LS_COMMAND="ls"
 fi
 
