@@ -2,7 +2,6 @@
 
 # load custom config
 . ~/.zsh/alias.zsh
-. ~/.zsh/completion/completion.zsh
 . ~/.zsh/directory.zsh
 . ~/.zsh/functions.zsh
 . ~/.zsh/git/git.zsh
@@ -17,3 +16,7 @@
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh
+
+# completions
+fpath=(~/.zsh/completion $fpath)
+autoload -U compinit && compinit
