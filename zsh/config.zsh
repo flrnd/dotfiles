@@ -15,5 +15,9 @@
 . $HOME/.asdf/asdf.sh
 . $HOME/.asdf/completions/asdf.bash
 
+# broot
+. ~/.config/broot/launcher/bash/br
+
 # prompt
 . ~/.zsh/prompt/prompt.zsh
+
