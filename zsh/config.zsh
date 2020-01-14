@@ -1,5 +1,8 @@
 #fpath=(~/.zsh $fpath)
 
+# asdf-vm
+. $HOME/.asdf/asdf.sh
+
 # load custom config
 . ~/.zsh/alias.zsh
 . ~/.zsh/completion.zsh
@@ -10,10 +13,6 @@
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# asdf-vm
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
 
 # broot
 . ~/.config/broot/launcher/bash/br
