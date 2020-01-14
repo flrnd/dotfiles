@@ -14,8 +14,8 @@ if [[ "$TERM" == 'dumb' ]]; then
 fi
 
 # Add zsh-completions to $fpath.
-fpath=("${0:h}/external/src" $fpath)
-fpath=("${0:h}/other" $fpath)
+fpath=("~/.zsh/completion/external/src" $fpath)
+fpath=("~/.zsh/completion/other" $fpath)
 
 #
 # Options
