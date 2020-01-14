@@ -20,11 +20,17 @@ fi
 alias vi="nvim"
 
 # ls
-alias ls="ls ${lsflags}"
-alias la="ls -a"
-alias ll="ls -al"
-alias lr="ls -lR"
-alias lt="ls -ltr"
+if (( $+commands[exa] )); then
+  LS_COMMAND="exa"
+else
+  LS_COMMAND="ls"
+fi
+
+alias ls="$LS_COMMAND ${lsflags}"
+alias la="$LS_COMMAND -a"
+alias ll="$LS_COMMAND -al"
+alias lr="$LS_COMMAND -lR"
+
 
 # directories
 alias cp="cp -i"
