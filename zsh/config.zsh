@@ -17,6 +17,9 @@
 # broot
 . ~/.config/broot/launcher/bash/br
 
+# forgit
+. ~/.zsh/plugins/forgit.plugin.zsh
+
 # prompt
 . ~/.zsh/prompt/prompt.zsh
 
