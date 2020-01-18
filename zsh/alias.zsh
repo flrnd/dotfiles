@@ -23,7 +23,7 @@ if (( $+commands[exa] )); then
   lsflags="--git"
   LS_COMMAND="exa"
 else
-  lsflags="--color --group-directories-first -Fh"
+  lsflags="-Fh"
   LS_COMMAND="ls"
 fi
 
