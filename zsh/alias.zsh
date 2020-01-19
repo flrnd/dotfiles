@@ -42,4 +42,4 @@ alias mkdir="mkdir -p"
 alias less="less -R"
 
 # git
-
+alias gc="git commit -m"
