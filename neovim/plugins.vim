@@ -66,6 +66,9 @@ Plug 'othree/yajs.vim', {'for': 'javascript'}
 "Plug 'posva/vim-vue', {'for': 'vue'}
 Plug 'MaxMEllon/vim-jsx-pretty'
 
+" styled-components
+Plug 'styled-components/vim-styled-components', { 'branch': 'main'  }
+
 " Ruby
 Plug 'vim-ruby/vim-ruby'
 

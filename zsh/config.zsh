@@ -1,8 +1,5 @@
 #fpath=(~/.zsh $fpath)
 
-# asdf-vm
-. $HOME/.asdf/asdf.sh
-
 # load custom config
 . ~/.zsh/alias.zsh
 . ~/.zsh/completion.zsh

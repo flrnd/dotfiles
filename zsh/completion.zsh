@@ -164,5 +164,5 @@ zstyle ':completion:*:(ssh|scp|rsync):*:hosts-ipaddr' ignored-patterns '^(<->.<-
 
 # asdf completion.
 # Need to load after to avoid error.
-. $HOME/.asdf/completions/asdf.bash
+#. $HOME/.asdf/completions/asdf.bash
 

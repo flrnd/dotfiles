@@ -2,10 +2,12 @@
 OS_TYPE=$(uname 2> /dev/null)
 if [[ $OS_TYPE = "Linux" ]]; then
   eval "$(dircolors -b)"
-  # this has nothing to do with ls, but to avoid
-  # another if/else :P
-  alias fd="fdfind"
-  if (( $+commands[batcat] )); then
+
+ if (( $+commands[fdfind] )); then
+    alias fd="fdfind"
+ fi
+
+ if (( $+commands[batcat] )); then
     alias cat="batcat"
   elif  (( $+commands[bat] )); then
     alias cat="bat"
