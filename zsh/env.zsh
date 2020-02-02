@@ -5,6 +5,7 @@ EDITOR=nvim
 fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 
 export FZF_DEFAULT_COMMAND="fdfind --type f --hidden --follow --exclude .git --exclude node_modules"
+export PATH="/usr/local/sbin:$PATH"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -25,18 +26,14 @@ if [ -d "$HOME/go" ]; then
   PATH="$HOME/go/bin:$PATH"
 fi
 
+# ruby rbenv
 if [ -d "$HOME/.rbenv" ]; then
   PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 
-# fnm
-if [ -d "$HOME/.fnm" ]; then
-  PATH=/home/flrn/.fnm:$PATH
-  eval "`fnm env --multi`"
-fi
-
+# rust cargo
 if [ -d $HOME/.cargo ] ; then
-  PATH="$HOME/.cargo/bin:$PATH"
+  . $HOME/.cargo/env
 fi
 

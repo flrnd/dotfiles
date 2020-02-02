@@ -73,7 +73,13 @@ set termguicolors
 syntax on
 
 set background=dark
-colorscheme plastic
+
+let g:candid_color_store = {
+    \ "black": {"gui": "#232629", "cterm256": "0"},
+    \ "white": {"gui": "#f4f4f4", "cterm256": "255"},
+    \}
+
+colorscheme candid
 
 "*****************************************************************************
 "" Mappings
@@ -198,7 +204,7 @@ let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-json', 'coc-so
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'plastic',
+      \ 'colorscheme': 'candid',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified' ] ]
