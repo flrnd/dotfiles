@@ -9,9 +9,9 @@ if [[ $OS_TYPE = "Linux" ]]; then
 
  if (( $+commands[batcat] )); then
     alias cat="batcat"
-  elif  (( $+commands[bat] )); then
+ elif  (( $+commands[bat] )); then
     alias cat="bat"
-  fi
+ fi
 else
   lsflags="-GF"
   export CLICOLOR=1
