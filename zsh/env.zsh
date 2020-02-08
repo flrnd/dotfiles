@@ -26,12 +26,6 @@ if [ -d "$HOME/go" ]; then
   PATH="$HOME/go/bin:$PATH"
 fi
 
-# ruby rbenv
-if [ -d "$HOME/.rbenv" ]; then
-  PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
 # rust cargo
 if [ -d $HOME/.cargo ] ; then
   . $HOME/.cargo/env

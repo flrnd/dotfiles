@@ -29,6 +29,11 @@ if [ -d "$HOME/.fnm" ]; then
   eval "`fnm env --multi`"
 fi
 
+# ruby rbenv
+if [ -d "$HOME/.rbenv" ]; then
+  PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh
