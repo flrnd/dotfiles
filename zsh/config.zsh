@@ -12,7 +12,7 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # broot
-. ~/.config/broot/launcher/bash/br
+#. ~/.config/broot/launcher/bash/br
 
 # forgit
 . ~/.zsh/plugins/forgit.plugin.zsh
