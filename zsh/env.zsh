@@ -27,7 +27,7 @@ if [ -d "$HOME/go" ]; then
 fi
 
 # rust cargo
-if [ -d $HOME/.cargo ] ; then
-  . $HOME/.cargo/env
+if [ -f "$HOME/.cargo/env" ] ; then
+	. $HOME/.cargo/env
 fi
 
