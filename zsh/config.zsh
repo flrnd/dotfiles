@@ -12,10 +12,28 @@
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # broot
-. ~/.config/broot/launcher/bash/br
+#. ~/.config/broot/launcher/bash/br
 
 # forgit
 . ~/.zsh/plugins/forgit.plugin.zsh
+
+# asdf version manager
+if [ -d "$HOME/.asdf" ] ; then
+  . $HOME/.asdf/asdf.sh
+  . $HOME/.asdf/completions/asdf.bash
+fi
+
+# fnm
+if [ -d "$HOME/.fnm" ]; then
+  PATH=/home/flrn/.fnm:$PATH
+  eval "`fnm env --multi`"
+fi
+
+# ruby rbenv
+if [ -d "$HOME/.rbenv" ]; then
+  PATH="$HOME/.rbenv/bin:$PATH"
+  eval "$(rbenv init -)"
+fi
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh

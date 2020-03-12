@@ -9,9 +9,9 @@ if [[ $OS_TYPE = "Linux" ]]; then
 
  if (( $+commands[batcat] )); then
     alias cat="batcat"
-  elif  (( $+commands[bat] )); then
+ elif  (( $+commands[bat] )); then
     alias cat="bat"
-  fi
+ fi
 else
   lsflags="-GF"
   export CLICOLOR=1
@@ -25,7 +25,7 @@ if (( $+commands[exa] )); then
   lsflags="--git"
   LS_COMMAND="exa"
 else
-  lsflags="-Fh"
+  lsflags="-Fh --color=auto"
   LS_COMMAND="ls"
 fi
 
@@ -38,7 +38,6 @@ alias lr="$LS_COMMAND -lR"
 # directories
 alias cp="cp -i"
 alias mv="mv -i"
-alias rm="rm -iv"
 alias rmf="rm -ivrf"
 alias mkdir="mkdir -p"
 alias less="less -R"
