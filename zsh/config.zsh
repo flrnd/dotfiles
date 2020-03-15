@@ -25,7 +25,7 @@ fi
 
 # fnm
 if [ -d "$HOME/.fnm" ]; then
-  PATH=/home/flrn/.fnm:$PATH
+  PATH=$HOME/.fnm:$PATH
   eval "`fnm env --multi`"
 fi
 
