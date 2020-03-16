@@ -18,11 +18,13 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set PATH for go binaries
-if [ -d "$HOME/.local/go" ] ; then
-  PATH="$HOME/.local/go/bin:$PATH"
+if [ -d "/usr/local/go" ]; then
+  PATH="/usr/local/go/bin:$PATH"
+  GOROOT="/usr/local/go"
+  GOPATH="$HOME/go"
 fi
 
-if [ -d "$HOME/go" ]; then
+if [ -d "$HOME/go" ] ; then
   PATH="$HOME/go/bin:$PATH"
 fi
 
