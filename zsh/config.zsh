@@ -11,8 +11,10 @@
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# broot
-#. ~/.config/broot/launcher/bash/br
+# tilix
+if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
+  source /etc/profile.d/vte.sh
+fi
 
 # forgit
 . ~/.zsh/plugins/forgit.plugin.zsh
