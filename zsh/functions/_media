@@ -1,4 +1,4 @@
-media() {
+_media() {  
   autoload -U colors && colors # Enable colors
   # default media player
   MPLAYER=mpv
@@ -6,11 +6,11 @@ media() {
   DRC="acompressor=ratio=4,loudnorm"
   NM="[pan='stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE']"
   NMDRC="[pan='stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE',loudnorm]"
-
+ 
   if (( ! $+commands[$MPLAYER] )); then
     return 1
   fi
-
+ 
   case "$1" in
     drc)
       $MPLAYER --af=$DRC $2
@@ -43,17 +43,3 @@ media() {
   esac
 }
 
-encrypt() {
-  if (( ! $+commands[gpg] )); then
-    return 1
-  fi
-
-  gpg --symmetric \
-  --cipher-algo aes256 \
-  --digest-algo sha256 \
-  --cert-digest-algo sha256 \
-  --compress-algo none \
-  -z 0 --s2k-mode 3 --s2k-digest-algo sha256 \
-  --s2k-count 65011712 \
-  --force-mdc --quiet --no-greeting $1
-}

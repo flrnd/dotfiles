@@ -4,7 +4,6 @@
 . ~/.zsh/alias.zsh
 . ~/.zsh/completion.zsh
 . ~/.zsh/directory.zsh
-. ~/.zsh/functions.zsh
 . ~/.zsh/git/git.zsh
 . ~/.zsh/history.zsh
 
