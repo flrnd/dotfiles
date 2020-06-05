@@ -75,7 +75,7 @@ syntax on
 set background=dark
 
 let g:candid_color_store = {
-    \ "black": {"gui": "#2d2d2d", "cterm256": "0"},
+    \ "black": {"gui": "#1e1e1e", "cterm256": "0"},
     \ "white": {"gui": "#f4f4f4", "cterm256": "255"},
     \}
 
