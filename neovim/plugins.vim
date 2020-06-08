@@ -38,8 +38,8 @@ Plug 'Shougo/denite.nvim'
 
 " Color scheme
 "Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'flrnprz/plastic.vim', { 'as': 'plastic' }
-Plug 'flrnprz/candid.vim', { 'as': 'candid' }
+Plug 'flrnd/candid.vim', { 'as': 'candid' }
+Plug 'flrnd/plastic.vim', { 'as': 'plastic' }
 "Plug 'joshdick/onedark.vim'
 
 " go
