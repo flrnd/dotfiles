@@ -1,11 +1,10 @@
-#fpath=(~/.zsh $fpath)
-
 # load custom config
 . ~/.zsh/alias.zsh
 . ~/.zsh/completion.zsh
 . ~/.zsh/directory.zsh
 . ~/.zsh/git/git.zsh
 . ~/.zsh/history.zsh
+. ~/.zsh/functions.zsh
 
 # fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
