@@ -22,7 +22,8 @@ Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-surround'
-" Plug 'w0rp/ale'
+Plug 'vim-syntastic/syntastic'
+Plug 'majutsushi/tagbar'
 Plug 'itchyny/lightline.vim'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'Yggdroot/indentLine'
@@ -48,7 +49,11 @@ Plug 'fatih/vim-go'
 Plug 'tweekmonster/hl-goimport.vim'
 Plug 'buoto/gotests-vim'
 
-"" HTML / CSS / XML Bundle
+" Rust
+"" Rust lang
+Plug 'rust-lang/rust.vim'
+
+" HTML / CSS / XML Bundle
 Plug 'tpope/vim-haml', {'for': ['haml', 'sass', 'scss']}
 Plug 'mattn/emmet-vim'
 Plug 'alvan/vim-closetag'
@@ -88,7 +93,7 @@ Plug 'jparise/vim-graphql'
 Plug 'HerringtonDarkholme/yats.vim'
 
 " Fish
-Plug 'Stautob/vim-fish'
+" Plug 'Stautob/vim-fish'
 
 call plug#end()
 "}}}
