@@ -1,30 +1,32 @@
 {
   "suggest.maxCompleteItemCount": 40,
   "suggest.enablePreview": true,
-  "coc.preferences.formatOnSaveFiletypes": ["javascript", "typescript", "typescriptreact", "json", "javascriptreact", "haskell", "go", "elm", "ruby"],
-  "eslint.filetypes": ["javascript", "typescript", "typescriptreact", "javascriptreact"],
+  "coc.preferences.formatOnSaveFiletypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "javascriptreact",
+    "haskell",
+    "go",
+    "elm",
+    "ruby",
+    "rust",
+    "kotlin"
+  ],
+  "eslint.filetypes": [
+    "javascript",
+    "typescript",
+    "typescriptreact",
+    "javascriptreact"
+  ],
   "diagnostic.errorSign": "‣",
   "diagnostic.warningSign": "•",
   "diagnostic.infoSign": "i",
-  "diagnostic.displayByAle": false,
   "diagnostic.virtualText": false,
-  "diagnostic.messageTarget": "float",
   "solargraph.diagnostics": true,
   "solargraph.formatting": true,
   "languageserver": {
-    "haskell": {
-      "command": "hie-wrapper",
-      "rootPatterns": [".stack.yaml", "cabal.config", "package.yaml"],
-      "filetypes": ["hs", "lhs", "haskell"],
-      "initializationOptions": {},
-      "settings": {
-	      "languageServerHaskell": {
-		      "hlintOn": true,
-		      "maxNumberOfProblems": 10,
-		      "completionSnippetsOn": true
-	      }
-     }
-  },
     "golang": {
       "command": "gopls",
       "rootPatterns": ["go.mod", ".vim/", ".git/", ".hg/"],
