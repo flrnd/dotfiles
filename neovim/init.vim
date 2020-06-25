@@ -159,48 +159,9 @@ cnoreabbrev Qall qall
 "" Plugins Setup
 "*****************************************************************************"
 
-" Ale
-" let g:ale_sign_error = '✖'
-" let g:ale_sign_warning = '>'
-" let g:ale_completion_enabled = 1
-" let g:ale_linters_explicit = 1
-" let g:ale_lint_on_insert_leave = 1
-" let g:ale_fix_on_save = 1
-" let g:ale_warn_about_trailing_whitespace = 1
-" let g:ale_lint_delay = 100
-" let g:ale_lint_on_text_changed = 'normal'
-" let g:ale_set_loclist = 1
-" let g:ale_open_list = 0
-"
-" let g:ale_linters = {
-"       \ 'ansible': ['ansible-lint'],
-"       \ 'html': ['htmlhint'],
-"       \ 'haskell': ['hie'],
-"       \ 'css': ['csslint'],
-"       \ 'javascript': ['eslint'],
-"       \ 'typescript': ['tsserver'],
-"       \ 'python': ['flake8'],
-"       \ 'ruby': ['rubocop', 'ruby'],
-"       \ 'go': ['golint'],
-"       \ 'vue': ['eslint'],
-"       \ '*': ['trim_whitespace',
-"       \ 'remove_trailing_lines']
-"       \}
-"let g:ale_fixers = {
-"      \ 'html': ['prettier'],
-"      \ 'css': ['prettier'],
-"      \ 'go': ['gofmt'],
-"      \ 'javascript': ['eslint', 'prettier'],
-"      \ 'typescript': ['tsserver', 'prettier'],
-"      \ 'markdown': ['prettier'],
-"      \ 'python': ['black'],
-"      \ 'ruby': ['rubocop'],
-"      \ '*': ['trim_whitespace', 'remove_trailing_lines']
-"      \}
-
 autocmd QuitPre * if empty(&bt) | lclose | endif
 
-let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-json', 'coc-solargraph']
+let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-json', 'coc-solargraph', 'coc-rls']
 
 " Lightline
 let g:lightline = {
@@ -220,6 +181,16 @@ let g:indentLine_faster = 1
 if exists("*fugitive#statusline")
   set statusline+=%{fugitive#statusline()}
 endif
+
+"set statusline+=%#warningmsg#
+"set statusline+=%{SyntasticStatuslineFlag()}
+"set statusline+=%*
+
+"let g:syntastic_always_populate_loc_list = 1
+"let g:syntastic_auto_loc_list = 1
+"let g:syntastic_check_on_open = 1
+"let g:syntastic_check_on_wq = 0
+"let g:syntastic_javascript_checkers = ['eslint']
 
 " Wrap in try/catch to avoid errors on initial install before plugin is available
 try
