@@ -41,7 +41,6 @@ Plug 'Shougo/denite.nvim'
 "Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'flrnd/candid.vim', { 'as': 'candid' }
 Plug 'flrnd/plastic.vim', { 'as': 'plastic' }
-"Plug 'joshdick/onedark.vim'
 
 " go
 "" Go Lang Bundle
