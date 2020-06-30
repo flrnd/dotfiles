@@ -48,6 +48,11 @@ if [ -d "$HOME/.fnm" ]; then
   eval "`fnm env --multi`"
 fi
 
+# kotlin native
+if [ -d "$HOME/.local/kotlin" ]; then
+  PATH="$HOME/.local/kotlin/bin:$PATH"
+fi
+
 # ruby rbenv
 if [ -d "$HOME/.rbenv" ]; then
   PATH="$HOME/.rbenv/bin:$PATH"
