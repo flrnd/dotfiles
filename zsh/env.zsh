@@ -48,6 +48,10 @@ if [ -d "$HOME/.fnm" ]; then
   eval "`fnm env --multi`"
 fi
 
+if [ -d "$HOME/.npm-global" ]; then
+  PATH=$HOME/.npm-global/bin:$PATH
+fi
+
 # kotlin native
 if [ -d "$HOME/.local/kotlin" ]; then
   PATH="$HOME/.local/kotlin/bin:$PATH"
