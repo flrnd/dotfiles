@@ -38,9 +38,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'Shougo/denite.nvim'
 
 " Color scheme
-"Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'flrnd/candid.vim', { 'as': 'candid' }
-Plug 'flrnd/plastic.vim', { 'as': 'plastic' }
+Plug 'rakr/vim-one'
 
 " go
 "" Go Lang Bundle
