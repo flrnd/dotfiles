@@ -6,6 +6,3 @@
 	path = bash/bash-sensible
 	url = https://github.com/mrzool/bash-sensible
 
-[submodule "zsh/plugins/forgit"]
-	path = zsh/plugins/forgit
-	url = https://github.com/wfxr/forgit
