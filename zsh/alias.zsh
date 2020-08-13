@@ -33,7 +33,7 @@ alias ls="$LS_COMMAND ${lsflags}"
 alias la="$LS_COMMAND -a"
 alias ll="$LS_COMMAND -al"
 alias lr="$LS_COMMAND -lR"
-
+alias lt="du -sh * | sort -h"
 
 # directories
 alias cp="cp -i"
