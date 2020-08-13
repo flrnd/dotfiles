@@ -127,3 +127,5 @@ shopt -s cdable_vars
 # User specific aliases and functions
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.bash/prompt.bash ] && source ~/.bash/prompt.bash
+[ -f ~/.bash/plugins/forgit/forgit.plugin.zsh ] && source ~/.bash/plugins/forgit/forgit.plugin.zsh
