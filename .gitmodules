@@ -5,6 +5,4 @@
 [submodule "bash/bash-sensible"]
 	path = bash/bash-sensible
 	url = https://github.com/mrzool/bash-sensible
-[submodule "bash/plugins/forgit"]
-	path = bash/plugins/forgit
-	url = https://github.com/wfxr/forgit
+
