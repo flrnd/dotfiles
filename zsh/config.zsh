@@ -15,7 +15,7 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 # forgit
-. ~/.zsh/plugins/forgit.plugin.zsh
+. ~/.zsh/plugins/forgit/forgit.plugin.zsh
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh
