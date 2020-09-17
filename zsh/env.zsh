@@ -4,7 +4,7 @@ EDITOR=nvim
 
 fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 
-export FZF_DEFAULT_COMMAND="fdfind --type f --hidden --follow --exclude .git --exclude node_modules"
+export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
 export PATH="/usr/local/sbin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export BAT_THEME="ansi-light"
