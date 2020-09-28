@@ -72,14 +72,14 @@ set clipboard=unnamed
 set termguicolors
 syntax on
 
-set background=light
+set background=dark
 
-"let g:candid_color_store = {
-"    \ "black": {"gui": "#1e1e1e", "cterm256": "0"},
-"    \ "white": {"gui": "#f4f4f4", "cterm256": "255"},
-"    \}
+let g:candid_color_store = {
+    \ "black": {"gui": "#1e1e1e", "cterm256": "0"},
+    \ "white": {"gui": "#f4f4f4", "cterm256": "255"},
+    \}
 
-colorscheme one
+colorscheme candid
 
 "*****************************************************************************
 "" Mappings
@@ -165,7 +165,7 @@ let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-json', 'coc-so
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'one',
+      \ 'colorscheme': 'candid',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified' ] ]
