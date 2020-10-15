@@ -25,7 +25,7 @@ if (( $+commands[exa] )); then
   lsflags="--git"
   LS_COMMAND="exa"
 else
-  lsflags="-Fh --color=auto"
+  lsflags="-Fh"
   LS_COMMAND="ls"
 fi
 
