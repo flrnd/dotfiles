@@ -8,6 +8,7 @@ fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
 export PATH="/usr/local/sbin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export HOMEBREW_NO_ANALYTIiCS=1 # MAC Homebrew
 export BAT_THEME="ansi-light"
 
 # set PATH so it includes user's private bin if it exists
