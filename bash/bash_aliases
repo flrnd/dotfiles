@@ -20,14 +20,9 @@ fi
 # editor
 alias vi="nvim"
 
-# ls
-if (( $+commands[exa] )); then
-  lsflags="--git"
-  LS_COMMAND="exa"
-else
-  lsflags="-Fh --color=auto"
-  LS_COMMAND="ls"
-fi
+lsflags="-Fh --color=auto"
+LS_COMMAND="ls"
+
 
 alias ls="$LS_COMMAND ${lsflags}"
 alias la="$LS_COMMAND -a"
