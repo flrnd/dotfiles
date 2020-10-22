@@ -2,7 +2,7 @@
 OS_TYPE=$(uname 2> /dev/null)
 if [[ $OS_TYPE = "Linux" ]]; then
   eval "$(dircolors -b)"
-
+  lsflags="-GFh --color=auto"
  if (( $+commands[fdfind] )); then
     alias fd="fdfind"
  fi
@@ -20,14 +20,8 @@ fi
 # editor
 alias vi="nvim"
 
-# ls
-if (( $+commands[exa] )); then
-  lsflags="--git"
-  LS_COMMAND="exa"
-else
-  lsflags="-Fh"
-  LS_COMMAND="ls"
-fi
+# LS
+LS_COMMAND="ls"
 
 alias ls="$LS_COMMAND ${lsflags}"
 alias la="$LS_COMMAND -a"
