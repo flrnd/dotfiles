@@ -21,7 +21,13 @@ fi
 alias vi="nvim"
 
 # LS
-LS_COMMAND="ls"
+
+if (( $+commands[exa] )); then
+  lsflags="--git -F"
+  LS_COMMAND="exa"
+else
+  LS_COMMAND="ls"
+fi
 
 alias ls="$LS_COMMAND ${lsflags}"
 alias la="$LS_COMMAND -a"
