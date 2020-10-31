@@ -48,7 +48,7 @@ fi
 # fnm
 if [ -d "$HOME/.fnm" ]; then
   PATH=$HOME/.fnm:$PATH
-  eval "$(fnm env)"
+  eval "`fnm env`"
 fi
 
 # android sdk
