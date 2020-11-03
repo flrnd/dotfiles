@@ -70,3 +70,8 @@ if [ -d "$HOME/.rbenv" ]; then
   PATH="$HOME/.rbenv/bin:$PATH"
   eval "$(rbenv init -)"
 fi
+
+# flutter
+if [ -d "$HOME/.local/flutter" ]; then
+  PATH="$HOME/.local/flutter/bin:$PATH"
+fi
