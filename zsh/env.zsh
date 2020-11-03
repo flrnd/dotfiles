@@ -51,9 +51,13 @@ if [ -d "$HOME/.fnm" ]; then
   eval "`fnm env`"
 fi
 
-# android sdk
-if [ -d "$HOME/.local/android/SDK" ]; then
-  export ANDROID_SDK_ROOT="$HOME/.local/android/SDK"
+# android studio & sdk
+if [ -d "$HOME/Android/Sdk" ]; then
+  export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+fi
+
+if [ -d "$HOME/.local/android-studio" ]; then
+  PATH="$HOME/.local/android-studio/bin:$PATH"
 fi
 
 if [ -d "$HOME/.npm-global" ]; then
