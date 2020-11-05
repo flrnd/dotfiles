@@ -52,11 +52,12 @@ if [ -d "$HOME/.fnm" ]; then
 fi
 
 # android studio & sdk
-if [ -d "$HOME/Android/Sdk" ]; then
-  export ANDROID_SDK_ROOT="$HOME/Android/Sdk"
+if [ -d "$HOME/.local/android/SDK" ]; then
+  export ANDROID_SDK_ROOT="$HOME/.local/android/SDK"
 fi
 
 if [ -d "$HOME/.local/android-studio" ]; then
+  export JAVA_HOME="$HOME/.local/android-studio/jre"
   PATH="$HOME/.local/android-studio/bin:$PATH"
 fi
 
