@@ -9,7 +9,7 @@ export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclu
 export PATH="/usr/local/sbin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export HOMEBREW_NO_ANALYTIiCS=1 # MAC Homebrew
-export BAT_THEME="ansi-light"
+export BAT_THEME="Sublime Snazzy"
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -53,12 +53,13 @@ fi
 
 # android studio & sdk
 if [ -d "$HOME/.local/android/SDK" ]; then
-  export ANDROID_SDK_ROOT="$HOME/.local/android/SDK"
+  export ANDROID_HOME="$HOME/Development/SDK/android"
+  export ANDROID_SDK_ROOT="$HOME/Development/SDK/android"
 fi
 
 if [ -d "$HOME/.local/android-studio" ]; then
-  export JAVA_HOME="$HOME/.local/android-studio/jre"
-  PATH="$HOME/.local/android-studio/bin:$PATH"
+  export JAVA_HOME="$HOME/Development/android-studio/jre"
+  PATH="$HOME/Development/android-studio/bin:$PATH"
 fi
 
 if [ -d "$HOME/.npm-global" ]; then
@@ -78,5 +79,5 @@ fi
 
 # flutter
 if [ -d "$HOME/.local/flutter" ]; then
-  PATH="$HOME/.local/flutter/bin:$PATH"
+  PATH="$HOME/Development/SDK/flutter/bin:$PATH"
 fi
