@@ -78,6 +78,6 @@ if [ -d "$HOME/.rbenv" ]; then
 fi
 
 # flutter
-if [ -d "$HOME/.local/flutter" ]; then
+if [ -d "$HOME/Development/SDK/flutter" ]; then
   PATH="$HOME/Development/SDK/flutter/bin:$PATH"
 fi
