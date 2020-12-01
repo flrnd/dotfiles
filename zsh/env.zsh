@@ -6,7 +6,7 @@ EDITOR=nvim
 fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
-export PATH="/usr/local/sbin:$PATH"
+export PATH="/usr/local/bin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export HOMEBREW_NO_ANALYTIiCS=1 # MAC Homebrew
 export BAT_THEME="Sublime Snazzy"
@@ -69,12 +69,6 @@ fi
 # kotlin native
 if [ -d "$HOME/.local/kotlin" ]; then
   PATH="$HOME/.local/kotlin/bin:$PATH"
-fi
-
-# ruby rbenv
-if [ -d "$HOME/.rbenv" ]; then
-  PATH="$HOME/.rbenv/bin:$PATH"
-  eval "$(rbenv init -)"
 fi
 
 # flutter
