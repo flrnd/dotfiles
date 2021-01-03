@@ -42,5 +42,10 @@ alias rmf="rm -ivrf"
 alias mkdir="mkdir -p"
 alias less="less -R"
 alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
+
 # git
 alias gc="git commit -m"
+
+# other
+alias 7zc="7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on"
+alias composer="php ~/.local/bin/composer.phar"
