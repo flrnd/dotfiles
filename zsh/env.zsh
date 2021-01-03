@@ -52,12 +52,12 @@ if [ -d "$HOME/.fnm" ]; then
 fi
 
 # android studio & sdk
-if [ -d "$HOME/.local/android/SDK" ]; then
+if [ -d "$HOME/Development/SDK/android" ]; then
   export ANDROID_HOME="$HOME/Development/SDK/android"
   export ANDROID_SDK_ROOT="$HOME/Development/SDK/android"
 fi
 
-if [ -d "$HOME/.local/android-studio" ]; then
+if [ -d "$HOME/Development/android-studio" ]; then
   export JAVA_HOME="$HOME/Development/android-studio/jre"
   PATH="$HOME/Development/android-studio/bin:$PATH"
 fi
@@ -78,6 +78,6 @@ if [ -d "$HOME/.rbenv" ]; then
 fi
 
 # flutter
-if [ -d "$HOME/.local/flutter" ]; then
+if [ -d "$HOME/Development/SDK/flutter" ]; then
   PATH="$HOME/Development/SDK/flutter/bin:$PATH"
 fi
