@@ -1,0 +1,17 @@
+.backup_file_list
+.local
+.ssh
+.gnupg
+.pki
+gitconfig
+.npmrc
+.profile
+.dotfiles
+.zsh
+.zplug
+.zprofile
+.zsh_aliases
+.zshenv
+.zshrc
+Documents
+Pictures
