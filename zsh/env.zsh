@@ -74,4 +74,5 @@ fi
 # flutter
 if [ -d "$HOME/Development/SDK/flutter" ]; then
   PATH="$HOME/Development/SDK/flutter/bin:$PATH"
+  PATH="$HOME/Development/SDK/flutter/bin/cache/dart-sdk/bin:$PATH"
 fi
