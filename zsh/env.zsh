@@ -11,6 +11,20 @@ export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export HOMEBREW_NO_ANALYTIiCS=1 # MAC Homebrew
 export BAT_THEME="Sublime Snazzy"
 
+
+## Default local development path
+# ~/Development             - Global
+# ~/Development/SDK         - SDK location
+# ~/Development/Projects    - Source file and current src
+DEVELOPMENT="$HOME/Development"
+DEVELOPMENT_SDK="$DEVELOPMENT/SDK"
+DEVELOPMENT_PROJECTS="$DEVELOPMENT/Projects"
+
+if [ ! -d "$DEVELOPMENT"  ]; then
+  mkdir -p "$DEVELOPMENT_SDK"
+  mkdir -p "$DEVELOPMENT_PROJECTS"
+fi
+
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
@@ -52,15 +66,15 @@ if [ -d "$HOME/.fnm" ]; then
 fi
 
 # android studio & sdk
-if [ -d "$HOME/Development/SDK/android" ]; then
-  export ANDROID_HOME="$HOME/Development/SDK/android"
-  export ANDROID_SDK_ROOT="$HOME/Development/SDK/android"
+if [ -d "$DEVELOPMENT_SDK/android" ]; then
+  export ANDROID_HOME="$DEVELOPMENT_SDK/android"
+  export ANDROID_SDK_ROOT="$DEVELOPMENT_SDK/android"
 fi
 
-if [ -d "$HOME/Development/android-studio" ]; then
-  export JAVA_HOME="$HOME/Development/android-studio/jre"
-  PATH="$HOME/Development/android-studio/bin:$PATH"
-  PATH="$HOME/Development/android-studio/jre/bin:$PATH"
+if [ -d "$DEVELOPMENT/android-studio" ]; then
+  export JAVA_HOME="$DEVELOPMENT/android-studio/jre"
+  PATH="$DEVELOPMENT/android-studio/bin:$PATH"
+  PATH="$DEVELOPMENT/android-studio/jre/bin:$PATH"
 fi
 
 if [ -d "$HOME/.npm-global" ]; then
@@ -73,7 +87,7 @@ if [ -d "$HOME/.local/kotlin" ]; then
 fi
 
 # flutter
-if [ -d "$HOME/Development/SDK/flutter" ]; then
-  PATH="$HOME/Development/SDK/flutter/bin:$PATH"
-  PATH="$HOME/Development/SDK/flutter/bin/cache/dart-sdk/bin:$PATH"
+if [ -d "$DEVELOPMENT_SDK/flutter" ]; then
+  PATH="$DEVELOPMENT_SDK/flutter/bin:$PATH"
+  PATH="$DEVELOPMENT_SDK/flutter/bin/cache/dart-sdk/bin:$PATH"
 fi
