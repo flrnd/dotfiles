@@ -60,6 +60,7 @@ fi
 if [ -d "$HOME/Development/android-studio" ]; then
   export JAVA_HOME="$HOME/Development/android-studio/jre"
   PATH="$HOME/Development/android-studio/bin:$PATH"
+  PATH="$HOME/Development/android-studio/jre/bin:$PATH"
 fi
 
 if [ -d "$HOME/.npm-global" ]; then
