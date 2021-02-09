@@ -6,6 +6,7 @@ EDITOR=nvim
 fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
+export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="/usr/local/bin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1
 export HOMEBREW_NO_ANALYTIiCS=1 # MAC Homebrew
