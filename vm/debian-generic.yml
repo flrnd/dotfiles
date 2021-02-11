@@ -1,0 +1,14 @@
+#code-config
+users:
+  - name: user
+    primary_group: user
+    groups: users, sudo
+    lock_passwd: false
+    ssh_authorized_keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKFy3xiiL8t0klCU5DuxxhH2As34RRcy6dlML0wmFIoo user@debian-kvm-image
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    shell: /bin/bash
+runcmd:
+  - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
+  - sed -i -e '$aAllowUsers user' /etc/ssh/sshd_config
+  - restart ssh
