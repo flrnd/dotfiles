@@ -1,4 +1,4 @@
-#code-config
+#cloud-config
 users:
   - name: user
     primary_group: user
