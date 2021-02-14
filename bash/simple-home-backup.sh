@@ -41,6 +41,7 @@ fi
 
 
 for dir in ${FILEDIR_LIST[@]}; do
-  rsync -avuP $HOME/$dir $DEST_PATH/$USER
+  # TODO: review rsync command. corrupt data
+  #rsync -avuP $HOME/$dir $DEST_PATH/$USER
 done
 echo "Backup sync done!"
