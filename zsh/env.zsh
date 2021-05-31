@@ -37,7 +37,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set PATH for go binaries
-if [ -d "/usr/local/go" ]; then
+if [ -d "/usr/local/go" ] ; then
   PATH="/usr/local/go/bin:$PATH"
   GOROOT="/usr/local/go"
   GOPATH="$HOME/go"
@@ -61,34 +61,38 @@ if [ -f "$HOME/.cargo/env" ] ; then
 fi
 
 # fnm
-if [ -d "$HOME/.fnm" ]; then
+if [ -d "$HOME/.fnm" ] ; then
   PATH=$HOME/.fnm:$PATH
   eval "`fnm env`"
 fi
 
 # android studio & sdk
-if [ -d "$DEVELOPMENT_SDK/android" ]; then
+if [ -d "$DEVELOPMENT_SDK/android" ] ; then
   export ANDROID_HOME="$DEVELOPMENT_SDK/android"
   export ANDROID_SDK_ROOT="$DEVELOPMENT_SDK/android"
 fi
 
-if [ -d "$DEVELOPMENT/android-studio" ]; then
+if [ -d "$DEVELOPMENT/android-studio" ] ; then
   export JAVA_HOME="$DEVELOPMENT/android-studio/jre"
   PATH="$DEVELOPMENT/android-studio/bin:$PATH"
   PATH="$DEVELOPMENT/android-studio/jre/bin:$PATH"
 fi
 
-if [ -d "$HOME/.npm-global" ]; then
+if [ -d "$HOME/.npm-global" ] ; then
   PATH=$HOME/.npm-global/bin:$PATH
 fi
 
 # kotlin native
-if [ -d "$HOME/.local/kotlin" ]; then
+if [ -d "$HOME/.local/kotlin" ] ; then
   PATH="$HOME/.local/kotlin/bin:$PATH"
 fi
 
 # flutter
-if [ -d "$DEVELOPMENT_SDK/flutter" ]; then
+if [ -d "$DEVELOPMENT_SDK/flutter" ] ; then
   PATH="$DEVELOPMENT_SDK/flutter/bin:$PATH"
   PATH="$DEVELOPMENT_SDK/flutter/bin/cache/dart-sdk/bin:$PATH"
+fi
+
+if [ -d "/opt/homebrew" ] ; then
+  eval $(/usr/local/bin/brew shellenv)
 fi
