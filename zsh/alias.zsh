@@ -41,7 +41,7 @@ alias mv="mv -i"
 alias rmf="rm -ivrf"
 alias mkdir="mkdir -p"
 alias less="less -R"
-alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
+#alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
 
 # git
 alias gc="git commit -m"
