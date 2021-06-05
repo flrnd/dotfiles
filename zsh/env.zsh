@@ -8,8 +8,8 @@ fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="/usr/local/bin:$PATH"
-export DOTNET_CLI_TELEMETRY_OPTOUT=1
-export HOMEBREW_NO_ANALYTIiCS=1 # MAC Homebrew
+export DOTNET_CLI_TELEMETRY_OPTOUT=1   # No dot.net telemetry
+export HOMEBREW_NO_ANALYTIiCS=1        # MAC Homebrew no telemetry
 export BAT_THEME="Sublime Snazzy"
 
 
@@ -47,19 +47,6 @@ if [ -d "$HOME/go" ] ; then
   PATH="$HOME/go/bin:$PATH"
 fi
 
-# asdf version manager
-if [ -d "$HOME/.asdf" ] ; then
-  . $HOME/.asdf/asdf.sh
-  . $HOME/.asdf/completions/asdf.bash
-fi
-
-
-# rust cargo
-if [ -f "$HOME/.cargo/env" ] ; then
-	. $HOME/.cargo/env
-  PATH="$HOME/.cargo/bin:$PATH"
-fi
-
 # fnm
 if [ -d "$HOME/.fnm" ] ; then
   PATH=$HOME/.fnm:$PATH
@@ -80,11 +67,6 @@ fi
 
 if [ -d "$HOME/.npm-global" ] ; then
   PATH=$HOME/.npm-global/bin:$PATH
-fi
-
-# kotlin native
-if [ -d "$HOME/.local/kotlin" ] ; then
-  PATH="$HOME/.local/kotlin/bin:$PATH"
 fi
 
 # flutter
