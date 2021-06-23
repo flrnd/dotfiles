@@ -57,12 +57,17 @@ fi
 if [ -d "$DEVELOPMENT_SDK/android" ] ; then
   export ANDROID_HOME="$DEVELOPMENT_SDK/android"
   export ANDROID_SDK_ROOT="$DEVELOPMENT_SDK/android"
+  # these are needed for react-native
+  export PATH=$PATH:$ANDROID_HOME/emulator
+  export PATH=$PATH:$ANDROID_HOME/tools
+  export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/platform-tools
 fi
 
-if [ -d "$DEVELOPMENT/android-studio" ] ; then
-  export JAVA_HOME="$DEVELOPMENT/android-studio/jre"
-  PATH="$DEVELOPMENT/android-studio/bin:$PATH"
-  PATH="$DEVELOPMENT/android-studio/jre/bin:$PATH"
+if [ -d "$DEVELOPMENT/IDE/android-studio" ] ; then
+  export JAVA_HOME="$DEVELOPMENT/IDE/android-studio/jre"
+  PATH="$DEVELOPMENT/IDE/android-studio/bin:$PATH"
+  PATH="$DEVELOPMENT/IDE/android-studio/jre/bin:$PATH"
 fi
 
 if [ -d "$HOME/.npm-global" ] ; then
