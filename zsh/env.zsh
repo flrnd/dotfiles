@@ -61,6 +61,7 @@ if [ -d "$DEVELOPMENT_SDK/android" ] ; then
   export PATH=$PATH:$ANDROID_HOME/emulator
   export PATH=$PATH:$ANDROID_HOME/tools
   export PATH=$PATH:$ANDROID_HOME/tools/bin
+  export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
   export PATH=$PATH:$ANDROID_HOME/platform-tools
 fi
 
@@ -82,4 +83,9 @@ fi
 
 if [ -d "/opt/homebrew" ] ; then
   eval $(/usr/local/bin/brew shellenv)
+fi
+
+# opam configuration
+if [ d "~/.opam" ] ; then
+  test -r /home/flrnd/.opam/opam-init/init.zsh && . /home/flrnd/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
