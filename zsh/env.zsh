@@ -86,6 +86,6 @@ if [ -d "/opt/homebrew" ] ; then
 fi
 
 # opam configuration
-if [ d "~/.opam" ] ; then
+if [ -d "$HOME/.opam" ] ; then
   test -r /home/flrnd/.opam/opam-init/init.zsh && . /home/flrnd/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
