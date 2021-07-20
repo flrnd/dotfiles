@@ -3,18 +3,19 @@ OS_TYPE=$(uname 2> /dev/null)
 if [[ $OS_TYPE = "Linux" ]]; then
   eval "$(dircolors -b)"
   lsflags="-GFh --color=auto"
+
+ # this is mostly for Debian and other distros
  if (( $+commands[fdfind] )); then
     alias fd="fdfind"
  fi
-
- if (( $+commands[batcat] )); then
-    alias cat="batcat"
- elif  (( $+commands[bat] )); then
-    alias cat="bat"
- fi
-else
+else 
   lsflags="-GF"
   export CLICOLOR=1
+fi
+
+# bat
+if  (( $+commands[bat] )); then
+    alias cat="bat"
 fi
 
 # editor
