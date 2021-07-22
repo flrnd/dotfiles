@@ -8,14 +8,20 @@ if [[ $OS_TYPE = "Linux" ]]; then
  if (( $+commands[fdfind] )); then
     alias fd="fdfind"
  fi
-else 
+else
   lsflags="-GF"
   export CLICOLOR=1
 fi
 
-# bat
+### bat
+# Mac and most Linux
 if  (( $+commands[bat] )); then
     alias cat="bat"
+fi
+
+# Ubuntu / Debian
+if (( $+commands[batcat] )); then
+  alias cat="batcat"
 fi
 
 # editor
