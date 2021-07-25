@@ -1,4 +1,4 @@
 function cat
-  bat $argv
+  batcat $argv
 end
 
