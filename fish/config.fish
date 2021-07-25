@@ -1,3 +1,4 @@
+set -gx SHELL /usr/bin/fish
 set -lx EDITOR nvim
 set -lx VISUAL $EDITOR
 set -lx GIT_EDITOR $EDITOR
@@ -9,8 +10,6 @@ set -lx BAT_THEME "OneHalfDark"
 abbr gcb "git checkout -b"
 abbr gc "git commit -m"
 abbr gp "git push"
-abbr gpoh "git push -u origin HEAD"
-abbr gs "git status -s"
 
 # home bin
 if test -e ~/bin
@@ -21,11 +20,6 @@ end
 if test -e /usr/local/go/
   set -lx GOPATH $HOME/go $GOPATH
   set PATH $GOPATH/bin $PATH
-end
-
-# Haskell stack and others
-if test -e ~/.local/bin
-  set PATH ~/.local/bin $PATH
 end
 
 # Yarn
