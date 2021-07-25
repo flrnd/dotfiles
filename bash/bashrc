@@ -128,4 +128,4 @@ shopt -s cdable_vars
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 [ -f ~/.bash/prompt.bash ] && source ~/.bash/prompt.bash
-[ -f ~/.bash/plugins/forgit/forgit.plugin.zsh ] && source ~/.bash/plugins/forgit/forgit.plugin.zsh
+[ -f ~/.forgit/forgit.plugin.sh ] && source ~/.forgit/forgit.plugin.sh
