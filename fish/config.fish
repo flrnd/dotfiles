@@ -8,7 +8,7 @@ set -lx BAT_THEME "OneHalfDark"
 # Abbreviations
 abbr ga "git add"
 abbr gcb "git checkout -b"
-abbr gm "git commit -m"
+abbr gc "git commit -m"
 abbr gp "git push"
 abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
@@ -38,5 +38,8 @@ end
 . ~/.config/fish/functions/prompt.fish
 
 #asdf-vm
-. ~/.asdf/asdf.fish
+if test -e ~/.asdf
+  . ~/.asdf/asdf.fish
+end
+
 

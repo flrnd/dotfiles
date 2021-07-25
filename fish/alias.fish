@@ -46,9 +46,8 @@ alias mpv-nm-drc 'mpv --af=lavfi=[pan="stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.3
 # Abbreviations
 abbr em "emacs"
 abbr nv "nvim"
-abbr ga "git add"
+abbr gc "git commit -m"
 abbr gcb "git checkout -b"
-abbr gm "git commit -m"
 abbr gp "git push"
 abbr gpoh "git push -u origin HEAD"
 abbr gs "git status -s"
