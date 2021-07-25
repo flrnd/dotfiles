@@ -1,7 +1,7 @@
 
 # Alias's to modified commands
 alias cp 'cp -i'
-alias cat 'bat'
+alias cat 'batcat'
 alias mv 'mv -i'
 alias rm 'rm -iv'
 alias rmf 'rm -ivrf'
