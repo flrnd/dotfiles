@@ -13,7 +13,12 @@ abbr gp "git push"
 
 # home bin
 if test -e ~/bin
-  set PATH ~/bin
+  set PATH ~/bin $PATH
+end
+
+# local home bin
+if test -e ~/.local/bin
+  set PATH ~/.local/bin $PATH
 end
 
 # golang
