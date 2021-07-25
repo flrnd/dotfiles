@@ -13,6 +13,8 @@ yellow=`tput setaf 3`
 cyan=`tput setaf 6`
 reset_color=`tput sgr0`
 
+arguments=${@: 2} # argument string minus name and mode
+
 if ! command -v $MPLAYER > /dev/null ; then
   echo "$MPLAYER not found."
   exit 1
@@ -20,16 +22,16 @@ fi
 
 case "$1" in
   drc)
-    $MPLAYER --af=$DRC $2
+    $MPLAYER --af=$DRC $arguments
     ;;
   nofilter)
     $MPLAYER $2
     ;;
   nm)
-    $MPLAYER --af=lavfi=$NM $2
+    $MPLAYER --af=lavfi=$NM $arguments
     ;;
   nmdrc)
-    $MPLAYER --af=lavfi=$NMDRC $2
+    $MPLAYER --af=lavfi=$NMDRC $arguments
     ;;
   help)
     echo -e "\n${green} media function options:"
