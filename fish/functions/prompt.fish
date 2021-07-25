@@ -36,7 +36,7 @@ function fish_prompt
     set prompt_symbol '#'
     set prompt_symbol_color red
   else
-    set prompt_symbol '❯'
+    set prompt_symbol '$'
     set prompt_symbol_color magenta
   end
 
