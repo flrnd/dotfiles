@@ -34,7 +34,7 @@ case "$1" in
     $MPLAYER --af=lavfi=$NMDRC $arguments
     ;;
   help)
-    echo -e "\n${green} media function options:"
+    echo -e "\n${green} media modes:"
     echo -e "${yellow} drc\t${reset_color} dynamic range compression."
     echo -e "${yellow} nm\t${reset_color} night mode filter."
     echo -e "${yellow} nmdrc\t${reset_color} night mode with dynamic range compression."
