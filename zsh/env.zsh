@@ -89,8 +89,3 @@ fi
 if [ -d "$HOME/.opam" ] ; then
   test -r /home/flrnd/.opam/opam-init/init.zsh && . /home/flrnd/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 fi
-
-# Rust
-if [ -d "$HOME/.cargo" ] ; then
-	. "$HOME/.cargo/env"
-fi
