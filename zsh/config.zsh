@@ -1,3 +1,6 @@
+autoload -Uz compinit
+compinit
+
 # load custom config
 . ~/.zsh/alias.zsh
 . ~/.zsh/git/git.zsh
