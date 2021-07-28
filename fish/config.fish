@@ -30,8 +30,14 @@ end
 
 # golang
 if test -e /usr/local/go/
-    set -gx GOPATH $HOME/go $GOPATH
-    set -gx PATH $GOPATH/bin $PATH
+  set -gx PATH /usr/local/go/bin $PATH
+  set -gx GOROOT /usr/local/go
+  set -gx GOPATH "$HOME/go"
+end
+
+# Local go
+if test -e "$HOME/go"
+  set -gx PATH "$HOME/go/bin" $PATH
 end
 
 # Yarn
