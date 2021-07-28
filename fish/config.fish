@@ -1,6 +1,8 @@
 switch (uname)
     case Linux
         set -gx SHELL /usr/bin/fish
+        alias fd fdfind
+        alias cat batcat
     case Darwin
         set -gx SHELL /usr/local/bin/fish
 end
@@ -42,5 +44,5 @@ if test -e ~/.cargo/bin
     set -gx PATH ~/.cargo/bin $PATH
 end
 
-#prompt
+# prompt
 . ~/.config/fish/functions/prompt.fish
