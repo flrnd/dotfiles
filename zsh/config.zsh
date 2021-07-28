@@ -1,11 +1,10 @@
-autoload -Uz compinit
-compinit
-
 # load custom config
-. ~/.zsh/alias.zsh
-. ~/.zsh/git/git.zsh
-. ~/.zsh/functions.zsh
-. ~/.zsh/history.zsh
+. ~/.zsh/alias.zsh       # aliases
+. ~/.zsh/git/git.zsh     # manage git aware prompt
+. ~/.zsh/functions.zsh   # utility functions
+. ~/.zsh/history.zsh     # sane history defaults
+. ~/.zsh/completion.zsh  # sane completion defaults
+. ~/.zsh/dir.zsh         # sane directory defaults
 
 # tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
@@ -18,3 +17,4 @@ fi
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh
+
