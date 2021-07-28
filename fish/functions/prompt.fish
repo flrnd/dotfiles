@@ -29,7 +29,7 @@ set __fish_git_prompt_char_upstream_behind '⇣'
 set __fish_git_prompt_char_upstream_equal ''
 
 # how many characters to show in the path when abbreviation dirs
-set fish_prompt_pwd_dir_length 0
+# set fish_prompt_pwd_dir_length 0
 
 function fish_prompt
   if test (id -u) -eq 0
