@@ -125,7 +125,7 @@ shopt -s cdable_vars
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-[ -f ~/.bash/prompt.bash ] && source ~/.bash/prompt.bash
-[ -f ~/.forgit/forgit.plugin.sh ] && source ~/.forgit/forgit.plugin.sh
+[ -f ~/.bash_aliases ] && . ~/.bash_aliases
+[ -f ~/.fzf.bash ] && . ~/.fzf.bash
+[ -f ~/.bash/prompt.bash ] && . ~/.bash/prompt.bash
+[ -f ~/.forgit/forgit.plugin.sh ] && . ~/.forgit/forgit.plugin.sh
