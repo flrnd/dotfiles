@@ -58,11 +58,11 @@ if [ -d "$DEVELOPMENT_SDK/android" ] ; then
   export ANDROID_HOME="$DEVELOPMENT_SDK/android"
   export ANDROID_SDK_ROOT="$DEVELOPMENT_SDK/android"
   # these are needed for react-native
-  export PATH=$PATH:$ANDROID_HOME/emulator
-  export PATH=$PATH:$ANDROID_HOME/tools
-  export PATH=$PATH:$ANDROID_HOME/tools/bin
-  export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin
-  export PATH=$PATH:$ANDROID_HOME/platform-tools
+  # export PATH="$PATH:$ANDROID_HOME/emulator"
+  # export PATH="$PATH:$ANDROID_HOME/tools"
+  # export PATH="$PATH:$ANDROID_HOME/tools/bin"
+  # export PATH="$PATH:$ANDROID_HOME/cmdline-tools/latest/bin"
+  # export PATH="$PATH:$ANDROID_HOME/platform-tools"
 fi
 
 if [ -d "$DEVELOPMENT/IDE/android-studio" ] ; then
@@ -71,8 +71,9 @@ if [ -d "$DEVELOPMENT/IDE/android-studio" ] ; then
   PATH="$DEVELOPMENT/IDE/android-studio/jre/bin:$PATH"
 fi
 
+# npm global path
 if [ -d "$HOME/.npm-global" ] ; then
-  PATH=$HOME/.npm-global/bin:$PATH
+PATH="$HOME/.npm-global/bin:$PATH"
 fi
 
 # flutter
@@ -81,13 +82,19 @@ if [ -d "$DEVELOPMENT_SDK/flutter" ] ; then
   PATH="$DEVELOPMENT_SDK/flutter/bin/cache/dart-sdk/bin:$PATH"
 fi
 
+# Mac homebrew
 if [ -d "/opt/homebrew" ] ; then
   eval $(/usr/local/bin/brew shellenv)
 fi
 
-# opam configuration
+# opam (ocaml)
 if [ -d "$HOME/.opam" ] ; then
   test -r /home/flrnd/.opam/opam-init/init.zsh && . /home/flrnd/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+fi
+
+# Zig
+if [ -d "$HOME/.zig" ] ; then
+  PATH="$HOME/.zig:$PATH"
 fi
 
 # rust
