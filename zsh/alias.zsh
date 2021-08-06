@@ -1,16 +1,20 @@
 # GNU and BSD (macOS) ls flags aren't compatible
-OS_TYPE=$(uname 2> /dev/null)
-if [[ $OS_TYPE = "Linux" ]]; then
-  eval "$(dircolors -b)"
-  lsflags="-GFh --color=auto"
 
- # this is mostly for Debian and other distros
- if (( $+commands[fdfind] )); then
-    alias fd="fdfind"
- fi
-else
-  lsflags="-GF"
-  export CLICOLOR=1
+case $OSTYPE in
+  linux*)
+    eval "$(dircolors -b)"
+    lsflags="-GFh --color=auto"
+   ;;
+  darwin*)
+    lsflags="-GF"
+    export CLICOLOR=1
+    ;;
+esac
+
+# fd / fdfind
+# this is mostly for Debian and other distros
+if (( $+commands[fdfind] )); then
+  alias fd="fdfind"
 fi
 
 ### bat
@@ -27,19 +31,15 @@ fi
 # editor
 alias vi="nvim"
 
-# LS
-
-if (( $+commands[exa] )); then
-  lsflags="--git -F"
-  LS_COMMAND="exa"
-else
-  LS_COMMAND="ls"
+# ncdu
+if (( $+commands[ncdu] )); then
+  alias ncdu="ncdu -x --color dark"
 fi
 
-alias ls="$LS_COMMAND ${lsflags}"
-alias la="$LS_COMMAND -a"
-alias ll="$LS_COMMAND -al"
-alias lr="$LS_COMMAND -lR"
+alias ls="ls ${lsflags}"
+alias la="ls -a"
+alias ll="ls -al"
+alias lr="ls -lR"
 alias lt="du -sh * | sort -h"
 
 # directories
