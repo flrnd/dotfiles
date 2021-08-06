@@ -15,15 +15,17 @@ if command -v fdfind &> /dev/null; then
   alias fd="fdfind"
 fi
 
-# bat
+# batcat - ubuntu/debian
 if command -v batcat &> /dev/null; then
   alias cat="batcat"
-  elif  command -v bat &> /dev/null; then
+fi
+
+if  command -v bat &> /dev/null; then
     alias cat="bat"
 fi
 
 # editor
-if command -v nvim &> /dev/null: then
+if command -v nvim &> /dev/null; then
   alias vi="nvim"
 fi
 
