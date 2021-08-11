@@ -3,7 +3,7 @@
 . ~/.zsh/git/git.zsh     # manage git aware prompt
 . ~/.zsh/functions.zsh   # utility functions
 . ~/.zsh/history.zsh     # sane history defaults
-. ~/.zsh/completion.zsh  # sane completion defaults
+. ~/.zsh/prezto_completion.zsh  # sane completion defaults from https://github.com/sorin-ionescu/prezto
 . ~/.zsh/dir.zsh         # sane directory defaults
 
 # tilix
