@@ -16,7 +16,7 @@ reset_color=`tput sgr0`
 arguments=${@: 2} # argument string minus name and mode
 
 if ! command -v $MPLAYER > /dev/null ; then
-  echo "$MPLAYER not found."
+  printf "%s not found.\n" "$MPLAYER"
   exit 1
 fi
 
@@ -34,17 +34,18 @@ case "$1" in
     $MPLAYER --af=lavfi=$NMDRC $arguments
     ;;
   help)
-    echo -e "\n${green} media modes:"
-    echo -e "${yellow} drc\t${reset_color} dynamic range compression."
-    echo -e "${yellow} nm\t${reset_color} night mode filter."
-    echo -e "${yellow} nmdrc\t${reset_color} night mode with dynamic range compression."
-    echo -e "${yellow} help\t${reset_color} print this screen."
-    echo -e "\nUsage: $0 ${cyan} drc ${reset_color} | ${cyan} nm ${reset_color} | ${cyan} nmdrc ${reset_color} <file>\n"
+    printf "\n%s media filters\n" "${green}"
+    printf "%s drc\t%s dynamic range compression.\n" "${yellow}" "${reset_color}"
+    printf "%s nm\t%s night mode filter.\n" "${yellow}" "${reset_color}"
+    printf "%s nmdrc\t%s night mode with dynamic range compression.\n" "${yellow}" "${reset_color}"
+    printf "\n%s Options\n" "${green}"
+    printf "%s help\t%s print this screen.\n" "${yellow}" "${reset_color}"
+    printf "\nUsage: $0 %s drc %s | %s nm %s | %s nmdrc %s <file> <parameters>\n" "${cyan}" "${reset_color}" "${cyan}" "${reset_color}" "${cyan}" "${reset_color}"
     exit 1
     ;;
   *)
     if [[ ! $1 ]]; then
-      echo -e "${red} * ${green}try:${reset_color} media ${yellow} help ${reset_color}"
+      printf "%s * %stry:%s media %shelp%s\n" "${red}" "${green}" "${reset_color}" "${yellow}" "${reset_color}"
       exit 1
     fi
     $MPLAYER $1
