@@ -7,7 +7,7 @@ fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
 
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
 export XDG_CONFIG_HOME="$HOME/.config"
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1   # No dot.net telemetry
 export HOMEBREW_NO_ANALYTIiCS=1        # MAC Homebrew no telemetry
 # export BAT_THEME="GitHub"
@@ -72,8 +72,13 @@ if [ -d "$DEVELOPMENT/IDE/android-studio" ] ; then
 fi
 
 # npm global path
-if [ -d "$HOME/.npm-global" ] ; then
-PATH="$HOME/.npm-global/bin:$PATH"
+if (( $+commands[npm])) ; then
+  if [ -d "$HOME/.npm-global" ] ; then
+    PATH="$HOME/.npm-global/bin:$PATH"
+  else
+    mkdir ~/.npm-global
+    npm config set prefix '~/.npm-global'
+  fi
 fi
 
 # flutter
