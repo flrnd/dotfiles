@@ -1,0 +1,13 @@
+# /etc/systemd/system/var-snap.mount
+[Unit]
+Description=bind mount snapd from /home/snap to /var/snap
+
+[Mount]
+What=/home/snap
+Where=/var/snap
+Type=none
+Options=bind
+
+[Install]
+WantedBy=multi-user.target
+RequiredBy=snapd.service
