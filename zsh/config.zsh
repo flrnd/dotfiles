@@ -6,6 +6,9 @@
 . ~/.zsh/prezto_completion.zsh  # sane completion defaults from https://github.com/sorin-ionescu/prezto
 . ~/.zsh/dir.zsh         # sane directory defaults
 
+# if Plasma use ksshask instead
+. ~/.zsh/helpers/sshadd.zsh
+
 # tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
   source /etc/profile.d/vte.sh
@@ -17,4 +20,3 @@ fi
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh
-
