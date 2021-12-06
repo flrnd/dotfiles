@@ -3,3 +3,8 @@ if [ ! -f ~/.bash/git/git-prompt.sh  ]; then
 fi
 
 . ~/.bash/git/git-prompt.sh
+export GIT_PS1_SHOWCOLORHINTS=true
+export GIT_PS1_SHOWDIRTYSTATE=true
+export GIT_PS1_SHOWUNTRACKEDFILES=true
+export GIT_PS1_SHOWUPSTREAM="auto"
+export PROMPT_COMMAND='__git_ps1 "\w" "\n\\\$ "'
