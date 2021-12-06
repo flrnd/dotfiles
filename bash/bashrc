@@ -128,4 +128,4 @@ shopt -s cdable_vars
 [ -f ~/.bash/aliases.bash ] && . ~/.bash/aliases.bash
 [ -f ~/.fzf.bash ] && . ~/.fzf.bash
 [ -f ~/.forgit/forgit.plugin.sh ] && . ~/.forgit/forgit.plugin.sh
-[ -f ~/.bash/prompt.bash ] && . ~/.bash/prompt.bash
+[ -f ~/.bash/git/init.sh ] && . ~/.bash/git/init.sh
