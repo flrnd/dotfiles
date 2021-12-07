@@ -1,8 +1,6 @@
 switch (uname)
     case Linux
         set -gx SHELL /usr/bin/fish
-        alias fd fdfind
-        alias cat batcat
     case Darwin
         set -gx SHELL /usr/local/bin/fish
 end
@@ -38,11 +36,6 @@ end
 # Local go
 if test -e "$HOME/go"
   set -gx PATH "$HOME/go/bin" $PATH
-end
-
-# Yarn
-if test -e ~/.yarn/bin
-    set -gx PATH ~/.yarn/bin $PATH
 end
 
 # Rust
