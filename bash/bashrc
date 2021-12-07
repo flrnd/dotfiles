@@ -129,4 +129,3 @@ shopt -s cdable_vars
 [ -f ~/.fzf.bash ] && . ~/.fzf.bash
 [ -f ~/.forgit/forgit.plugin.sh ] && . ~/.forgit/forgit.plugin.sh
 [ -f ~/.bash/git/init.sh ] && . ~/.bash/git/init.sh
-[ -f ~/.bash/git/bash-prompt.sh ] && . ~/.bash/git/bash-prompt.sh
