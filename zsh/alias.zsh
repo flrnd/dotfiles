@@ -55,4 +55,3 @@ alias gc="git commit -m"
 
 # other
 alias 7zc="7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on"
-alias composer="php ~/.local/bin/composer.phar"
