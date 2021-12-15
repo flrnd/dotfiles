@@ -16,7 +16,7 @@ fi
 # caching
 zstyle ':completion:*' accept-exact '*(N)'
 zstyle ':completion:*'            use-cache yes
-zstyle ':completion::complete:*'  cache-path "~/.cache/zsh/zcompcache"
+zstyle ':completion::complete:*'  cache-path "$HOME/.cache/zsh/zcompcache"
 
 
 #
