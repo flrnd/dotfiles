@@ -109,3 +109,8 @@ fi
 if [ -f "$HOME/.cargo/env" ] ; then
   . "$HOME/.cargo/env"
 fi
+
+# nim
+if [ -d "$HOME/.nimble" ] ; then
+  PATH="$HOME/.nimble/bin:$PATH"
+fi
