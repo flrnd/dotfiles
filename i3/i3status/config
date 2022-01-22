@@ -1,0 +1,65 @@
+general {
+  colors = true
+  interval = 2
+  output_format = "i3bar"
+}
+
+ethernet em0 {
+  format_up = "E: %ip"
+  format_down = ""
+}
+
+ethernet ue0 {
+  format_up = "iPhone: %ip"
+  format_down = ""
+}
+
+wireless wlan0 {
+  format_up = "%essid %ip"
+  format_down = "no WiFi"
+}
+
+tztime local {
+  format = "%Y-%m-%d %H:%M"
+}
+
+load {
+  format = "%1min"
+}
+
+disk "/" {
+  format = "%free"
+}
+
+cpu_usage {
+  format = "CPU %usage"
+}
+
+cpu_temperature 0 {
+  format = "%degrees°C"
+}
+
+volume master {
+  format = "VOL %volume"
+  format_muted = "MUTE"
+}
+
+battery 0 {
+  format = "%status %percentage"
+}
+
+memory {
+  format = "%used | %available"
+}
+
+order += "ethernet ue0"
+order += "wireless wlan0"
+order += "ethernet em0"
+order += "disk /"
+order += "cpu_usage"
+order += "load"
+order += "cpu_temperature 0"
+#order += "memory"
+order += "volume master"
+order += "battery 0"
+order += "tztime local"
