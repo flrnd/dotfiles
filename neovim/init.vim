@@ -72,14 +72,14 @@ set clipboard=unnamed
 set termguicolors
 syntax on
 
-" set background=dark
+set background=dark
 
-" let g:candid_color_store = {
+let g:candid_color_store = {
     \ "black": {"gui": "#1e1e1e", "cterm256": "0"},
     \ "white": {"gui": "#f4f4f4", "cterm256": "255"},
     \}
 
-" colorscheme candid
+colorscheme candid
 
 "*****************************************************************************
 "" Mappings
