@@ -165,7 +165,7 @@ let g:coc_global_extensions = ['coc-eslint', 'coc-prettier', 'coc-json', 'coc-so
 
 " Lightline
 let g:lightline = {
-      \ 'colorscheme': 'PaperColor',
+      \ 'colorscheme': 'candid',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'readonly', 'filename', 'modified' ] ]
