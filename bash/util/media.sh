@@ -22,16 +22,16 @@ fi
 
 case "$1" in
   drc)
-    $MPLAYER --af=$DRC $arguments
+    $MPLAYER --af=$DRC "$arguments"
     ;;
   nofilter)
     $MPLAYER $2
     ;;
   nm)
-    $MPLAYER --af=lavfi=$NM $arguments
+    $MPLAYER --af=lavfi=$NM "$arguments"
     ;;
   nmdrc)
-    $MPLAYER --af=lavfi=$NMDRC $arguments
+    $MPLAYER --af=lavfi=$NMDRC "$arguments"
     ;;
   help)
     printf "\n%s media filters\n" "${green}"
