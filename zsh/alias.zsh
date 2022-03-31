@@ -51,7 +51,7 @@ alias less="less -R"
 #alias df='df -h -x squashfs -x tmpfs -x devtmpfs'
 
 # git
-alias gc="git commit -m"
+alias gc="git commit --verbose"
 
 # other
 alias 7zc="7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on"
