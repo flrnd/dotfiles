@@ -18,7 +18,7 @@ function apt-history(){
       esac
 }
 
-function mediaplayer(){
+function media(){
   # default media player
   MPLAYER="gnome-session-inhibit --inhibit idle flatpak run io.mpv.Mpv"
   # filters
