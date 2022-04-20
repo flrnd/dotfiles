@@ -5,28 +5,6 @@ if [ -f /etc/bashrc ]; then
 	. /etc/bashrc
 fi
 
-# User specific environment
-if ! [[ "$PATH" =~ "$HOME/.local/bin:$HOME/bin:" ]]
-then
-    PATH="$HOME/.local/bin:$HOME/bin:$PATH"
-fi
-
-export PATH
-
-# Sensible Bash - An attempt at saner Bash defaults
-# Maintainer: mrzool <http://mrzool.cc>
-# Repository: https://github.com/mrzool/bash-sensible
-# Version: 0.2.2
-
-# Unique Bash version check
-if ((BASH_VERSINFO[0] < 4))
-
-then
-  printf "%s\n" "sensible.bash: Looks like you're running an older version of Bash."
-  printf "%s\n" "sensible.bash: You need at least bash-4.0 or some options will not work correctly."
-  printf "%s\n" "sensible.bash: Keep your software up-to-date!"
-fi
-
 ## GENERAL OPTIONS ##
 
 # Prevent file overwrite on stdout redirection
@@ -121,33 +99,14 @@ shopt -s cdable_vars
 # export documents="$HOME/Documents"
 # export dropbox="$HOME/Dropbox"
 
+export projects="$HOME/Development/Projects"
 
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
 
 # User specific aliases and functions
-[ -f ~/.bash/aliases.bash ] && . ~/.bash/aliases.bash
+[ -f ~/.bash/bash_aliases ] && . ~/.bash/bash_aliases
 [ -f ~/.fzf.bash ] && . ~/.fzf.bash
 [ -f ~/.forgit/forgit.plugin.sh ] && . ~/.forgit/forgit.plugin.sh
 [ -f ~/.bash/git/init.sh ] && . ~/.bash/git/init.sh
-
-function apt-history(){
- 
-      case "$1" in
-        install)
-              grep 'install ' /var/log/dpkg.log
-              ;;
-        upgrade|remove)
-              grep $1 /var/log/dpkg.log
-              ;;
-        rollback)
-              grep upgrade /var/log/dpkg.log | \
-                  grep "$2" -A10000000 | \
-                  grep "$3" -B10000000 | \
-                  awk '{print $4"="$5}'
-              ;;
-        *)
-              cat /var/log/dpkg.log
-              ;;
-      esac
-}
+[ -f ~/.bash/functions/functions.sh ] && . ~/.bash/functions/functions.sh
