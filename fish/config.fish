@@ -12,9 +12,9 @@ set -lx FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --excl
 # set -lx BAT_THEME "OneHalfDark"
 
 # Abbreviations
-abbr gcb "git checkout -b"
-abbr gc "git commit -m"
-abbr gp "git push"
+#abbr gcb "git checkout -b"
+#abbr gc "git commit -m"
+#abbr gp "git push"
 
 # home bin
 if test -e ~/bin
