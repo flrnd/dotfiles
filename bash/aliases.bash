@@ -10,23 +10,8 @@ case $OSTYPE in
     ;;
 esac
 
-# fdfind - ubuntu/debian
-if command -v fdfind &> /dev/null; then
-  alias fd="fdfind"
-fi
-
-# batcat - ubuntu/debian
-if command -v batcat &> /dev/null; then
-  alias cat="batcat"
-fi
-
 if  command -v bat &> /dev/null; then
     alias cat="bat"
-fi
-
-# editor
-if command -v nvim &> /dev/null; then
-  alias vi="nvim"
 fi
 
 # ls
@@ -43,4 +28,4 @@ alias mkdir="mkdir -p"
 alias less="less -R"
 
 # git
-alias gc="git commit -m"
+alias gc="git commit --verbose"
