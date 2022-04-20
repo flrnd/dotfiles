@@ -8,7 +8,3 @@ users:
       - ssh-ed25519
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     shell: /bin/bash
-    runcmd:
-      - sed -i -e '/^PermitRootLogin/s/^.*$/PermitRootLogin no/' /etc/ssh/sshd_config
-      - sed -i -e '$aAllowUsers user' /etc/ssh/sshd_config
-      - restart ssh
