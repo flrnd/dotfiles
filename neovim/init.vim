@@ -355,6 +355,9 @@ endif
 "" Custom configs
 "*****************************************************************************
 
+" rust-vim
+filetype plugin indent on
+
 " javascript
 let g:javascript_enable_domhtmlcss = 1
 " typescript
