@@ -55,3 +55,6 @@ alias gc="git commit --verbose"
 
 # other
 alias 7zc="7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on"
+
+# Mpv as flatpak and forget about codecs :P
+alias mpv="gnome-session-inhibit --inhibit idle flatpak run io.mpv.Mpv"
