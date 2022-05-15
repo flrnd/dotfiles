@@ -1,2 +1,2 @@
-instance-id: debian-cloud
-local-hostname: debian.cloud
+instance-id: instance-name
+local-hostname: localhost
