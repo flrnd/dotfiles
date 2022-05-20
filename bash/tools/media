@@ -1,6 +1,6 @@
 #!/bin/bash
 # default media player
-mpv="gnome-session-inhibit --inhibit idle flatpak run io.mpv.Mpv"
+mpv="gnome-session-inhibit --inhibit idle mpv"
 
 # filters
 DRC="acompressor=ratio=4,loudnorm"
