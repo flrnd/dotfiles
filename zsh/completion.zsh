@@ -3,6 +3,10 @@ autoload -Uz compinit
 autoload -Uz bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
+# set completions directory
+COMP_PATH=~/.zsh/completions/
+fpath=($COMP_PATH "${fpath[@]}")
+
 local zcd=${ZPLGM[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.cache/zsh/zcompdump}
 local zcdc="$zcd.zwc"
 if [[ -f "$zcd"(#qN.m+1) ]]; then
