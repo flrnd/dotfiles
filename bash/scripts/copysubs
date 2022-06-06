@@ -1,0 +1,19 @@
+#!/bin/bash
+SUB_DIR="./Subs"
+
+if [[ -d "$SUB_DIR" ]]; then
+  if [[ "$#" -ne 1 ]]; then
+    printf "%s\n" "Usage example: copysub 2_English"
+    exit 1
+  else
+    for file in *.{mp4,mkv} ; do
+      [ -e "$file" ] || continue
+      filename="${file%.*}"
+      cp ./Subs/"$filename"/"$1".srt "$filename".srt
+    done
+    printf "%s\n" "Done!"
+  fi
+else
+  printf "%s\n" "Nothing to copy."
+  exit 1
+fi
