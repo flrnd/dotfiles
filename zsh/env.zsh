@@ -53,7 +53,7 @@ fi
 # fnm
 if [ -d "$HOME/.fnm" ] ; then
   PATH=$HOME/.fnm:$PATH
-  eval "`fnm env`"
+  eval "$(fnm env --use-on-cd)"
 fi
 
 # android studio & sdk
