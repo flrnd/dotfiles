@@ -1,26 +1,20 @@
 general {
   colors = true
+  color_good = "#587539"
+  color_degraded = "#8C6C3E"
+  color_bad = "#F52A65"
   interval = 2
-  output_format = "i3bar"
+  output_format = "i3bar"  
 }
 
-ethernet em0 {
+ethernet vio0 {
   format_up = "E: %ip"
   format_down = ""
 }
 
-ethernet ue0 {
-  format_up = "iPhone: %ip"
-  format_down = ""
-}
-
-wireless wlan0 {
-  format_up = "%essid %ip"
-  format_down = "no WiFi"
-}
-
-tztime local {
-  format = "%Y-%m-%d %H:%M"
+tztime local { 
+  format = "%Y-%m-%d %H:%M:%S %Z"
+  timezone = "Europe/Madrid" 
 }
 
 load {
@@ -44,22 +38,16 @@ volume master {
   format_muted = "MUTE"
 }
 
-battery 0 {
-  format = "%status %percentage"
-}
-
 memory {
   format = "%used | %available"
+  threshold_degraded = "10%"
+  format_degraded = "MEMORY: %free"
 }
 
-order += "ethernet ue0"
-order += "wireless wlan0"
-order += "ethernet em0"
+order += "ethernet vio0"
 order += "disk /"
 order += "cpu_usage"
 order += "load"
-order += "cpu_temperature 0"
 #order += "memory"
 order += "volume master"
-order += "battery 0"
 order += "tztime local"

@@ -1,5 +1,5 @@
 [global]
-font = "Cascadia Code 9"
+font = "Monospace 9"
 markup = yes
 format = "%a: %s\n%b"
 sort = yes
@@ -27,8 +27,8 @@ close_all = mod4+backslash
 history = mod4+grave
 
 [urgency_low]
-background = "#2f343f"
-foreground = "#676E7D"
+background = "#e1e2e7"
+foreground = "#3760bf"
 timeout = 5
 
 [urgency_normal]
