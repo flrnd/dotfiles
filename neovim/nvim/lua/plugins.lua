@@ -13,6 +13,7 @@ require('packer').startup(function(use)
 		"williamboman/nvim-lsp-installer",
 		"neovim/nvim-lspconfig",
 	}
+	use 'nvim-tree/nvim-web-devicons'
 end)
 
 
