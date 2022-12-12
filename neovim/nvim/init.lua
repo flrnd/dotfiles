@@ -1,6 +1,4 @@
 require "settings"
-require "config.whichkey"
-require "utils.finder"
 require("plugins").setup()
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
