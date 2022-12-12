@@ -14,6 +14,10 @@ require('packer').startup(function(use)
 		"neovim/nvim-lspconfig",
 	}
 	use 'nvim-tree/nvim-web-devicons'
+	use { 'ibhagwan/fzf-lua',
+		-- optional for icon support
+		requires = { 'nvim-tree/nvim-web-devicons' }
+	}
 end)
 
 
