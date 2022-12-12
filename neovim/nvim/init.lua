@@ -1,22 +1,31 @@
-require("settings")
-require("plugins")
+require "settings"
+require "config.whichkey"
+require "utils.finder"
+require("plugins").setup()
 
 vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.formatting_sync()]]
 
 -- vim.g.tokyonight_style = "day"
 vim.cmd [[colorscheme tokyonight]]
 
-require('lualine').setup {
-	options = {
-		theme = 'tokyonight'
+-- lsp-installer
+
+require("nvim-lsp-installer").setup {
+	automatic_installation = true
+}
+
+local lspconfig = require("lspconfig")
+
+lspconfig.sumneko_lua.setup {
+	settings = {
+		Lua = {
+			diagnostics = {
+				globals = { "vim" }
+			}
+		}
 	}
 }
 
--- fzf-lua
-vim.api.nvim_set_keymap('n', '<c-P>',
-	"<cmd>lua require('fzf-lua').files()<CR>",
-	{ noremap = true, silent = true })
-
-vim.api.nvim_set_keymap('n', '<c-F>',
-	"<cmd>lua require('fzf-lua').grep()<CR>",
-	{ noremap = true, silent = true })
+lspconfig.rust_analyzer.setup {}
+lspconfig.tsserver.setup {}
+lspconfig.gopls.setup {}
