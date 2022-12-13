@@ -17,6 +17,7 @@ fi
 # Load pluggins
 . ~/.zsh/plugins/fzf.zsh
 . ~/.zsh/plugins/forgit.zsh
+. ~/.zsh/plugins/asdf.zsh
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh

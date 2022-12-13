@@ -79,7 +79,7 @@ _G.packer_plugins = {
       ["nvim-cmp"] = true
     },
     loaded = false,
-    needs_bufread = false,
+    needs_bufread = true,
     path = "/home/mrfb/.local/share/nvim/site/pack/packer/opt/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
@@ -174,6 +174,7 @@ _G.packer_plugins = {
     url = "https://github.com/ray-x/cmp-treesitter"
   },
   cmp_luasnip = {
+    after_files = { "/home/mrfb/.local/share/nvim/site/pack/packer/opt/cmp_luasnip/after/plugin/cmp_luasnip.lua" },
     load_after = {
       ["nvim-cmp"] = true
     },
@@ -217,7 +218,7 @@ _G.packer_plugins = {
     url = "https://github.com/windwp/nvim-autopairs"
   },
   ["nvim-cmp"] = {
-    after = { "cmp-rg", "cmp-buffer", "cmp-treesitter", "cmp-cmdline", "cmp-conventionalcommits", "cmp-nvim-lsp", "LuaSnip", "lspkind-nvim", "cmp_luasnip", "cmp-nvim-lua", "cmp-nvim-lsp-signature-help", "cmp-path" },
+    after = { "cmp-conventionalcommits", "LuaSnip", "cmp-buffer", "cmp-nvim-lsp-signature-help", "cmp-treesitter", "cmp-nvim-lua", "cmp-path", "cmp_luasnip", "cmp-cmdline", "lspkind-nvim", "cmp-nvim-lsp", "cmp-rg" },
     config = { "\27LJ\2\nC\0\1\4\0\4\0\a6\1\0\0'\3\1\0B\1\2\0029\1\2\0019\3\3\0B\1\2\1K\0\1\0\tbody\15lsp_expand\fluasnip\frequireR\0\1\3\1\2\0\f-\1\0\0009\1\0\1B\1\1\2\15\0\1\0X\2\4€-\1\0\0009\1\1\1B\1\1\1X\1\2€\18\1\0\0B\1\1\1K\0\1\0\0À\21select_next_item\fvisibleÈ\3\1\0\n\0\30\00096\0\0\0'\2\1\0B\0\2\0029\1\2\0005\3\6\0005\4\4\0003\5\3\0=\5\5\4=\4\a\0034\4\0\0=\4\b\0039\4\t\0009\4\n\0049\4\v\0045\6\r\0009\a\t\0009\a\f\a)\tüÿB\a\2\2=\a\14\0069\a\t\0009\a\f\a)\t\4\0B\a\2\2=\a\15\0069\a\t\0009\a\16\aB\a\1\2=\a\17\0069\a\t\0009\a\18\aB\a\1\2=\a\19\0069\a\t\0009\a\20\a5\t\21\0B\a\2\2=\a\22\0063\a\23\0=\a\24\6B\4\2\2=\4\t\0039\4\25\0009\4\26\0044\6\3\0005\a\27\0>\a\1\0065\a\28\0>\a\2\0064\a\3\0005\b\29\0>\b\1\aB\4\3\2=\4\26\3B\1\2\0012\0\0€K\0\1\0\1\0\1\tname\vbuffer\1\0\1\tname\fluasnip\1\0\1\tname\rnvim_lsp\fsources\vconfig\n<Tab>\0\t<CR>\1\0\1\vselect\2\fconfirm\n<C-e>\nabort\14<C-Space>\rcomplete\n<C-f>\n<C-b>\1\0\0\16scroll_docs\vinsert\vpreset\fmapping\vwindow\fsnippet\1\0\0\vexpand\1\0\0\0\nsetup\bcmp\frequire\0" },
     loaded = false,
     needs_bufread = false,
@@ -329,8 +330,8 @@ vim.cmd [[augroup packer_load_aucmds]]
 vim.cmd [[au!]]
   -- Event lazy-loads
 time([[Defining lazy-load event autocommands]], true)
-vim.cmd [[au VimEnter * ++once lua require("packer.load")({'which-key.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 vim.cmd [[au InsertEnter * ++once lua require("packer.load")({'nvim-cmp', 'nvim-autopairs'}, { event = "InsertEnter *" }, _G.packer_plugins)]]
+vim.cmd [[au VimEnter * ++once lua require("packer.load")({'which-key.nvim'}, { event = "VimEnter *" }, _G.packer_plugins)]]
 time([[Defining lazy-load event autocommands]], false)
 vim.cmd("augroup END")
 
