@@ -75,7 +75,7 @@ if [ -d "$DEVELOPMENT/IDE/android-studio" ] ; then
 fi
 
 # npm global path
-if (( $+commands[npm])) ; then
+if  [ hash npm &> /dev/null ] ; then
   if [ -d "$HOME/.npm-global" ] ; then
     PATH="$HOME/.npm-global/bin:$PATH"
   else
@@ -95,22 +95,11 @@ if [ -d "/opt/homebrew" ] ; then
   eval $(/usr/local/bin/brew shellenv)
 fi
 
-# opam (ocaml)
-if [ -d "$HOME/.opam" ] ; then
-  test -r /home/flrnd/.opam/opam-init/init.zsh && . /home/flrnd/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-fi
-
-# Zig
-if [ -d "$HOME/.zig" ] ; then
-  PATH="$HOME/.zig:$PATH"
-fi
-
 # rust
 if [ -f "$HOME/.cargo/env" ] ; then
   . "$HOME/.cargo/env"
 fi
 
-# nim
-if [ -d "$HOME/.nimble" ] ; then
-  PATH="$HOME/.nimble/bin:$PATH"
+if [ -f "$HOME/.asdf/installs/rust/stable/env" ] ; then
+	. "$HOME/.asdf/installs/rust/stable/env"
 fi
