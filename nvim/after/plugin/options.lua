@@ -6,7 +6,6 @@ opt.hidden = false
 opt.hlsearch = false
 opt.ignorecase = true
 opt.laststatus = 3
-opt.mouse = "a"
 opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
