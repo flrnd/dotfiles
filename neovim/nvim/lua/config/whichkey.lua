@@ -38,6 +38,23 @@ function M.setup()
 			c = { "<cmd>FzfLua commands<cr>", "Commands" },
 		},
 
+		g = {
+			name = "Goto",
+			d = { "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition" },
+			D = { "<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration" },
+			s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help" },
+			I = { "<cmd>lua vim.lsp.buf.implementation()<CR>", "Goto Implementation" },
+			t = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Goto Type Definition" },
+		},
+
+		l = {
+			name = "Code",
+			r = { "<cmd>lua vim.lsp.buf.rename()<CR>", "Rename" },
+			a = { "<cmd>lua vim.lsp.buf.code_action()<CR>", "Code Action" },
+			d = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line Diagnostics" },
+			i = { "<cmd>LspInfo<CR>", "Lsp Info" },
+		},
+
 		z = {
 			name = "Packer",
 			c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -48,10 +65,6 @@ function M.setup()
 			u = { "<cmd>PackerUpdate<cr>", "Update" },
 		},
 
-		g = {
-			name = "Git",
-			s = { "<cmd>Neogit<CR>", "Status" },
-		},
 	}
 
 	whichkey.setup(conf)
