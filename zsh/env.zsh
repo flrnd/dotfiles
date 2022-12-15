@@ -1,5 +1,5 @@
 ZSH_DISABLE_COMPFIX=true
-EDITOR=nvim
+export EDITOR=nvim
 
 # PROMPT='%n@%m %3~%(!.#.$)%(?.. [%?]) '
 
