@@ -104,6 +104,11 @@ function M.setup()
 			end,
 		}
 
+		-- ctags
+		use {
+			"ludovicchabant/vim-gutentags"
+		}
+
 		-- Surround
 		use {
 			"kylechui/nvim-surround",
