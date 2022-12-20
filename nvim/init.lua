@@ -58,6 +58,7 @@ require('packer').startup(function(use)
     config = function()
       require("tokyonight").setup ({
         style = "storm",
+        transparent = true,
       })
     end
   } -- Colorscheme
