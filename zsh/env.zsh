@@ -10,7 +10,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="/usr/local/bin:/usr/local/sbin:~/.local/bin:$PATH"
 export DOTNET_CLI_TELEMETRY_OPTOUT=1   # No dot.net telemetry
 export HOMEBREW_NO_ANALYTIiCS=1        # MAC Homebrew no telemetry
-export BAT_THEME="GitHub"
 
 
 ## Default local development path
