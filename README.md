@@ -7,5 +7,5 @@ First source of procrastination.
 * Some uninteresting wallpapers
 * Custom Zsh config with homemade prompt, with few stuff borrowed from prezto
 * Same for bash
-* Neovim setup, sadly, old and forgotten since Vscode came to life.
+* Neovim setup, ~~sadly, old and forgotten since Vscode came to life~~. New lua minimal setup.
 * Some other old stuff that I don't know why I still keep it, digital diogenes syndrome maybe?
