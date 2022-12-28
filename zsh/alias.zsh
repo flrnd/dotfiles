@@ -21,6 +21,14 @@ fi
 # Mac and most Linux
 if  (( $+commands[bat] )); then
     alias cat="bat"
+    alias bathelp='bat --plain --language=help'
+    help() {
+      "$@" --help 2>&1 | bathelp
+    }
+    export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    batdiff() {
+      git diff --name-only --relative --diff-filter=d | xargs bat --diff
+    }
 fi
 
 # Ubuntu / Debian
