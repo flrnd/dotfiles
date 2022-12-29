@@ -53,15 +53,18 @@ require('packer').startup(function(use)
   use 'lewis6991/gitsigns.nvim'
 
   use {
-    "folke/tokyonight.nvim",
+    'navarasu/onedark.nvim',
 
     config = function()
-      require("tokyonight").setup ({
-        style = "storm",
-        transparent = true,
+      require("onedark").setup({
+        style = "darker",
+        colors = {
+          green = '#448244',
+          grey = '#8c8c8f',
+        },
       })
     end
-  } -- Colorscheme
+  } -- Colorscheme onedark
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -116,6 +119,11 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Use spaces instead of tabs :>
+vim.o.expandtab = true
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+
 -- Set highlight on search
 vim.o.hlsearch = false
 
@@ -141,7 +149,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme tokyonight]]
+vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -176,7 +184,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    theme = 'onedark',
     component_separators = '|',
     section_separators = '',
   },
