@@ -4,17 +4,15 @@
 }
 
 window#waybar {
-  background-color: #323232;
-  color: #ffffff;
+  background-color: #181b20;
+  color: #a0a8b7;
 }
 
 .modules-left {
-  background-color: #323232;
   padding: 0px 0px 0px 0px;
 }
 
 .modules-right {
-  background-color: #323232;
   padding: 0px 10px 0px 0px;
 }
 
@@ -22,19 +20,18 @@ window#waybar {
   padding: 0px 15px;
 }
 
-#workspaces {
-}
+#workspaces {}
 
 #workspaces button {
-  padding: 0px 11px 0px 11px;
+  padding: 0px 8px;
   min-width: 1px;
-  color: #888888;
+  color: #a0a8b7;
 }
 
 #workspaces button.focused {
-  padding: 0px 11px 0px 11px;
-  background-color: #787878;
-  color: #ffffff;
+  padding: 0px 8px;
+  background-color: #30363f;
+  color: #a0a8b7;
 }
 
 #mode {
@@ -45,7 +42,7 @@ window#waybar {
 }
 
 #window {
-  color: #ffffff;
+  color: #a0a8b7;
   padding: 0px 10px;
   margin-left: 5px;
 }
@@ -56,7 +53,7 @@ window#waybar.empty #window {
 }
 
 window#waybar.empty {
-  background-color: #323232;
+  background-color: #181b20;
 }
 
 #custom-zypper,
