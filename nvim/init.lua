@@ -22,7 +22,8 @@ require('packer').startup(function(use)
       'j-hui/fidget.nvim',
     },
   }
-
+  use 'jose-elias-alvarez/null-ls.nvim'
+  use 'MunifTanjim/prettier.nvim'
   use { -- Autocompletion
     'hrsh7th/nvim-cmp',
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -52,15 +53,8 @@ require('packer').startup(function(use)
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  use {
-    "folke/tokyonight.nvim",
-
-    config = function()
-      require("tokyonight").setup({
-        style = "night",
-      })
-    end
-  } -- Colorscheme tokyonight
+  -- use "folke/tokyonight.nvim" -- Colorscheme
+  use 'navarasu/onedark.nvim'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -145,7 +139,7 @@ vim.wo.signcolumn = 'yes'
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd [[colorscheme tokyonight]]
+--vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -176,11 +170,17 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
+-- setup colorscheme
+require('onedark').setup {
+  style = 'darker'
+}
+require('onedark').load()
+
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    theme = 'tokyonight',
+    theme = 'onedark',
     component_separators = '|',
     section_separators = '',
   },
@@ -213,7 +213,7 @@ require('gitsigns').setup {
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'go', 'lua', 'python', 'rust', 'typescript', 'elixir', 'graphql', 'help' },
+  ensure_installed = { 'c', 'go', 'lua', 'rust', 'typescript', 'elixir', 'graphql', 'css' },
 
   highlight = { enable = true },
   indent = { enable = true },
@@ -289,6 +289,70 @@ vim.api.nvim_set_keymap('n', '<leader>fg',
   "<cmd>lua require('fzf-lua').live_grep()<CR>",
   { noremap = true, silent = true })
 
+-- null-ls
+local null_ls = require("null-ls")
+local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+local event = "BufWritePre" -- or "BufWritePost"
+local async = event == "BufWritePost"
+
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.diagnostics.eslint_d.with({
+      diagnostics_format = '[eslint] #{m}\n(#{c})'
+    }),
+    null_ls.builtins.formatting.beautysh,
+    null_ls.builtins.formatting.mix,
+    null_ls.builtins.formatting.rustfmt,
+    null_ls.builtins.formatting.gofmt,
+    null_ls.builtins.formatting.goimports,
+  },
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.keymap.set("n", "<Leader>f", function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+      end, { buffer = bufnr, desc = "[lsp] format" })
+    end
+
+    if client.supports_method("textDocument/rangeFormatting") then
+      vim.keymap.set("x", "<Leader>f", function()
+        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+      end, { buffer = bufnr, desc = "[lsp] format" })
+
+      -- format on save
+      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+      vim.api.nvim_create_autocmd(event, {
+        buffer = bufnr,
+        group = group,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr, async = async })
+        end,
+        desc = "[lsp] format on save",
+      })
+    end
+  end,
+})
+
+-- Prettier
+local prettier = require("prettier")
+
+prettier.setup({
+  bin = 'prettierd', -- or `'prettierd'` (v0.22+)
+  filetypes = {
+    "css",
+    "graphql",
+    "html",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "less",
+    "markdown",
+    "scss",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+  },
+})
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -342,7 +406,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'rust_analyzer', 'tsserver', 'sumneko_lua', 'gopls', 'elixirls' }
+local servers = { 'rust_analyzer', 'tsserver', 'sumneko_lua', 'gopls', 'elixirls', 'cssls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
