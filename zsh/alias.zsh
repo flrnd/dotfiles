@@ -26,6 +26,7 @@ if  (( $+commands[bat] )); then
       "$@" --help 2>&1 | bathelp
     }
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+    export MANROFFOPT="-c"
     batdiff() {
       git diff --name-only --relative --diff-filter=d | xargs bat --diff
     }
