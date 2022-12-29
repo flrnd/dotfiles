@@ -18,6 +18,7 @@ fi
 . ~/.zsh/plugins/fzf.zsh
 . ~/.zsh/plugins/forgit.zsh
 . ~/.zsh/plugins/asdf.zsh
+. ~/.zsh/plugins/keychain.zsh
 
 # prompt
 . ~/.zsh/prompt/prompt.zsh
