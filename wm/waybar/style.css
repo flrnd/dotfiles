@@ -20,7 +20,8 @@ window#waybar {
   padding: 0px 15px;
 }
 
-#workspaces {}
+#workspaces {
+}
 
 #workspaces button {
   padding: 0px 8px;
