@@ -4,8 +4,8 @@
 }
 
 window#waybar {
-  background-color: #181b20;
-  color: #a0a8b7;
+  background-color: #1b1b1f;
+  color: #cccccc;
 }
 
 .modules-left {
@@ -26,13 +26,13 @@ window#waybar {
 #workspaces button {
   padding: 0px 8px;
   min-width: 1px;
-  color: #a0a8b7;
+  color: #cccccc;
 }
 
 #workspaces button.focused {
   padding: 0px 8px;
   background-color: #30363f;
-  color: #a0a8b7;
+  color: #cccccc;
 }
 
 #mode {
@@ -43,7 +43,7 @@ window#waybar {
 }
 
 #window {
-  color: #a0a8b7;
+  color: #cccccc;
   padding: 0px 10px;
   margin-left: 5px;
 }
@@ -54,7 +54,7 @@ window#waybar.empty #window {
 }
 
 window#waybar.empty {
-  background-color: #181b20;
+  background-color: #1b1b1f;
 }
 
 #custom-zypper,
