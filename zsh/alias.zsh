@@ -1,20 +1,20 @@
 # GNU and BSD (macOS) ls flags aren't compatible
 
 case $OSTYPE in
-  linux*)
-    eval "$(dircolors -b)"
-    lsflags="-GFh --color=auto"
-   ;;
-  darwin*)
-    lsflags="-GF"
-    export CLICOLOR=1
-    ;;
+    linux*)
+        eval "$(dircolors -b)"
+        lsflags="-GFh --color=auto"
+        ;;
+    darwin*)
+        lsflags="-GF"
+        export CLICOLOR=1
+        ;;
 esac
 
 # fd / fdfind
 # this is mostly for Debian and other distros
 if (( $+commands[fdfind] )); then
-  alias fd="fdfind"
+    alias fd="fdfind"
 fi
 
 ### bat
@@ -23,18 +23,18 @@ if  (( $+commands[bat] )); then
     alias cat="bat"
     alias bathelp='bat --plain --language=help'
     help() {
-      "$@" --help 2>&1 | bathelp
+        "$@" --help 2>&1 | bathelp
     }
     export MANPAGER="sh -c 'col -bx | bat -l man -p'"
     export MANROFFOPT="-c"
     batdiff() {
-      git diff --name-only --relative --diff-filter=d | xargs bat --diff
+        git diff --name-only --relative --diff-filter=d | xargs bat --diff
     }
 fi
 
 # Ubuntu / Debian
 if (( $+commands[batcat] )); then
-  alias cat="batcat"
+    alias cat="batcat"
 fi
 
 # editor
@@ -42,7 +42,7 @@ alias vi="nvim"
 
 # ncdu
 if (( $+commands[ncdu] )); then
-  alias ncdu="ncdu -x --color dark"
+    alias ncdu="ncdu -x --color dark"
 fi
 
 alias ls="ls ${lsflags}"

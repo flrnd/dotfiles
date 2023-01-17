@@ -1,6 +1,5 @@
 # load custom config
 . ~/.zsh/alias.zsh       # aliases
-. ~/.zsh/git/git.zsh     # manage git aware prompt
 . ~/.zsh/functions.zsh   # utility functions
 . ~/.zsh/history.zsh     # sane history defaults
 . ~/.zsh/completion.zsh  # sane completion defaults
@@ -11,7 +10,7 @@
 
 # tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-  source /etc/profile.d/vte.sh
+    . /etc/profile.d/vte.sh
 fi
 
 # Load pluggins
