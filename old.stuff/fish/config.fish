@@ -42,6 +42,3 @@ end
 if test -e ~/.cargo/bin
     set -gx PATH ~/.cargo/bin $PATH
 end
-
-# prompt
-. ~/.config/fish/functions/prompt.fish
