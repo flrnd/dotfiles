@@ -50,9 +50,9 @@ if [ -d "$HOME/go" ] ; then
 fi
 
 # fnm
-if [ -d "$HOME/.fnm" ] ; then
-    PATH=$HOME/.fnm:$PATH
-    eval "$(fnm env --use-on-cd)"
+if [ -d "$HOME/.local/share/fnm" ] ; then
+    PATH="$HOME/.local/share/fnm:$PATH"
+    eval "`fnm env`"
 fi
 
 # android studio & sdk
