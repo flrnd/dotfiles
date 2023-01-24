@@ -3,8 +3,6 @@ export EDITOR=nvim
 
 # PROMPT='%n@%m %3~%(!.#.$)%(?.. [%?]) '
 
-fpath=( "$HOME/.zsh/functions" "${fpath[@]}" )
-
 export FZF_DEFAULT_COMMAND="fd --type f --hidden --follow --exclude .git --exclude node_modules"
 export XDG_CONFIG_HOME="$HOME/.config"
 export PATH="/usr/local/bin:/usr/local/sbin:~/.local/bin:$PATH"
