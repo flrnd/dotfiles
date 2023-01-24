@@ -1,8 +1,0 @@
-[submodule "zsh/completion/external"]
-	path = zsh/completion/external
-	url = https://github.com/zsh-users/zsh-completions
-
-[submodule "bash/bash-sensible"]
-	path = bash/bash-sensible
-	url = https://github.com/mrzool/bash-sensible
-
