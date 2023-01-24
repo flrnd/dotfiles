@@ -4,7 +4,7 @@ autoload -Uz bashcompinit && bashcompinit
 zmodload -i zsh/complist
 
 # set completions directory
-COMP_PATH=~/.zsh/completions/
+COMP_PATH=~/.dot/zsh/completions/
 fpath=($COMP_PATH "${fpath[@]}")
 
 local zcd=${ZPLGM[ZCOMPDUMP_PATH]:-${ZDOTDIR:-$HOME}/.cache/zsh/zcompdump}

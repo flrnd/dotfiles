@@ -1,12 +1,12 @@
 # load custom config
-. ~/.zsh/alias.zsh       # aliases
-. ~/.zsh/functions.zsh   # utility functions
-. ~/.zsh/history.zsh     # sane history defaults
-. ~/.zsh/completion.zsh  # sane completion defaults
-. ~/.zsh/dir.zsh         # sane directory defaults
+. ~/.dot/zsh/alias.zsh       # aliases
+. ~/.dot/zsh/functions.zsh   # utility functions
+. ~/.dot/zsh/history.zsh     # sane history defaults
+. ~/.dot/zsh/completion.zsh  # sane completion defaults
+. ~/.dot/zsh/dir.zsh         # sane directory defaults
 
 # if Plasma use ksshask instead
-. ~/.zsh/helpers/sshadd.zsh
+. ~/.dot/zsh/helpers/sshadd.zsh
 
 # tilix
 if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
@@ -14,9 +14,9 @@ if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
 fi
 
 # Load pluggins
-. ~/.zsh/plugins/fzf.zsh
-. ~/.zsh/plugins/forgit.zsh
-. ~/.zsh/plugins/asdf.zsh
+. ~/.dot/zsh/plugins/fzf.zsh
+. ~/.dot/zsh/plugins/forgit.zsh
+. ~/.dot/zsh/plugins/asdf.zsh
 
 # prompt
-. ~/.zsh/prompt/prompt.zsh
+. ~/.dot/zsh/prompt/prompt.zsh
