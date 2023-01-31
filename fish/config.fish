@@ -5,41 +5,29 @@ switch (uname)
         set -gx SHELL /usr/local/bin/fish
 end
 
+set -g fish_autosuggestion_enabled 0 # disable autosuggestions
+set -g fish_greeting ""
+
 set -gx EDITOR (which nvim)
 set -gx VISUAL $EDITOR
 set -gx GIT_EDITOR $EDITOR
-set -gx FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --exclude node_modules"
 
-set -g fish_autosuggestion_enabled 0 # disable autosuggestions
-
-# Abbreviations
-#abbr gcb "git checkout -b"
-#abbr gc "git commit -m"
-#abbr gp "git push"
+set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
+set -g MANROFFOPT "-c"
 
 # home bin
-if test -e ~/bin
-    fish_add_path ~/bin
+if test -e "$HOME/bin"
+    set -gx PATH "$HOME/bin" $PATH
 end
 
 # local home bin
-if test -e ~/.local/bin
-    fish_add_path ~/.local/bin
+if test -e "$HOME/.local/bin"
+    set -gx PATH "$HOME/.local/bin" $PATH
 end
 
-# golang
-if test -e /usr/local/go/
-  set -gx PATH /usr/local/go/bin $PATH
-  set -gx GOROOT /usr/local/go
-  set -gx GOPATH "$HOME/go"
-end
-
-# Local go
+# go
 if test -e "$HOME/go"
   set -gx PATH "$HOME/go/bin" $PATH
-end
-
-# Rust
-if test -e ~/.cargo/bin
-    set -gx PATH ~/.cargo/bin $PATH
+  set -gx GOPATH "$HOME/go"
+  set -gx GOBIN "$HOME/go/bin"
 end
