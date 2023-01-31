@@ -32,7 +32,7 @@ function fish_prompt
     else
         set suffix '$'
     end
-    set -l status_color (set_color brpurple)
+    set -l status_color (set_color brgreen)
     set -l last_status $status
     set -l cwd_color (set_color blue)
     set normal (set_color normal)

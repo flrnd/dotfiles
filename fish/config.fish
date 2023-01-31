@@ -4,12 +4,13 @@ switch (uname)
     case Darwin
         set -gx SHELL /usr/local/bin/fish
 end
-set -lx EDITOR nvim
-set -lx VISUAL $EDITOR
-set -lx GIT_EDITOR $EDITOR
-set -lx PAGER less
-set -lx FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --exclude node_modules"
-# set -lx BAT_THEME "OneHalfDark"
+
+set -gx EDITOR (which nvim)
+set -gx VISUAL $EDITOR
+set -gx GIT_EDITOR $EDITOR
+set -gx FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --exclude node_modules"
+
+set -g fish_autosuggestion_enabled 0 # disable autosuggestions
 
 # Abbreviations
 #abbr gcb "git checkout -b"
@@ -18,12 +19,12 @@ set -lx FZF_DEFAULT_COMMAND "fd --type f --follow --hidden --exclude .git --excl
 
 # home bin
 if test -e ~/bin
-    set -gx PATH ~/bin $PATH
+    fish_add_path ~/bin
 end
 
 # local home bin
 if test -e ~/.local/bin
-    set -gx PATH ~/.local/bin $PATH
+    fish_add_path ~/.local/bin
 end
 
 # golang
