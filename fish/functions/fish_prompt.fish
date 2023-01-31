@@ -5,7 +5,7 @@ set __fish_git_prompt_showuntrackedfiles yes
 set __fish_git_prompt_showupstream yes
 set __fish_git_prompt_show_informative_status yes
 set __fish_git_prompt_color_branch yellow
-set __fish_git_prompt_color_untrackedfiles brpurple
+set __fish_git_prompt_color_untrackedfiles purple
 set __fish_git_prompt_color_dirtystate red
 set __fish_git_prompt_color_invalidstate red
 set __fish_git_prompt_color_merging magenta
