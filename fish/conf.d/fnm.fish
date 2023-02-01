@@ -1,3 +1,5 @@
 # fnm
-set PATH "/home/mrfb/.local/share/fnm" $PATH
-fnm env | source
+if test -e "$HOME/.local/share/fnm"
+  set PATH "$HOME/.local/share/fnm" $PATH
+  fnm env | source
+end

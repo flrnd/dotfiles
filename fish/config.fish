@@ -1,10 +1,3 @@
-switch (uname)
-    case Linux
-        set -gx SHELL /usr/bin/fish
-    case Darwin
-        set -gx SHELL /usr/local/bin/fish
-end
-
 set -g fish_autosuggestion_enabled 0 # disable autosuggestions
 set -g fish_greeting ""
 
