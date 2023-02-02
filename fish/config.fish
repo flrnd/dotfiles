@@ -24,3 +24,8 @@ if test -e "$HOME/go"
   set -gx GOPATH "$HOME/go"
   set -gx GOBIN "$HOME/go/bin"
 end
+
+# rust
+if test -d "$HOME/.cargo"
+  set -gx PATH "$HOME/.cargo/bin" $PATH
+end
