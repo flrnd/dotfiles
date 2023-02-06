@@ -30,9 +30,9 @@ function fish_prompt
     if test (id -u) -eq 0
         set suffix '#'
     else
-        set suffix '$'
+        set suffix '❱'
     end
-    set -l status_color (set_color brgreen)
+    set -l status_color (set_color purple)
     set -l last_status $status
     set -l cwd_color (set_color blue)
     set normal (set_color normal)
