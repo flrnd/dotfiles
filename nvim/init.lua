@@ -205,9 +205,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- setup colorscheme
 require('tokyonight').setup {
-  style = 'night',
-  transparent = true,
-  day_brightness = 0.2,
+  style = 'moon',
 }
 require('tokyonight').load()
 
@@ -215,7 +213,7 @@ require('tokyonight').load()
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    theme = 'auto',
+    theme = 'tokyonight',
   },
 }
 
@@ -334,7 +332,7 @@ local event = "BufWritePre" -- or "BufWritePost"
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.diagnostics.eslint_d.with({
+    null_ls.builtins.diagnostics.eslint.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})'
     }),
     null_ls.builtins.formatting.beautysh,

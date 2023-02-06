@@ -1,4 +1,3 @@
--- default theme backup
 local colors = require("tokyonight.colors").setup({ transform = true })
 local config = require("tokyonight.config").options
 
