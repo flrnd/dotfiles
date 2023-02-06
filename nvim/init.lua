@@ -38,13 +38,6 @@ require('packer').startup(function(use)
     requires = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   }
 
-  use { -- Autopairs
-    "windwp/nvim-autopairs",
-    config = function()
-      require("nvim-autopairs").setup {}
-    end
-  }
-
   use { -- Highlight, edit, and navigate code
     'nvim-treesitter/nvim-treesitter',
     run = function()
@@ -57,13 +50,44 @@ require('packer').startup(function(use)
     after = 'nvim-treesitter',
   }
 
+  use { --Autotag
+    'windwp/nvim-ts-autotag',
+    config = function()
+      require('nvim-ts-autotag').setup()
+    end,
+  }
+
+  use { -- Autopairs
+    "windwp/nvim-autopairs",
+    config = function()
+      require("nvim-autopairs").setup()
+    end
+  }
+
+  -- barbecue
+  -- VSCode like topbar
+  use {
+    "utilyre/barbecue.nvim",
+    tag = "*",
+    requires = {
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons", -- optional dependency
+    },
+    after = "nvim-web-devicons", -- keep this if you're using NvChad
+    config = function()
+      require("barbecue").setup({
+        theme = 'tokyonight',
+      })
+    end,
+  }
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
   use 'lewis6991/gitsigns.nvim'
 
-  -- use "folke/tokyonight.nvim" -- Colorscheme
-  use 'navarasu/onedark.nvim'
+  use "folke/tokyonight.nvim" -- Colorscheme
+  -- use 'navarasu/onedark.nvim'
   use 'nvim-lualine/lualine.nvim' -- Fancier statusline
   use 'lukas-reineke/indent-blankline.nvim' -- Add indentation guides even on blank lines
   use 'numToStr/Comment.nvim' -- "gc" to comment visual regions/lines
@@ -180,18 +204,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 })
 
 -- setup colorscheme
-require('onedark').setup {
-  style = 'warmer'
+require('tokyonight').setup {
+  style = 'night',
+  transparent = true,
+  day_brightness = 0.2,
 }
-require('onedark').load()
+require('tokyonight').load()
 
 -- Set lualine as statusline
 -- See `:help lualine.txt`
 require('lualine').setup {
   options = {
-    theme = 'onedark',
-    component_separators = '|',
-    section_separators = '',
+    theme = 'auto',
   },
 }
 
@@ -224,6 +248,9 @@ require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { 'c', 'go', 'lua', 'rust', 'typescript', 'elixir', 'graphql', 'css', 'fish' },
 
+  autotag = {
+    enable = true,
+  },
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
@@ -289,7 +316,8 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist)
 
 -- File fuzzy find etc
 vim.api.nvim_set_keymap('n', '<leader>ff',
-  "<cmd>lua require('fzf-lua').files()<CR>",
+  "<cmd>lua require('fzf-lua').files({ cmd = 'fd --type f --follow --hidden --exclude .git --exclude node_modules' })<CR>"
+  ,
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap('n', '<leader>fb',
   "<cmd>lua require('fzf-lua').buffers()<CR>",
@@ -306,7 +334,7 @@ local event = "BufWritePre" -- or "BufWritePost"
 null_ls.setup({
   sources = {
     null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.diagnostics.eslint.with({
+    null_ls.builtins.diagnostics.eslint_d.with({
       diagnostics_format = '[eslint] #{m}\n(#{c})'
     }),
     null_ls.builtins.formatting.beautysh,
