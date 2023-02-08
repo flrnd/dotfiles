@@ -22,7 +22,7 @@ set __fish_git_prompt_char_upstream_ahead '⇡'
 set __fish_git_prompt_char_upstream_behind '⇣'
 set __fish_git_prompt_char_upstream_equal ''
 
-function fish_prompt
+function fish_prompt --description 'Prints out the prompt'
     # how many characters to show in the path when abbreviation dirs
     set -q fish_prompt_pwd_dir_length
     or set -lx fish_prompt_pwd_dir_length 0
