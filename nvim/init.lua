@@ -244,7 +244,7 @@ require('gitsigns').setup {
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { 'c', 'go', 'lua', 'rust', 'typescript', 'elixir', 'graphql', 'css', 'fish' },
+  ensure_installed = { 'c', 'go', 'lua', 'rust', 'typescript', 'graphql', 'css', 'fish' },
 
   autotag = {
     enable = true,
@@ -440,7 +440,7 @@ require('mason').setup()
 
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
-local servers = { 'rust_analyzer', 'tsserver', 'sumneko_lua', 'gopls', 'elixirls', 'cssls' }
+local servers = { 'rust_analyzer', 'tsserver', 'lua_ls', 'gopls', 'cssls' }
 
 -- Ensure the servers above are installed
 require('mason-lspconfig').setup {
@@ -467,7 +467,7 @@ local runtime_path = vim.split(package.path, ';')
 table.insert(runtime_path, 'lua/?.lua')
 table.insert(runtime_path, 'lua/?/init.lua')
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
