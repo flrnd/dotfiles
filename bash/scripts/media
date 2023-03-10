@@ -1,6 +1,6 @@
 #!/bin/bash
 # default media player
-mpv="gnome-session-inhibit --inhibit idle flatpak run io.mpv.Mpv"
+mpv=(gnome-session-inhibit --inhibit idle flatpak run io.mpv.Mpv)
 
 # filters
 DRC="acompressor=ratio=4,loudnorm"
@@ -8,28 +8,28 @@ NM="[pan='stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0
 NMDRC="[pan='stereo|FL=FC+0.30*FL+0.30*FLC+0.30*BL+0.30*SL+0.60*LFE|FR=FC+0.30*FR+0.30*FRC+0.30*BR+0.30*SR+0.60*LFE',loudnorm]"
 
 # colors
-red=`tput setaf 1`
-green=`tput setaf 2`
-yellow=`tput setaf 3`
-cyan=`tput setaf 6`
-reset_color=`tput sgr0`
+red=$(tput setaf 1)
+green=$(tput setaf 2)
+yellow=$(tput setaf 3)
+cyan=$(tput setaf 6)
+reset_color=$(tput sgr0)
 
-arguments=${@: 2} # argument string minus name and mode
+arguments=("${@: 2}") # argument string minus name and mode
 
 if ! command -v $mpv > /dev/null ; then
-    printf "%s not found.\n" "$mpv"
+    printf "%s not found.\n" "${mpv[@]}"
     exit 1
 fi
 
-case "$1" in
+case $1 in
     drc)
-        $mpv --af=$DRC "$arguments"
+        "${mpv[@]}" --af=$DRC "${arguments[@]}"
         ;;
     nm)
-        $mpv --af=lavfi=$NM "$arguments"
+        "${mpv[@]}" --af=lavfi=$NM "${arguments[@]}"
         ;;
     nmdrc)
-        $mpv --af=lavfi=$NMDRC "$arguments"
+        "${mpv[@]}" --af=lavfi=$NMDRC "${arguments[@]}"
         ;;
     help)
         printf "\n%s media filters\n" "${green}"
@@ -46,7 +46,6 @@ case "$1" in
             printf "%s * %stry:%s media %shelp%s\n" "${red}" "${green}" "${reset_color}" "${yellow}" "${reset_color}"
             exit 1
         fi
-        $mpv "$1"
+        "${mpv[@]}" "$1"
         ;;
 esac
-
