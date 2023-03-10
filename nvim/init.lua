@@ -64,6 +64,14 @@ require('packer').startup(function(use)
     end
   }
 
+  use({ -- nvim-surround
+    "kylechui/nvim-surround",
+    tag = "*", -- Use for stability; omit to use `main` branch for the latest features
+    config = function()
+        require("nvim-surround").setup({})
+    end
+})
+
   -- barbecue
   -- VSCode like topbar
   use {
