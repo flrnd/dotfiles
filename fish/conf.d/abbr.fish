@@ -9,9 +9,9 @@ abbr -a gp "git push"
 
 abbr -a cp "cp -i"
 abbr -a mv "mv -i"
-abbr -a rm "rm -i"
+abbr -a rmi "rm -i"
 abbr -a rmr "rm -ir"
-abbr -a rmrf "rm -irf"
+abbr -a rmrf "rm -rf"
 abbr -a mkdir "mkdir -p"
 
 abbr -a 7zx "7z x"
