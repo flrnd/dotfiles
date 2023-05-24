@@ -1,3 +1,4 @@
-if  test -d ~/.local/share/nvim/site/pack/packer/start/tokyonight.nvim
-  . ~/.local/share/nvim/site/pack/packer/start/tokyonight.nvim/extras/fish/tokyonight_moon.fish
+set TOKYO_HOME "$HOME/.local/share/nvim/site/pack/packer/start/tokyonight.nvim"
+if  test -d TOKYO_HOME
+  source "$TOKYO_HOME/extras/fish/tokyonight_moon.fish"
 end
