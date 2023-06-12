@@ -89,6 +89,9 @@ require('packer').startup(function(use)
     end,
   }
 
+  -- Go-tests
+  use 'buoto/gotests-vim'
+
   -- Git related plugins
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
