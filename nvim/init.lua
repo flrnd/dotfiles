@@ -372,7 +372,7 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- File fuzzy find etc
 vim.api.nvim_set_keymap("n", "<leader>ff",
-  "<cmd>lua require('fzf-lua').files({ cmd = 'fd --type f --follow --hidden --exclude .git --exclude node_modules' })<CR>"
+  "<cmd>lua require('fzf-lua').files()<CR>"
   ,
   { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>fb",
