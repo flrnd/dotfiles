@@ -24,10 +24,19 @@ require("packer").startup(function(use)
       "williamboman/mason-lspconfig.nvim",
 
       -- Useful status updates for LSP
-      "j-hui/fidget.nvim",
+      --"j-hui/fidget.nvim",
     },
   }
 
+  --Useful status updates for LSP
+  use {
+  'j-hui/fidget.nvim',
+  tag = 'legacy',
+  config = function()
+    require("fidget").setup {}
+  end,
+  }
+  
   use {
     "jose-elias-alvarez/null-ls.nvim",
 
@@ -527,9 +536,6 @@ for _, lsp in ipairs(servers) do
     capabilities = capabilities,
   }
 end
-
--- Turn on lsp status information
-require("fidget").setup()
 
 
 -- Make runtime files discoverable to the server
