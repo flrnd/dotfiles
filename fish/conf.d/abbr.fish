@@ -19,6 +19,6 @@ abbr -a 7zx "7z x"
 abbr -a 7zc "7z a -t7z -m0=lzma -mx=9 -mfb=64 -md=32m -ms=on"
 
 abbr -a tar "tar cvf"
-abbr -a untar "tar xvzf"
+abbr -a untar "tar xvf"
 
 abbr -a lt "du -sh | sort -h"
