@@ -4,7 +4,7 @@ if test -d "$HOME/.asdf"
     ln -s ~/.asdf/completions/asdf.fish ~/.config/fish/completions
   end
 
-  if test -d "$HOME/.asdf/plugins/golang/set-env.fish"
+  if test -d "$HOME/.asdf/plugins/golang"
     source "$HOME/.asdf/plugins/golang/set-env.fish"
   end
 end
