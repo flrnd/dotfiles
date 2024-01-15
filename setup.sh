@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 mkdir -p ~/bin
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles/bash/bin/git-new ~/bin/git-new
@@ -7,6 +7,10 @@ ln -s /workspaces/.codespaces/.persistedshare/dotfiles/bash/bin/git-new ~/bin/gi
 # forgit
 git clone https://github.com/wfxr/forgit.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/forgit
 
-
 # fzf
-git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
+
+sed -i 's/plugins=(git)/plugins=(git forgit fzf)/' ~/.zshrc
