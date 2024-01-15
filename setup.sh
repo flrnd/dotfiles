@@ -2,7 +2,11 @@
 
 mkdir -p ~/bin
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles/bash/bin/git-new ~/bin/git-new
-ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.bashrc ~/.bashrc
-ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.profile ~/.bash_profile
-ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.bash_aliases ~/.bash_aliases
-ln -s /workspaces/.codespaces/.persistedshare/dotfiles/.gitconfig ~/.gitconfig
+
+
+# forgit
+git clone https://github.com/wfxr/forgit.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/forgit
+
+
+# fzf
+git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/fzf-zsh-plugin
