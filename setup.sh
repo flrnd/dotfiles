@@ -9,6 +9,7 @@ git clone https://github.com/wfxr/forgit.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/
 
 # fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install --all
 
 echo "export FZF_BASE=~/.fzf" >> ~/.zshrc
 
