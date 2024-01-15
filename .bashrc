@@ -99,14 +99,5 @@ shopt -s cdable_vars
 # export documents="$HOME/Documents"
 # export dropbox="$HOME/Dropbox"
 
-export projects="$HOME/Development/Projects"
-
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # export SYSTEMD_PAGER=
-
-# User specific aliases and functions
-[ -f ~/.bash/bash_aliases ] && . ~/.bash/bash_aliases
-[ -f ~/.fzf.bash ] && . ~/.fzf.bash
-[ -f ~/.forgit/forgit.plugin.sh ] && . ~/.forgit/forgit.plugin.sh
-[ -f ~/.bash/git/init.sh ] && . ~/.bash/git/init.sh
-[ -f ~/.bash/functions/functions.sh ] && . ~/.bash/functions/functions.sh
