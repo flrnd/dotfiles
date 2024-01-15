@@ -1,9 +1,9 @@
 -- Install packer
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
     vim.cmd [[packadd packer.nvim]]
     return true
   end
@@ -30,13 +30,13 @@ require("packer").startup(function(use)
 
   --Useful status updates for LSP
   use {
-  'j-hui/fidget.nvim',
-  tag = 'legacy',
-  config = function()
-    require("fidget").setup {}
-  end,
+    'j-hui/fidget.nvim',
+    tag = 'legacy',
+    config = function()
+      require("fidget").setup {}
+    end,
   }
-  
+
   use {
     "jose-elias-alvarez/null-ls.nvim",
 
@@ -60,9 +60,10 @@ require("packer").startup(function(use)
   }
 
   use { -- Highlight, edit, and navigate code
-    "nvim-treesitter/nvim-treesitter",
+    'nvim-treesitter/nvim-treesitter',
     run = function()
-      pcall(require("nvim-treesitter.install").update { with_sync = true })
+      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      ts_update()
     end,
   }
 
@@ -297,7 +298,7 @@ require("Comment").setup()
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help ibl.config`
 require("ibl").setup {
-  indent = {char = "┊"},
+  indent = { char = "┊" },
 }
 
 -- Gitsigns
