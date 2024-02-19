@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get -y install fish
+sudo apt-get -y update && sudo apt-get -y install fish
 
 mkdir -p ~/bin
 ln -s /workspaces/.codespaces/.persistedshare/dotfiles/bash/bin/git-new ~/bin/git-new
