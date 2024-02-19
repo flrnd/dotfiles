@@ -7,3 +7,5 @@ set -gx GIT_EDITOR $EDITOR
 
 set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -g MANROFFOPT "-c"
+
+set -g BAT_THEME OneHalfLight
