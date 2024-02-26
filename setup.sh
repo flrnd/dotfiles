@@ -1,6 +1,6 @@
 #!/bin/bash
 
-sudo apt-get -y update && sudo apt-get -y install bat fish fd-find neovim ripgrep
+sudo apt-get -y update && sudo apt-get -y install bat fish fd-find hub neovim ripgrep
 
 mkdir -p ~/bin
 
