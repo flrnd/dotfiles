@@ -1,0 +1,53 @@
+#!/usr/bin/env node
+const https = require('https');
+const { execSync } = require('child_process');
+
+const issue = process.argv[2];
+
+if (!issue) {
+  console.log('Please provide an issue number');
+  process.exit(1);
+}
+
+const issueLowerCase = issue.toLowerCase();
+
+const jiraUser = process.env.JIRA_USER;
+const jiraToken = process.env.JIRA_TOKEN;
+
+if (!jiraUser || !jiraToken) {
+  console.log('Please set JIRA_USER and JIRA_TOKEN environment variables');
+  process.exit(1);
+}
+
+const uri = `https://femtasy.atlassian.net/rest/api/2/issue/${issueLowerCase}`;
+
+const options = {
+  method: 'GET',
+  headers: {
+    'Authorization': 'Basic ' + Buffer.from(`${jiraUser}:${jiraToken}`).toString('base64')
+  }
+};
+
+https.get(uri, options, (res) => {
+  let data = '';
+
+  res.on('data', (chunk) => {
+    data += chunk;
+  });
+
+  res.on('end', () => {
+    const body = JSON.parse(data);
+    const summary = body.fields.summary
+      .toLowerCase()
+      .trim()
+      .replace(/\W+/g, '-')
+      .replace(/-+/g, '-');
+
+    const code = /^fm-/i.test(issue) ? issue.replace(/^\w+-/, '') : issue;
+
+    const command = `git checkout -b ${code}-${summary}`;
+    execSync(command, { stdio: 'inherit' });
+  });
+}).on('error', (error) => {
+  console.error(error);
+});
