@@ -13,13 +13,14 @@ const issueLowerCase = issue.toLowerCase();
 
 const jiraUser = process.env.JIRA_USER;
 const jiraToken = process.env.JIRA_TOKEN;
+const jiraApiUri = process.env.JIRA_ISSUE_API_URI
 
 if (!jiraUser || !jiraToken) {
   console.log('Please set JIRA_USER and JIRA_TOKEN environment variables');
   process.exit(1);
 }
 
-const uri = `https://femtasy.atlassian.net/rest/api/2/issue/${issueLowerCase}`;
+const uri = `${jiraApiUri}/${issueLowerCase}`;
 
 const options = {
   method: 'GET',
@@ -43,7 +44,7 @@ https.get(uri, options, (res) => {
       .replace(/\W+/g, '-')
       .replace(/-+/g, '-');
 
-    const code = /^fm-/i.test(issue) ? issue.replace(/^\w+-/, '') : issue;
+    const code = /^fm-/i.test(issueLowerCase) ? issueLowerCase.replace(/^\w+-/, '') : issueLowerCase;
 
     const command = `git checkout -b ${code}-${summary}`;
     execSync(command, { stdio: 'inherit' });
