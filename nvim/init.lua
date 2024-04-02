@@ -1,10 +1,10 @@
 -- Install packer
 local ensure_packer = function()
   local fn = vim.fn
-  local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+  local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
   if fn.empty(fn.glob(install_path)) > 0 then
-    fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
-    vim.cmd [[packadd packer.nvim]]
+    fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
+    vim.cmd([[packadd packer.nvim]])
     return true
   end
   return false
@@ -14,17 +14,17 @@ local packer_bootstrap = ensure_packer()
 
 require("packer").startup(function(use)
   -- Package manager
-  use "wbthomason/packer.nvim"
+  use("wbthomason/packer.nvim")
 
   --Useful status updates for LSP
-  use {
-    'j-hui/fidget.nvim',
+  use({
+    "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup {}
+      require("fidget").setup()
     end,
-  }
+  })
 
-  use { -- LSP Configuration & Plugins
+  use({ -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     requires = {
       -- Automatically install LSPs to stdpath for neovim
@@ -34,7 +34,7 @@ require("packer").startup(function(use)
       -- Useful status updates for LSP
       "j-hui/fidget.nvim",
     },
-  }
+  })
 
   use({
     "stevearc/conform.nvim",
@@ -56,52 +56,61 @@ require("packer").startup(function(use)
           yaml = { "prettier" },
           markdown = { "prettier" },
           graphql = { "prettier" },
-          lua = { "stylua" },
           python = { "isort", "black" },
         },
       })
     end,
   })
 
-  use { -- Autocompletion
+  use("rebelot/kanagawa.nvim")
+
+  require("kanagawa").setup({
+    undercurl = true, -- enable undercurls
+    background = {
+      dark = "dragon",
+      light = "lotus",
+    },
+  })
+
+  use({ -- Autocompletion
     "hrsh7th/nvim-cmp",
     requires = {
       "hrsh7th/cmp-nvim-lsp",
       "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim"
+      "onsails/lspkind.nvim",
     },
-  }
+  })
 
-  use { -- Highlight, edit, and navigate code
-    'nvim-treesitter/nvim-treesitter',
+  use({ -- Highlight, edit, and navigate code
+    "nvim-treesitter/nvim-treesitter",
     run = function()
-      local ts_update = require('nvim-treesitter.install').update({ with_sync = true })
+      local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end,
-  }
+  })
 
-  use { -- Additional text objects via treesitter
+  use({ -- Additional text objects via treesitter
     "nvim-treesitter/nvim-treesitter-textobjects",
     after = "nvim-treesitter",
-  }
+  })
 
-  use { --Autotag
+  use({ --Autotag
     "windwp/nvim-ts-autotag",
     config = function()
       require("nvim-ts-autotag").setup()
     end,
-  }
+  })
 
-  use { -- Autopairs
+  use({ -- Autopairs
     "windwp/nvim-autopairs",
     config = function()
       require("nvim-autopairs").setup()
-    end
-  }
+    end,
+  })
 
   -- copilot
-  use {
+  use({
     "zbirenbaum/copilot.lua",
     config = function()
       require("copilot").setup({
@@ -113,12 +122,12 @@ require("packer").startup(function(use)
             jump_next = "]]",
             accept = "<CR>",
             refresh = "<M-g>",
-            open = "<M-CR>"
+            open = "<M-CR>",
           },
         },
         layout = {
           position = "bottom", -- | top | left | right
-          ratio = 0.4
+          ratio = 0.4,
         },
         suggestion = {
           enabled = true,
@@ -131,22 +140,22 @@ require("packer").startup(function(use)
             prev = "<M-[>",
             dismiss = "<M-c>",
           },
-        }
+        },
       })
-    end
-  }
+    end,
+  })
 
-  use {        -- nvim-surround
+  use({        -- nvim-surround
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
       require("nvim-surround").setup()
-    end
-  }
+    end,
+  })
 
   -- barbecue
   -- VSCode like topbar
-  use {
+  use({
     "utilyre/barbecue.nvim",
     tag = "*",
     requires = {
@@ -155,43 +164,39 @@ require("packer").startup(function(use)
     },
     after = "nvim-web-devicons",     -- keep this if you're using NvChad
     config = function()
-      require("barbecue").setup({
-        theme = "tokyonight",
-      })
+      require("barbecue").setup()
     end,
-  }
+  })
 
   -- Go-tests
-  use "buoto/gotests-vim"
+  use("buoto/gotests-vim")
 
   -- Git related plugins
-  use "tpope/vim-fugitive"
-  use "tpope/vim-rhubarb"
-  use "lewis6991/gitsigns.nvim"
+  use("tpope/vim-fugitive")
+  use("tpope/vim-rhubarb")
+  use("lewis6991/gitsigns.nvim")
 
-  use "folke/tokyonight.nvim"               -- Colorscheme
-  -- use 'navarasu/onedark.nvim'
-  use "nvim-lualine/lualine.nvim"           -- Fancier statusline
-  use "lukas-reineke/indent-blankline.nvim" -- Add indentation guides even on blank lines
-  use "numToStr/Comment.nvim"               -- "gc" to comment visual regions/lines
-  use "tpope/vim-sleuth"                    -- Detect tabstop and shiftwidth automatically
+  use("nvim-lualine/lualine.nvim")           -- Fancier statusline
+  use("lukas-reineke/indent-blankline.nvim") -- Add indentation guides even on blank lines
+  use("numToStr/Comment.nvim")               -- "gc" to comment visual regions/lines
+  use("tpope/vim-sleuth")                    -- Detect tabstop and shiftwidth automatically
 
   -- Fuzzy Finder (files, lsp, etc)
-  use "nvim-lua/plenary.nvim"
-  use "junegunn/fzf"
-  use {
+  use("nvim-lua/plenary.nvim")
+  use("junegunn/fzf")
+  use({
     "ibhagwan/fzf-lua",
     -- optional for icon support
-    requires = { "nvim-tree/nvim-web-devicons" }
-  }
-  use {
+    requires = { "nvim-tree/nvim-web-devicons" },
+  })
+  use({
     "gfanto/fzf-lsp.nvim",
     config = function()
       require("fzf_lsp").setup()
     end,
-  }
+  })
 
-  use "prisma/vim-prisma" -- Prisma syntax highlighting
+  use("prisma/vim-prisma") -- Prisma syntax highlighting
 
   -- Add custom plugins to packer from /nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, "custom.plugins")
@@ -209,11 +214,11 @@ end)
 --
 -- You'll need to restart nvim, and then it will work.
 if is_bootstrap then
-  print "=================================="
-  print "    Plugins are being installed"
-  print "    Wait until Packer completes,"
-  print "       then restart nvim"
-  print "=================================="
+  print("==================================")
+  print("    Plugins are being installed")
+  print("    Wait until Packer completes,")
+  print("       then restart nvim")
+  print("==================================")
   return
 end
 
@@ -222,7 +227,7 @@ local packer_group = vim.api.nvim_create_augroup("Packer", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePost", {
   command = "source <afile> | PackerCompile",
   group = packer_group,
-  pattern = vim.fn.expand "$MYVIMRC",
+  pattern = vim.fn.expand("$MYVIMRC"),
 })
 
 -- [[ Setting options ]]
@@ -258,6 +263,7 @@ vim.wo.signcolumn = "yes:1"
 
 -- Set colorscheme
 vim.o.termguicolors = true
+vim.cmd("colorscheme kanagawa")
 --vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
@@ -292,32 +298,22 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   pattern = "*",
 })
 
--- setup colorscheme
-require("tokyonight").setup {
-  style = "moon",
-}
-require("tokyonight").load()
-
 -- Set lualine as statusline
 -- See `:help lualine.txt`
-require("lualine").setup {
-  options = {
-    theme = "tokyonight",
-  },
-}
+-- require("lualine").setup()
 
 -- Enable Comment.nvim
 require("Comment").setup()
 
 -- Enable `lukas-reineke/indent-blankline.nvim`
 -- See `:help ibl.config`
-require("ibl").setup {
+require("ibl").setup({
   indent = { char = "┊" },
-}
+})
 
 -- Gitsigns
 -- See `:help gitsigns.txt`
-require("gitsigns").setup {
+require("gitsigns").setup({
   signs = {
     add = { text = "+" },
     change = { text = "~" },
@@ -325,11 +321,11 @@ require("gitsigns").setup {
     topdelete = { text = "‾" },
     changedelete = { text = "~" },
   },
-}
+})
 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
-require("nvim-treesitter.configs").setup {
+require("nvim-treesitter.configs").setup({
   -- Add languages to be installed here that you want installed for treesitter
   ensure_installed = { "c", "go", "lua", "rust", "typescript", "graphql", "css", "fish" },
 
@@ -391,7 +387,7 @@ require("nvim-treesitter.configs").setup {
       },
     },
   },
-}
+})
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
@@ -400,16 +396,19 @@ vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- File fuzzy find etc
-vim.api.nvim_set_keymap("n", "<leader>ff",
-  "<cmd>lua require('fzf-lua').files()<CR>"
-  ,
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fb",
+vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fb",
   "<cmd>lua require('fzf-lua').buffers()<CR>",
-  { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<leader>fg",
+  { noremap = true, silent = true }
+)
+vim.api.nvim_set_keymap(
+  "n",
+  "<leader>fg",
   "<cmd>lua require('fzf-lua').live_grep()<CR>",
-  { noremap = true, silent = true })
+  { noremap = true, silent = true }
+)
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -469,44 +468,43 @@ local servers = {
   "gopls",
   "cssls",
   "tailwindcss",
-  "graphql"
+  "graphql",
 }
 
 -- Ensure the servers above are installed
-require("mason-lspconfig").setup {
+require("mason-lspconfig").setup({
   ensure_installed = servers,
-}
+})
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
 for _, lsp in ipairs(servers) do
-  require("lspconfig")[lsp].setup {
+  require("lspconfig")[lsp].setup({
     on_attach = on_attach,
     capabilities = capabilities,
-  }
+  })
 end
-
 
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
 table.insert(runtime_path, "lua/?/init.lua")
 
-require('lspconfig').lua_ls.setup {
+require("lspconfig").lua_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   settings = {
     Lua = {
       diagnostics = {
-        globals = { 'vim' },
+        globals = { "vim" },
       },
       -- Do not send telemetry data containing a randomized but unique identifier
       telemetry = { enable = false },
     },
   },
-}
+})
 
 -- tsserver config
 
@@ -514,12 +512,12 @@ local function organize_imports(bufnr)
   local params = {
     command = "_typescript.organizeImports",
     arguments = { vim.api.nvim_buf_get_name(0) },
-    title = ""
+    title = "",
   }
   vim.lsp.buf_request_sync(bufnr, "workspace/executeCommand", params, 500)
 end
 
-require('lspconfig').tsserver.setup {
+require("lspconfig").tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {
@@ -528,22 +526,22 @@ require('lspconfig').tsserver.setup {
     "typescript.tsx",
     "javascript",
     "javascriptreact",
-    "javascript.jsx"
+    "javascript.jsx",
   },
   commands = {
     OrganizeImports = {
       organize_imports,
-      description = "Organize Imports"
-    }
-  }
-}
+      description = "Organize Imports",
+    },
+  },
+})
 
 -- nvim-cmp setup
-local cmp = require "cmp"
-local luasnip = require "luasnip"
-local lspkind = require "lspkind"
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+local lspkind = require("lspkind")
 
-cmp.setup {
+cmp.setup({
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body)
@@ -553,16 +551,16 @@ cmp.setup {
     format = lspkind.cmp_format({
       mode = "symbol",
       max_width = 50,
-    })
+    }),
   },
-  mapping = cmp.mapping.preset.insert {
+  mapping = cmp.mapping.preset.insert({
     ["<C-d>"] = cmp.mapping.scroll_docs(-4),
     ["<C-f>"] = cmp.mapping.scroll_docs(4),
     ["<C-Space>"] = cmp.mapping.complete(),
-    ["<CR>"] = cmp.mapping.confirm {
+    ["<CR>"] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true,
-    },
+    }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -581,12 +579,12 @@ cmp.setup {
         fallback()
       end
     end, { "i", "s" }),
-  },
+  }),
   sources = {
     { name = "nvim_lsp" },
     { name = "luasnip" },
   },
-}
+})
 
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et
