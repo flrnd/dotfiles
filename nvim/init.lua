@@ -16,6 +16,14 @@ require("packer").startup(function(use)
   -- Package manager
   use "wbthomason/packer.nvim"
 
+  --Useful status updates for LSP
+  use {
+    'j-hui/fidget.nvim',
+    config = function()
+      require("fidget").setup {}
+    end,
+  }
+
   use { -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     requires = {
@@ -24,17 +32,8 @@ require("packer").startup(function(use)
       "williamboman/mason-lspconfig.nvim",
 
       -- Useful status updates for LSP
-      --"j-hui/fidget.nvim",
+      "j-hui/fidget.nvim",
     },
-  }
-
-  --Useful status updates for LSP
-  use {
-    'j-hui/fidget.nvim',
-    tag = 'legacy',
-    config = function()
-      require("fidget").setup {}
-    end,
   }
 
   use({
