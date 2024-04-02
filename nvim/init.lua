@@ -37,17 +37,32 @@ require("packer").startup(function(use)
     end,
   }
 
-  use {
-    "jose-elias-alvarez/null-ls.nvim",
-
+  use({
+    "stevearc/conform.nvim",
     config = function()
-      require("null-ls").setup()
+      require("conform").setup({
+        format_on_save = {
+          timeout_ms = 500,
+          lsp_fallback = true,
+        },
+        formatters_by_ft = {
+          javascript = { "prettier" },
+          typescript = { "prettier" },
+          javascriptreact = { "prettier" },
+          typescriptreact = { "prettier" },
+          svelte = { "prettier" },
+          css = { "prettier" },
+          html = { "prettier" },
+          json = { "prettier" },
+          yaml = { "prettier" },
+          markdown = { "prettier" },
+          graphql = { "prettier" },
+          lua = { "stylua" },
+          python = { "isort", "black" },
+        },
+      })
     end,
-
-    requires = { "nvim-lua/plenary.nvim" }
-  }
-
-  use "MunifTanjim/prettier.nvim"
+  })
 
   use { -- Autocompletion
     "hrsh7th/nvim-cmp",
@@ -396,70 +411,6 @@ vim.api.nvim_set_keymap("n", "<leader>fb",
 vim.api.nvim_set_keymap("n", "<leader>fg",
   "<cmd>lua require('fzf-lua').live_grep()<CR>",
   { noremap = true, silent = true })
-
--- null-ls
-local null_ls = require("null-ls")
-local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
-local event = "BufWritePre" -- or "BufWritePost"
-
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.prettierd,
-    null_ls.builtins.diagnostics.eslint.with({
-      diagnostics_format = "[eslint] #{m}\n(#{c})"
-    }),
-    null_ls.builtins.formatting.beautysh,
-    null_ls.builtins.formatting.mix,
-    null_ls.builtins.formatting.rustfmt,
-    null_ls.builtins.formatting.gofmt,
-    null_ls.builtins.formatting.goimports,
-  },
-  on_attach = function(client, bufnr)
-    if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("n", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-    end
-
-    if client.supports_method("textDocument/formatting") then
-      vim.keymap.set("x", "<Leader>f", function()
-        vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
-      end, { buffer = bufnr, desc = "[lsp] format" })
-
-      -- format on save
-      vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
-      vim.api.nvim_create_autocmd(event, {
-        buffer = bufnr,
-        group = group,
-        callback = function()
-          vim.lsp.buf.format({ bufnr = bufnr })
-        end,
-        desc = "[lsp] format on save",
-      })
-    end
-  end,
-})
-
--- Prettier
-local prettier = require("prettier")
-
-prettier.setup({
-  bin = "prettierd", -- or `'prettierd'` (v'.22+)
-  filetypes = {
-    "css",
-    "graphql",
-    "html",
-    "javascript",
-    "javascriptreact",
-    "json",
-    "less",
-    "markdown",
-    "scss",
-    "typescript",
-    "typescriptreact",
-    "yaml",
-  },
-})
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
