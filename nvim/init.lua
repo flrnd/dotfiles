@@ -62,15 +62,7 @@ require("packer").startup(function(use)
     end,
   })
 
-  use("rebelot/kanagawa.nvim")
-
-  require("kanagawa").setup({
-    undercurl = true, -- enable undercurls
-    background = {
-      dark = "dragon",
-      light = "lotus",
-    },
-  })
+  use('projekt0n/github-nvim-theme')
 
   use({ -- Autocompletion
     "hrsh7th/nvim-cmp",
@@ -262,7 +254,7 @@ vim.wo.signcolumn = "yes:1"
 
 -- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd("colorscheme kanagawa")
+vim.cmd('colorscheme github_light_default')
 --vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
