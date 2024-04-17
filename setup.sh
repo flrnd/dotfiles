@@ -4,7 +4,7 @@ sudo apt-get -y update && sudo apt-get -y install bat fish fd-find hub neovim ri
 
 mkdir -p ~/bin
 
-cp /workspaces/.codespaces/.persistedshare/dotfiles/git-new/git-new ~/bin/git-new
+cp /workspaces/.codespaces/.persistedshare/dotfiles/bash/bin/* ~/bin/
 cp -r /workspaces/.codespaces/.persistedshare/dotfiles/fish ~/.config/
 
 # forgit
