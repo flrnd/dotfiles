@@ -40,4 +40,4 @@ code=$(echo "$issueLowerCase" | sed -E 's/^fm-//i')
 
 branchName="${code}-${summary}"
 
-checkout -b "$branchName"
+git checkout -b "$branchName"
