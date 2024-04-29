@@ -1,0 +1,43 @@
+#!/bin/bash
+
+# Check if jq is installed
+if ! command -v jq &> /dev/null; then
+  echo "Error: jq is required but not installed. Please install jq (https://stedolan.github.io/jq/) before running this script."
+  exit 1
+fi
+
+issue="$1"
+
+if [ -z "$issue" ]; then
+  echo "Please provide an issue number"
+  exit 1
+fi
+
+issueLowerCase=$(echo "$issue" | tr '[:upper:]' '[:lower:]')
+
+jira_user="$JIRA_USER"
+jira_token="$JIRA_TOKEN"
+
+if [ -z "$jira_user" ] || [ -z "$jira_token" ]; then
+  echo "Please set JIRA_USER and JIRA_TOKEN environment variables"
+  exit 1
+fi
+
+uri="$JIRA_ISSUE_API_URI"
+
+if [ -z "$uri" ]; then
+  echo "Please set JIRA_ISSUE_API_URI environment variable"
+  exit 1
+fi
+
+uri="${uri}/${issueLowerCase}"
+
+response=$(curl -s -u "$jira_user:$jira_token" "$uri")
+
+summary=$(echo "$response" | jq -r '.fields.summary' | tr '[:upper:]' '[:lower:]' | tr -d '[:punct:]' | tr -s ' ' '-' | sed 's/^-//' | sed 's/-$//')
+
+# code=$(echo "$issueLowerCase" | sed -E 's/^fm-//i')
+
+branchName="${issueLowerCase}-${summary}"
+
+git checkout -b "$branchName"
