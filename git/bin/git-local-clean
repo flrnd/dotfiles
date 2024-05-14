@@ -1,20 +1,26 @@
 #!/bin/bash
 
+# Colors
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
 git fetch -p
 
-branches=$(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}') 
+branches=$(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}')
 
 if [[ -z "$branches" ]]; then
-    echo "No local branches to delete."
+    echo -e "${GREEN}No local branches to delete.${NC}"
     exit 0
 fi
 
 for branch in $branches; do
     # Ask for confirmation before deleting the branch
-    read -r -p "\nDo you want to delete local branch '$branch'? [y/N] " response
+    read -r -p "Do you want to delete local branch '${YELLOW}$branch${NC}'? [${GREEN}y${NC}/${RED}N${NC}] " response
     if [[ "$response" =~ ^[Yy]$ ]]; then
         git branch -D "$branch"
     else
-        echo "Branch '$branch' not deleted."
+        echo -e "${RED}Branch '$branch' not deleted.${NC}"
     fi
 done
