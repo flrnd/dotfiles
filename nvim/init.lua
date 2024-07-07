@@ -314,11 +314,8 @@ require("gitsigns").setup({
 -- See `:help nvim-treesitter`
 require("nvim-treesitter.configs").setup({
   -- Add languages to be installed here that you want installed for treesitter
-  ensure_installed = { "c", "go", "lua", "rust", "typescript", "graphql", "css", "fish" },
+  ensure_installed = { "c", "go", "lua", "rust", "typescript", "graphql", "css", "fish", "html" },
 
-  autotag = {
-    enable = true,
-  },
   highlight = { enable = true },
   indent = { enable = true },
   incremental_selection = {
