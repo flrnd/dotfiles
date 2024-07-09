@@ -16,14 +16,6 @@ require("packer").startup(function(use)
   -- Package manager
   use("wbthomason/packer.nvim")
 
-  --Useful status updates for LSP
-  use({
-    "j-hui/fidget.nvim",
-    config = function()
-      require("fidget").setup()
-    end,
-  })
-
   use({ -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     requires = {
@@ -49,20 +41,25 @@ require("packer").startup(function(use)
           typescript = { "prettier" },
           javascriptreact = { "prettier" },
           typescriptreact = { "prettier" },
-          svelte = { "prettier" },
           css = { "prettier" },
           html = { "prettier" },
           json = { "prettier" },
           yaml = { "prettier" },
           markdown = { "prettier" },
           graphql = { "prettier" },
-          python = { "isort", "black" },
         },
       })
     end,
   })
 
-  use('projekt0n/github-nvim-theme')
+  use({
+    'Mofiqul/vscode.nvim',
+    config = function()
+      require('vscode').setup({
+        transparent = true,
+      })
+    end
+  })
 
   use({ -- Autocompletion
     "hrsh7th/nvim-cmp",
@@ -137,7 +134,8 @@ require("packer").startup(function(use)
     end,
   })
 
-  use({        -- nvim-surround
+  -- nvim-surround
+  use({
     "kylechui/nvim-surround",
     tag = "*", -- Use for stability; omit to use `main` branch for the latest features
     config = function()
@@ -174,20 +172,14 @@ require("packer").startup(function(use)
 
   -- Fuzzy Finder (files, lsp, etc)
   use("nvim-lua/plenary.nvim")
+
   use("junegunn/fzf")
+
   use({
     "ibhagwan/fzf-lua",
     -- optional for icon support
     requires = { "nvim-tree/nvim-web-devicons" },
   })
-  use({
-    "gfanto/fzf-lsp.nvim",
-    config = function()
-      require("fzf_lsp").setup()
-    end,
-  })
-
-  use("prisma/vim-prisma") -- Prisma syntax highlighting
 
   -- Add custom plugins to packer from /nvim/lua/custom/plugins.lua
   local has_plugins, plugins = pcall(require, "custom.plugins")
@@ -252,9 +244,10 @@ vim.o.smartcase = true
 vim.o.updatetime = 250
 vim.wo.signcolumn = "yes:1"
 
--- Set colorscheme
 vim.o.termguicolors = true
-vim.cmd('colorscheme github_light_default')
+
+-- Set colorscheme
+vim.cmd('colorscheme vscode')
 --vim.cmd [[colorscheme onedark]]
 
 -- Set completeopt to have a better completion experience
@@ -381,18 +374,35 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
 
 -- File fuzzy find etc
 vim.api.nvim_set_keymap("n", "<leader>ff", "<cmd>lua require('fzf-lua').files()<CR>", { noremap = true, silent = true })
+
 vim.api.nvim_set_keymap(
   "n",
   "<leader>fb",
   "<cmd>lua require('fzf-lua').buffers()<CR>",
   { noremap = true, silent = true }
 )
+
 vim.api.nvim_set_keymap(
   "n",
   "<leader>fg",
   "<cmd>lua require('fzf-lua').live_grep()<CR>",
   { noremap = true, silent = true }
 )
+
+vim.api.nvim_set_keymap("n", "<leader>fd", "<cmd>lua require('fzf-lua').lsp_definitions()<CR>",
+  { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>fi", "<cmd>lua require('fzf-lua').lsp_implementations()<CR>",
+  { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>fr", "<cmd>lua require('fzf-lua').lsp_references()<CR>",
+  { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>ft", "<cmd>lua require('fzf-lua').lsp_typedefs()<CR>",
+  { noremap = true, silent = true })
+
+
+
 
 -- LSP settings.
 --  This function gets run when an LSP connects to a particular buffer.
@@ -413,11 +423,6 @@ local on_attach = function(_, bufnr)
 
   nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
   nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-
-  nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
-  nmap("gr", vim.lsp.buf.references, "[G]oto [R]eferences")
-  nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
-  nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
 
   -- See `:help K` for why this keymap
   nmap("K", vim.lsp.buf.hover, "Hover Documentation")
