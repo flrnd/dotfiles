@@ -18,6 +18,15 @@ require("packer").startup(function(use)
   -- Package manager
   use("wbthomason/packer.nvim")
 
+  use({
+    'Mofiqul/vscode.nvim',
+    config = function()
+      require('vscode').setup({
+        transparent = true,
+      })
+    end
+  })
+
   use({ -- LSP Configuration & Plugins
     "neovim/nvim-lspconfig",
     requires = {
@@ -27,6 +36,16 @@ require("packer").startup(function(use)
 
       -- Useful status updates for LSP
       "j-hui/fidget.nvim",
+    },
+  })
+
+  use({ -- Autocompletion
+    "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-nvim-lsp",
+      "L3MON4D3/LuaSnip",
+      "saadparwaiz1/cmp_luasnip",
+      "onsails/lspkind.nvim",
     },
   })
 
@@ -54,24 +73,6 @@ require("packer").startup(function(use)
     end,
   })
 
-  use({
-    'Mofiqul/vscode.nvim',
-    config = function()
-      require('vscode').setup({
-        transparent = true,
-      })
-    end
-  })
-
-  use({ -- Autocompletion
-    "hrsh7th/nvim-cmp",
-    requires = {
-      "hrsh7th/cmp-nvim-lsp",
-      "L3MON4D3/LuaSnip",
-      "saadparwaiz1/cmp_luasnip",
-      "onsails/lspkind.nvim",
-    },
-  })
 
   use({ -- Highlight, edit, and navigate code
     "nvim-treesitter/nvim-treesitter",
@@ -101,40 +102,7 @@ require("packer").startup(function(use)
   })
 
   -- copilot
-  use({
-    "zbirenbaum/copilot.lua",
-    config = function()
-      require("copilot").setup({
-        panel = {
-          enabled = true,
-          auto_refresh = false,
-          keymap = {
-            jump_prev = "[[",
-            jump_next = "]]",
-            accept = "<CR>",
-            refresh = "<M-g>",
-            open = "<M-CR>",
-          },
-        },
-        layout = {
-          position = "bottom", -- | top | left | right
-          ratio = 0.4,
-        },
-        suggestion = {
-          enabled = true,
-          auto_trigger = true,
-          keymap = {
-            accept = "<M-j>",
-            accept_line = "<M-l>",
-            accept_word = "<M-k>",
-            next = "<M-]>",
-            prev = "<M-[>",
-            dismiss = "<M-c>",
-          },
-        },
-      })
-    end,
-  })
+  use("github/copilot.vim")
 
   -- visual multi
   use({
