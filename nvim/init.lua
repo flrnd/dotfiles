@@ -75,16 +75,13 @@ require("packer").startup(function(use)
 
 
   use({ -- Highlight, edit, and navigate code
-    "nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    after = "nvim-treesitter",
+    requires = "nvim-treesitter/nvim-treesitter",
     run = function()
       local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
       ts_update()
     end,
-  })
-
-  use({ -- Additional text objects via treesitter
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    after = "nvim-treesitter",
   })
 
   use({ --Autotag
