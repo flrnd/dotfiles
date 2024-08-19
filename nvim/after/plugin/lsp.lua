@@ -1,20 +1,15 @@
+-- Function to organize imports for TypeScript/JavaScript files
+local function organize_imports(bufnr)
+  local params = {
+    command = "_typescript.organizeImports",
+    arguments = { vim.api.nvim_buf_get_name(bufnr) },
+    title = "Organize Imports",
+  }
+  vim.lsp.buf_request_sync(bufnr, "workspace/executeCommand", params, 500)
+end
+
 -- LSP settings.
---  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
-  -- NOTE: Remember that lua is a real programming language, and as such it is possible
-  -- to define small helper and utility functions so you don't have to repeat yourself
-  -- many times.
-  --
-  -- In this case, we create a function that lets us more easily define mappings specific
-  -- for LSP related items. It sets the mode, buffer and description for us each time.
-  local nmap = function(keys, func, desc)
-    if desc then
-      desc = "LSP: " .. desc
-    end
-
-    vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-  end
-
+local on_attach = function(client, bufnr)
   local opts = { buffer = bufnr, remap = false }
 
   vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
@@ -27,14 +22,33 @@ local on_attach = function(_, bufnr)
   vim.keymap.set("n", "<F2>", function() vim.lsp.buf.rename() end, opts)
   vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-  -- Create a command `:Format` local to the LSP buffer
   vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-    if vim.lsp.buf.format then
-      vim.lsp.buf.format()
-    elseif vim.lsp.buf.formatting then
-      vim.lsp.buf.formatting()
+    if client.server_capabilities.documentFormattingProvider then
+      vim.lsp.buf.format({ async = true })
+    elseif client.server_capabilities.documentRangeFormattingProvider then
+      vim.lsp.buf.format({ async = true })
     end
   end, { desc = "Format current buffer with LSP" })
+
+  -- Automatically organize imports on save for TypeScript/JavaScript files
+  if client.name == "tsserver" then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        organize_imports(bufnr)
+      end,
+    })
+  end
+
+  -- Automatically format on save
+  if client.server_capabilities.documentFormattingProvider then
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format({ async = false })
+      end,
+    })
+  end
 end
 
 -- Setup mason so it can manage external tooling
@@ -43,6 +57,7 @@ require("mason").setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = {
+  "eslint",
   "tsserver",
   "lua_ls",
   "gopls",
@@ -66,6 +81,25 @@ for _, lsp in ipairs(servers) do
   })
 end
 
+--- eslint  config
+require("lspconfig").eslint.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  settings = {
+    enable = true,
+    format = { enable = true },
+    packageManager = "npm",
+    autoFixOnSave = true,
+    codeActionsOnSave = {
+      mode = "all",
+      rules = { "!debugger", "!no-only-tests/*" },
+    },
+    lintTask = {
+      enable = true,
+    },
+  },
+})
+
 -- Make runtime files discoverable to the server
 local runtime_path = vim.split(package.path, ";")
 table.insert(runtime_path, "lua/?.lua")
@@ -84,16 +118,6 @@ require("lspconfig").lua_ls.setup({
 })
 
 -- tsserver config
-
-local function organize_imports(bufnr)
-  local params = {
-    command = "_typescript.organizeImports",
-    arguments = { vim.api.nvim_buf_get_name(0) },
-    title = "",
-  }
-  vim.lsp.buf_request_sync(bufnr, "workspace/executeCommand", params, 500)
-end
-
 require("lspconfig").tsserver.setup({
   on_attach = on_attach,
   capabilities = capabilities,
