@@ -11,6 +11,7 @@ vim.o.hlsearch = false
 
 -- Make line numbers default
 vim.wo.number = true
+vim.opt.relativenumber = true
 
 -- Enable mouse mode
 vim.o.mouse = "a"
@@ -55,3 +56,8 @@ vim.keymap.set({ "n", "v" }, "<Space>", "<Nop>", { silent = true })
 -- Remap for dealing with word wrap
 vim.keymap.set("n", "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+
+-- listchars
+vim.opt.listchars = { eol = '↵', trail = '~' }
+vim.opt.list = true
+vim.cmd("match ErrorMsg /\\s\\+$/")
