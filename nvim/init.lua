@@ -84,6 +84,9 @@ require("packer").startup(function(use)
     end,
   })
 
+  -- Hop
+  use('smoka7/hop.nvim')
+
   use({ --Autotag
     "windwp/nvim-ts-autotag",
     config = function()
