@@ -32,10 +32,6 @@ vim.wo.signcolumn = "yes:1"
 
 vim.o.termguicolors = true
 
--- Set colorscheme
-vim.cmd('colorscheme vscode')
---vim.cmd [[colorscheme onedark]]
-
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = "menuone,noselect"
 
