@@ -41,3 +41,5 @@ vim.api.nvim_set_keymap("n", "<leader>fw", "<cmd>lua require('fzf-lua').lsp_work
 
 vim.api.nvim_set_keymap("n", "<leader>fws", "<cmd>lua require('fzf-lua').lsp_live_orkspace_symbols()<CR>",
   { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap('n', '<C-x>', ':bw<CR>', { noremap = true, silent = true })
