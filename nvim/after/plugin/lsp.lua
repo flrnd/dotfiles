@@ -57,12 +57,13 @@ require("mason").setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = {
-  "eslint",
-  "tsserver",
-  "lua_ls",
-  "gopls",
   "cssls",
+  "elixirls",
+  "eslint",
+  "gopls",
   "graphql",
+  "lua_ls",
+  "tsserver"
 }
 
 -- Ensure the servers above are installed
