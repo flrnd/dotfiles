@@ -68,6 +68,7 @@ require("packer").startup(function(use)
           yaml = { "prettier" },
           markdown = { "prettier" },
           graphql = { "prettier" },
+          elixir = { "mix" },
         },
       })
     end,
