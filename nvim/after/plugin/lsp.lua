@@ -31,7 +31,7 @@ local on_attach = function(client, bufnr)
   end, { desc = "Format current buffer with LSP" })
 
   -- Automatically organize imports on save for TypeScript/JavaScript files
-  if client.name == "tsserver" then
+  if client.name == "ts_ls" then
     vim.api.nvim_create_autocmd("BufWritePre", {
       buffer = bufnr,
       callback = function()
@@ -63,7 +63,7 @@ local servers = {
   "gopls",
   "graphql",
   "lua_ls",
-  "tsserver"
+  "ts_ls"
 }
 
 -- Ensure the servers above are installed
@@ -118,8 +118,8 @@ require("lspconfig").lua_ls.setup({
   },
 })
 
--- tsserver config
-require("lspconfig").tsserver.setup({
+-- ts_ls config (typescript-language-server)
+require("lspconfig").ts_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
   filetypes = {
