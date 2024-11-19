@@ -57,11 +57,7 @@ require("mason").setup()
 -- Enable the following language servers
 -- Feel free to add/remove any LSPs that you want here. They will automatically be installed
 local servers = {
-  "cssls",
   "elixirls",
-  "eslint",
-  "gopls",
-  "graphql",
   "lua_ls",
   "ts_ls"
 }
@@ -118,7 +114,7 @@ require("lspconfig").lua_ls.setup({
   },
 })
 
--- ts_ls config (typescript-language-server)
+-- ts_ls config
 require("lspconfig").ts_ls.setup({
   on_attach = on_attach,
   capabilities = capabilities,
