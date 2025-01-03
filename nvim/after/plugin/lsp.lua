@@ -59,7 +59,9 @@ require("mason").setup()
 local servers = {
   "elixirls",
   "lua_ls",
-  "ts_ls"
+  "ts_ls",
+  "eslint",
+  "gopls"
 }
 
 -- Ensure the servers above are installed
