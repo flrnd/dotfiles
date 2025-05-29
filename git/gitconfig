@@ -1,6 +1,7 @@
 [user]
 	name = flrnd
-	email = florian.rand@gmail.com
+	email = raul.perez@florianrand.com
+	signingkey = ~/.ssh/id_ed25519-sign.pub
 
 [alias]
 	lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
@@ -19,3 +20,5 @@
 
 [diff]
     colorMoved = default
+[gpg]
+	format = ssh
