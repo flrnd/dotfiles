@@ -5,6 +5,7 @@ abbr -a svi "sudo nvim"
 abbr -a sedit "sudoedit"
 
 abbr -a gc "git commit --verbose"
+abbr -a gcs "git commit -sS --verbose"
 abbr -a gcb "git checkout -b"
 abbr -a gp "git push"
 
