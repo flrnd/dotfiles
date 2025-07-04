@@ -39,6 +39,11 @@ require("packer").startup(function(use)
     },
   })
 
+  use({
+    "L3MON4D3/LuaSnip",
+    run = "make install_jsregexp"
+  })
+
   use({ -- Autocompletion
     "hrsh7th/nvim-cmp",
     requires = {
@@ -103,7 +108,7 @@ require("packer").startup(function(use)
   })
 
   -- copilot
-  use("github/copilot.vim")
+  --use("github/copilot.vim")
 
   -- visual multi
   use({
