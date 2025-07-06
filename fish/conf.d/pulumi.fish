@@ -1,3 +1,3 @@
-if test -d "$HOME/.pulumi/bin"
-  set -gx PATH "$HOME/.pulumi/bin" $PATH
+if test -d "$HOME/.local/share/pulumi/bin"
+  set -gx PATH "$HOME/.local/share/pulumi/bin" $PATH
 end

@@ -1,7 +1,7 @@
 # go
-if test -e "$HOME/.local/go"
-  set -gx GOROOT "$HOME/.local/go"
-  set -gx PATH "$HOME/.local/go/bin" $PATH
+if test -e "$HOME/.local/share/go"
+  set -gx GOROOT "$HOME/.local/share/go"
+  set -gx PATH "$HOME/.local/share/go/bin" $PATH
 end
 
 if test -e "$HOME/go"
