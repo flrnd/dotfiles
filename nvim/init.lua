@@ -44,6 +44,14 @@ require("packer").startup(function(use)
     run = "make install_jsregexp"
   })
 
+  -- nvimTree
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional
+    },
+  }
+
   use({ -- Autocompletion
     "hrsh7th/nvim-cmp",
     requires = {
@@ -147,7 +155,7 @@ require("packer").startup(function(use)
   use("tpope/vim-rhubarb")
   use("lewis6991/gitsigns.nvim")
 
-  -- Add indentation guides even on blank lines\
+  -- Add indentation guides even on blank lines
   use({
     "lukas-reineke/indent-blankline.nvim",
     config = function()
