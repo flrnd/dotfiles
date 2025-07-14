@@ -19,7 +19,6 @@ return {
         "luadoc",
         "luap",
         "markdown",
-        "markdown_inline",
         "regex",
         "toml",
         "tsx",
