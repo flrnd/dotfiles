@@ -1,6 +1,6 @@
 [user]
 	name = flrnd
-	email = raul.perez@florianrand.com
+	email = 659650+flrnd@users.noreply.github.com
 	signingkey = ~/.ssh/id_ed25519-sign.pub
 
 [alias]
@@ -22,3 +22,7 @@
     colorMoved = default
 [gpg]
 	format = ssh
+[commit]
+	gpgSign = true
+[gpg "ssh"]
+	allowedSignersFile = ~/.config/git/allowed_signers
