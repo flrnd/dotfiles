@@ -1,0 +1,5 @@
+theme = "dark_plus"
+
+[keys.normal]
+C-n = ["search_selection", "extend_search_next"]
+
