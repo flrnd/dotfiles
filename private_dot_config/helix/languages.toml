@@ -1,0 +1,64 @@
+[language-server.tailwindcss-ls]
+command = "tailwindcss-language-server"
+args = ["--stdio"]
+
+[[language]]
+name = "html"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "html"] }
+language-servers = [ "vscode-html-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "css"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "css"] }
+language-servers = [ "vscode-css-language-server", "tailwindcss-ls" ]
+
+[[language]]
+name = "json"
+auto-format = true
+
+[[language]]
+name = "javascript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+  "tailwindcss-ls",
+]
+
+[[language]]
+name = "jsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+  "tailwindcss-ls",
+]
+
+[[language]]
+name = "typescript"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+  "tailwindcss-ls",
+]
+
+[[language]]
+name = "tsx"
+auto-format = true
+formatter = { command = "prettier", args = ["--parser", "typescript"] }
+language-servers = [
+  "typescript-language-server",
+  "vscode-eslint-language-server",
+  "tailwindcss-ls",
+]
+
+[[language]]
+name = "svelte"
+auto-format = true
+language-servers = [ "svelteserver", "tailwindcss-ls" ]
