@@ -3,26 +3,26 @@ theme = "dark_plus"
 [editor]
 # Show currently open buffers, only when more than one exists.
 bufferline = "multiple"
-# Highlight all lines with a cursor
-cursorline = true
 true-color = true
 end-of-line-diagnostics = "hint"
 
 [editor.cursor-shape]
-insert = "underline"
+insert = "block"
 normal = "block"
 select = "bar"
 
 [editor.indent-guides]
-character = "╎"
+character = "┆"
 render = true
 
 [editor.statusline]
 left = ["mode", "spinner", "version-control", "file-name"]
 
 [editor.inline-diagnostics]
-cursor-line = "error" # Show inline diagnostics when the cursor is on the line
-other-lines = "disable" # Don't expand diagnostics unless the cursor is on the line
+cursor-line = "hint" # Show inline diagnostics when the cursor is on the line
+
+[editor.whitespace]
+render = "all"
 
 [keys.normal]
 C-n = ["search_selection", "extend_search_next"]
