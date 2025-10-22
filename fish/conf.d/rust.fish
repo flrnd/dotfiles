@@ -1,4 +1,4 @@
 # rust
-if test -d "$HOME/.cargo"
-  set -gx PATH "$HOME/.cargo/bin" $PATH
+if not contains "$HOME/.cargo/bin" $PATH
+    set -x PATH "$HOME/.cargo/bin" $PATH
 end
