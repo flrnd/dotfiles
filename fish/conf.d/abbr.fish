@@ -1,10 +1,10 @@
 # Abbr
 abbr -a vi nvim
-abbr -a svi "sudo nvim"
 abbr -a sedit sudoedit
 
 abbr -a gc "git commit --verbose"
 abbr -a gcb "git checkout -b"
+abbr -a lg lazygit
 
 abbr -a mkdir "mkdir -p"
 

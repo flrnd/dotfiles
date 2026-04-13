@@ -7,3 +7,6 @@ set -gx GIT_EDITOR $EDITOR
 set -gx FORCE_COLOR true
 set -g MANPAGER "sh -c 'col -bx | bat -l man -p'"
 set -g MANROFFOPT -c
+
+# load env conf
+source (~/.config/shell/env.sh fish | psub)
