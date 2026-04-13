@@ -26,3 +26,7 @@
 	gpgSign = true
 [gpg "ssh"]
 	allowedSignersFile = ~/.config/git/allowed_signers
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main
