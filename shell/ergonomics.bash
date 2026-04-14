@@ -1,5 +1,5 @@
 # --- fzf ---
-FZF_PATH="/home/linuxbrew/.linuxbrew/opt/fzf/shell/key-bindings.bash"
+FZF_PATH="$HOMEBREW_PREFIX/opt/fzf/shell/key-bindings.bash"
 [ -f "$FZF_PATH" ] && source "$FZF_PATH"
 
 if command -v fd >/dev/null 2>&1; then
@@ -7,8 +7,7 @@ if command -v fd >/dev/null 2>&1; then
 fi
 
 # --- forgit ---
-FORGIT_PATH="/home/linuxbrew/.linuxbrew/opt/forgit/share/forgit/forgit.plugin.sh"
-[ -f "$FORGIT_PATH" ] && source "$FORGIT_PATH" && export FORGIT_PATH
+[ -f "$HOMEBREW_PREFIX/share/forgit/forgit.plugin.sh" ] && source $HOMEBREW_PREFIX/share/forgit/forgit.plugin.sh
 
 # --- aliases ---
 alias vi='nvim'
