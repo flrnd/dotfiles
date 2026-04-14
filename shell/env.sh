@@ -10,6 +10,7 @@ PATH_USER=(
 GO_PATH="$HOME/go"
 RUST_PATH="$HOME/.cargo/bin"
 PNPM_PATH="$HOME/.local/share/pnpm"
+BREW_PATH="/home/linuxbrew/.linuxbrew"
 
 # ----------------------------
 # Bash primitives
@@ -99,9 +100,7 @@ emit_bash() {
 
   # brew (idempotent)
   printf '[ -x "%s" ] && case ":$PATH:" in *":%s/bin:"*) ;; *) eval "$(%s shellenv)";; esac\n' \
-    "/home/linuxbrew/.linuxbrew/bin/brew" \
-    "/home/linuxbrew/.linuxbrew" \
-    "/home/linuxbrew/.linuxbrew/bin/brew"
+    "$BREW_PATH/bin/brew" "$BREW_PATH" "$BREW_PATH/bin/brew"
 
   emit_common_paths
   emit_toolchains
@@ -119,10 +118,8 @@ emit_fish() {
   emit_fish_set EDITOR "$EDITOR"
 
   # brew (idempotent + correct shell output)
-  printf 'if test -x %s; and not contains %s/bin $PATH\n' \
-    "/home/linuxbrew/.linuxbrew/bin/brew" \
-    "/home/linuxbrew/.linuxbrew"
-  printf '    eval (%s shellenv fish)\n' "/home/linuxbrew/.linuxbrew/bin/brew"
+  printf 'if test -x %s; and not contains %s/bin $PATH\n' "$BREW_PATH/bin/brew" "$BREW_PATH"
+  printf '    eval (%s shellenv fish)\n' "$BREW_PATH/bin/brew"
   printf 'end\n'
 
   emit_common_paths
