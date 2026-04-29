@@ -75,16 +75,24 @@ emit_common_paths() {
   done
 }
 
+emit_home_and_path() {
+  local var_name="$1"
+  local dir="$2"
+  local path_dir="${3:-$dir}"
+
+  set_var "$var_name" "$dir"
+  path_append_if_dir "$path_dir"
+}
+
 emit_toolchains() {
   # go
-  [ -d "$GO_PATH" ] && set_var GOPATH "$GO_PATH"
-  path_append_if_dir "$GO_PATH/bin"
+  [ -d "$GO_PATH" ] && emit_home_and_path GOPATH "$GO_PATH" "$GO_PATH/bin"
 
   # rust
   path_append_if_dir "$RUST_PATH"
 
   # pnpm
-  path_append_if_dir "$PNPM_PATH"
+  emit_home_and_path PNPM_HOME "$PNPM_PATH"
 }
 
 # ----------------------------
